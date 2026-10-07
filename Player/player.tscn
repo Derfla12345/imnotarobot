@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://dge5shacvhvq1"]
+
+[ext_resource type="Script" uid="uid://dyst8idmtl4yn" path="res://player.gd" id="1_l8h54"]
+[ext_resource type="Texture2D" uid="uid://bhchmqe74f78f" path="res://Player/air fryer.jpg" id="2_4ntmi"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hej7p"]
+
+[node name="Player" type="CharacterBody2D" unique_id=1745909773]
+script = ExtResource("1_l8h54")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1758303756]
+
+[node name="PlayerAnimator" type="Node2D" parent="." unique_id=609700377]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerAnimator" unique_id=320078681]
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerAnimator" unique_id=665365823]
+position = Vector2(-1.1920929e-07, -15.000001)
+scale = Vector2(0.009175301, 0.009627963)
+texture = ExtResource("2_4ntmi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=542459861]
+position = Vector2(0, -15)
+shape = SubResource("CapsuleShape2D_hej7p")
