@@ -22,7 +22,6 @@ shape = SubResource("CapsuleShape2D_hej7p")
 script = ExtResource("1_tayps")
 
 [node name="InteractCollision" type="CollisionShape2D" parent="InteractArea" unique_id=771794835]
-position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_l7yy7")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=194232579]

@@ -58,6 +58,11 @@ click={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Player character interactable"
+2d_physics/layer_2="Clickable"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

@@ -1,6 +1,8 @@
 extends Area2D
 
 
+# door_id is the ID of this door, door_send_id is the ID of the door that this door leads to
+# set both using the godot UI rather than editing this text
 @export var door_id: int = 0
 @export var door_send_id: int = 0
 
