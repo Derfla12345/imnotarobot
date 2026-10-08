@@ -2,10 +2,11 @@ extends CharacterBody2D
 
 
 var interactable_object = false
-var movement_lock: bool = false
+var activity_lock: bool = false
+var can_door: bool = true
 
 func _physics_process(delta: float) -> void:
-	if (not movement_lock):
+	if (not activity_lock):
 		var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 		velocity = direction * 125
 		move_and_slide()
@@ -25,5 +26,11 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 func _on_area_2d_area_exited(area: Area2D) -> void:
 	interactable_object = false
 
-func set_movement_lock(new_val: bool):
-	movement_lock = new_val
+func set_activity_lock(new_val: bool):
+	activity_lock = new_val
+
+func set_can_door(new_val: bool):
+	can_door = new_val
+
+func get_can_door() -> bool:
+	return can_door

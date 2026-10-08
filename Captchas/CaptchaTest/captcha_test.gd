@@ -6,8 +6,8 @@ var player: CharacterBody2D
 
 func _process(delta: float) -> void:
 	if (mouseover and Input.is_action_just_pressed("click")):
-		if (player.has_method("set_movement_lock")):
-			player.set_movement_lock(false)
+		if (player.has_method("set_activity_lock")):
+			player.set_activity_lock(false)
 		queue_free()
 
 func _on_area_2d_mouse_entered() -> void:
