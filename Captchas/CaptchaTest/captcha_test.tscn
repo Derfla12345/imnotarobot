@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://byd8qxgp1xq7c"]
+
+[ext_resource type="Script" uid="uid://clh8eda61kcm6" path="res://Captchas/CaptchaTest/captcha_test.gd" id="1_egp2w"]
+[ext_resource type="Texture2D" uid="uid://c67b0xpgm86ci" path="res://Captchas/CaptchaTest/arms central icon.png" id="1_yqi01"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l7yy7"]
+radius = 162.11107
+
+[node name="CaptchaTest" type="Node2D" unique_id=633381006]
+script = ExtResource("1_egp2w")
+
+[node name="ArmsCentralIcon" type="Sprite2D" parent="." unique_id=1979572004]
+texture = ExtResource("1_yqi01")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1616218975]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=993495742]
+shape = SubResource("CircleShape2D_l7yy7")
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

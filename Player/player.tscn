@@ -5,10 +5,14 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hej7p"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hej7p"]
+size = Vector2(28, 30)
+
 [node name="Player" type="CharacterBody2D" unique_id=1745909773]
 script = ExtResource("1_l8h54")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1758303756]
+zoom = Vector2(2.5, 2.5)
 
 [node name="PlayerAnimator" type="Node2D" parent="." unique_id=609700377]
 
@@ -22,3 +26,12 @@ texture = ExtResource("2_4ntmi")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=542459861]
 position = Vector2(0, -15)
 shape = SubResource("CapsuleShape2D_hej7p")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1569578874]
+
+[node name="InteractArea" type="CollisionShape2D" parent="Area2D" unique_id=1777099817]
+position = Vector2(-24, -15)
+shape = SubResource("RectangleShape2D_hej7p")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

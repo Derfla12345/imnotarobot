@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://ce385k0b1qxe4"]
+
+[ext_resource type="Texture2D" uid="uid://bv2k0pjs4oag3" path="res://Entities/Computer1/mug.png" id="1_ghm7d"]
+[ext_resource type="Script" uid="uid://ujonna2ap70q" path="res://Entities/Computer1/computer_1.gd" id="1_tayps"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hej7p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l7yy7"]
+size = Vector2(26, 35)
+
+[node name="Computer1" type="StaticBody2D" unique_id=1601914000]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1989007259]
+position = Vector2(-2, -1)
+scale = Vector2(0.20535712, 0.20535715)
+texture = ExtResource("1_ghm7d")
+
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=1770523977]
+shape = SubResource("CapsuleShape2D_hej7p")
+
+[node name="InteractArea" type="Area2D" parent="." unique_id=146308450]
+script = ExtResource("1_tayps")
+
+[node name="InteractCollision" type="CollisionShape2D" parent="InteractArea" unique_id=771794835]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_l7yy7")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=194232579]
+visible = false
+offset_left = -365.0
+offset_top = -257.0
+offset_right = 365.0
+offset_bottom = 255.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=1193130820]
+handle_input_locally = false
+size = Vector2i(730, 512)
+render_target_update_mode = 0
+
+[connection signal="area_entered" from="InteractArea" to="." method="_on_interact_area_area_entered"]
+[connection signal="area_exited" from="InteractArea" to="." method="_on_interact_area_area_exited"]
