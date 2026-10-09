@@ -30,3 +30,6 @@ door_send_id = 2
 position = Vector2(71, 43)
 door_id = 2
 door_send_id = 1
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=522103959]
+zoom = Vector2(2.96, 2.96)

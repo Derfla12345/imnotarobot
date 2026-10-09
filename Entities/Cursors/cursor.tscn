@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://cwrc2d1ljcs03"]
+
+[ext_resource type="Script" uid="uid://cyh45e18xeidb" path="res://Entities/Cursors/cursor.gd" id="1_5r5hu"]
+[ext_resource type="Texture2D" uid="uid://c0rytp2pcvbim" path="res://Entities/Cursors/ph_cursor_hover.png" id="1_wmegg"]
+[ext_resource type="Texture2D" uid="uid://dc8y4iraccb43" path="res://Entities/Cursors/ph_cursor_wait.png" id="2_tcvfq"]
+
+[node name="Cursor" type="Sprite2D" unique_id=1052198196]
+z_index = 2
+offset = Vector2(15, 15)
+script = ExtResource("1_5r5hu")
+wait_texture = ExtResource("2_tcvfq")
+hover_texture = ExtResource("1_wmegg")
