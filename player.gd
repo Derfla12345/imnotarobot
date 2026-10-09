@@ -3,7 +3,6 @@ extends CharacterBody2D
 
 var interactable_object = false
 var activity_lock: bool = false
-var can_door: bool = true
 
 func _physics_process(delta: float) -> void:
 	if (not activity_lock):
@@ -29,8 +28,5 @@ func _on_area_2d_area_exited(area: Area2D) -> void:
 func set_activity_lock(new_val: bool):
 	activity_lock = new_val
 
-func set_can_door(new_val: bool):
-	can_door = new_val
-
-func get_can_door() -> bool:
-	return can_door
+func enter_door(door: Area2D):
+	position = door.get_exit_location()

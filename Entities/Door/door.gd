@@ -5,28 +5,15 @@ extends Area2D
 # set both using the godot UI rather than editing this text
 @export var door_id: int = 0
 @export var door_send_id: int = 0
+@export var exit_location_index: int = 0 # 0123 for NESW
 
 @onready var receive_door = find_receive_door(door_send_id)
-@onready var player = find_player()
+@onready var player_exit_location = get_node("PlayerExitLocation")
 
-func _on_body_entered(body: Node2D) -> void:
-	if (receive_door and player):
-		if (player.get_can_door()):
-			player.set_can_door(false)
-			player.position = receive_door.position
-
-func _on_body_exited(body: Node2D) -> void:
-	if (player):
-		player.set_can_door(true)
-
-# get the player node for player teleporting
-func find_player():
-	var player = null
-	
-	if (get_parent()):
-		player = get_parent().find_child("Player")
-	
-	return player
+func interact(player: CharacterBody2D):
+	if (receive_door):
+		if (receive_door.get_exit_location()):
+			player.enter_door(receive_door)
 
 # locate the node for the door we're trying to send to. returns null if the door isn't found
 func find_receive_door(target_id: int):
@@ -49,3 +36,20 @@ func find_receive_door(target_id: int):
 
 func get_door_id() -> int:
 	return door_id
+
+func get_exit_location():
+	var exit_location
+	
+	match exit_location_index:
+		0:
+			exit_location = get_node("PlayerExitNorth").get_position()
+		1:
+			exit_location = get_node("PlayerExitEast").get_position()
+		2:
+			exit_location = get_node("PlayerExitSouth").get_position()
+		3:
+			exit_location = get_node("PlayerExitWest").get_position()
+		_:
+			exit_location = get_node("PlayerExitEast").get_position()
+	
+	return (position + exit_location)

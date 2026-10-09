@@ -3,11 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://2b12t8ttc7p2" path="res://Areas/arch.jpg" id="1_ae2e2"]
 [ext_resource type="PackedScene" uid="uid://dge5shacvhvq1" path="res://Player/player.tscn" id="1_bmh1r"]
 [ext_resource type="Script" uid="uid://c0n1kd68ytvh6" path="res://Areas/area_1.gd" id="1_il02v"]
-[ext_resource type="Texture2D" uid="uid://ced8pms4svgob" path="res://Entities/Door/door.png" id="3_v2evy"]
 [ext_resource type="PackedScene" uid="uid://ce385k0b1qxe4" path="res://Entities/Computer1/computer_1.tscn" id="5_e5usc"]
 [ext_resource type="PackedScene" uid="uid://bn21dqcc0ogsi" path="res://Entities/Door/door.tscn" id="6_01mxt"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kvvnn"]
 
 [node name="Area1" type="Node2D" unique_id=2131497693]
 script = ExtResource("1_il02v")
@@ -21,35 +18,11 @@ texture = ExtResource("1_ae2e2")
 position = Vector2(1.8189894e-12, 0)
 scale = Vector2(0.99999994, 1)
 
-[node name="Door1_old" type="Area2D" parent="." unique_id=938955441]
-visible = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Door1_old" unique_id=1073471122]
-position = Vector2(-124, 0)
-shape = SubResource("RectangleShape2D_kvvnn")
-
-[node name="Sprite2D" type="Sprite2D" parent="Door1_old" unique_id=1260065755]
-position = Vector2(-123.5, 4.7683716e-07)
-scale = Vector2(0.4838709, 0.4166667)
-texture = ExtResource("3_v2evy")
-
-[node name="Door2_old" type="Area2D" parent="." unique_id=1518348772]
-visible = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Door2_old" unique_id=1431115002]
-position = Vector2(126.5, 0)
-shape = SubResource("RectangleShape2D_kvvnn")
-
-[node name="Sprite2D" type="Sprite2D" parent="Door2_old" unique_id=2055082384]
-position = Vector2(126.49999, 0)
-scale = Vector2(0.4838709, 0.4166667)
-texture = ExtResource("3_v2evy")
-
 [node name="Computer1" parent="." unique_id=1601914000 instance=ExtResource("5_e5usc")]
 position = Vector2(-124, -51)
 
 [node name="Door1" parent="." unique_id=1435931219 instance=ExtResource("6_01mxt")]
-position = Vector2(-89, 44)
+position = Vector2(-89.59, 44)
 door_id = 1
 door_send_id = 2
 
@@ -57,6 +30,3 @@ door_send_id = 2
 position = Vector2(71, 43)
 door_id = 2
 door_send_id = 1
-
-[connection signal="body_entered" from="Door1_old" to="." method="_on_door_1_body_entered"]
-[connection signal="body_entered" from="Door2_old" to="." method="_on_door_2_body_entered"]
