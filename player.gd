@@ -10,9 +10,9 @@ func _physics_process(delta: float) -> void:
 		velocity = direction * 125
 		move_and_slide()
 	
-	if (Input.is_action_just_pressed("interact")):
-		if interactable_object and interactable_object.has_method("interact"):
-			interactable_object.interact(self)
+		if (Input.is_action_just_pressed("interact")):
+			if interactable_object and interactable_object.has_method("interact"):
+				interactable_object.interact(self)
 	
 	#if velocity.length() > 0.0:
 		#PlayerAnimator.play_walk_animation()
