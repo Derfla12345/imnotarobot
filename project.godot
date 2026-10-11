@@ -17,8 +17,15 @@ config/icon="res://icon.svg"
 
 [display]
 
-window/stretch/mode="canvas_items"
+window/size/viewport_width=800
+window/size/viewport_height=600
+window/size/resizable=false
+window/size/maximize_disabled=true
 window/stretch/aspect="expand"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/crt/plugin.cfg")
 
 [input]
 
