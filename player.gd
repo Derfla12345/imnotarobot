@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
 
+@onready var area_camera = get_area_camera()
+
 var interactable_object = false
 var activity_lock: bool = false
 
@@ -30,3 +32,15 @@ func set_activity_lock(new_val: bool):
 
 func enter_door(door: Area2D):
 	position = door.get_exit_location()
+	area_camera.position = door.get_camera_location()
+	
+func get_area_camera():
+	var found_node: Camera2D
+	
+	if (get_parent()):
+		var children = get_parent().get_children()
+		for i in children:
+			if i is Camera2D:
+				found_node = i
+	
+	return found_node

@@ -6,6 +6,7 @@ extends Area2D
 @export var door_id: int = 0
 @export var door_send_id: int = 0
 @export var exit_location_index: int = 0 # 0123 for NESW
+@export var camera_location: Vector2
 
 @onready var receive_door = find_receive_door(door_send_id)
 @onready var player_exit_location = get_node("PlayerExitLocation")
@@ -53,3 +54,6 @@ func get_exit_location():
 			exit_location = get_node("PlayerExitEast").get_position()
 	
 	return (position + exit_location)
+
+func get_camera_location():
+	return camera_location

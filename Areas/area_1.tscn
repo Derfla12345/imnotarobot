@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://2b12t8ttc7p2" path="res://Areas/arch.jpg" id="1_ae2e2"]
 [ext_resource type="PackedScene" uid="uid://dge5shacvhvq1" path="res://Player/player.tscn" id="1_bmh1r"]
 [ext_resource type="Script" uid="uid://c0n1kd68ytvh6" path="res://Areas/area_1.gd" id="1_il02v"]
+[ext_resource type="Texture2D" uid="uid://b7iqw33cuhadc" path="res://Areas/omori-review-1-scaled.jpg" id="3_01mxt"]
 [ext_resource type="PackedScene" uid="uid://ce385k0b1qxe4" path="res://Entities/Computer1/computer_1.tscn" id="5_e5usc"]
 [ext_resource type="PackedScene" uid="uid://bn21dqcc0ogsi" path="res://Entities/Door/door.tscn" id="6_01mxt"]
 
@@ -13,6 +14,11 @@ script = ExtResource("1_il02v")
 position = Vector2(3.0517578e-05, -1)
 scale = Vector2(0.1908881, 0.19088812)
 texture = ExtResource("1_ae2e2")
+
+[node name="OmoriReview1Scaled" type="Sprite2D" parent="." unique_id=1374521555]
+position = Vector2(474.00003, -1.1324883e-06)
+scale = Vector2(0.08834635, 0.088346355)
+texture = ExtResource("3_01mxt")
 
 [node name="Player" parent="." unique_id=1745909773 instance=ExtResource("1_bmh1r")]
 position = Vector2(1.8189894e-12, 0)
@@ -27,9 +33,10 @@ door_id = 1
 door_send_id = 2
 
 [node name="Door2" parent="." unique_id=1342489617 instance=ExtResource("6_01mxt")]
-position = Vector2(71, 43)
+position = Vector2(531, 44)
 door_id = 2
 door_send_id = 1
+camera_location = Vector2(475, 0)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=522103959]
 zoom = Vector2(2.96, 2.96)
