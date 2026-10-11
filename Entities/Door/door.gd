@@ -9,7 +9,6 @@ extends Area2D
 @export var camera_location: Vector2
 
 @onready var receive_door = find_receive_door(door_send_id)
-@onready var player_exit_location = get_node("PlayerExitLocation")
 
 func interact(player: CharacterBody2D):
 	if (receive_door):
