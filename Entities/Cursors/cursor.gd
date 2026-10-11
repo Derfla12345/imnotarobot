@@ -10,8 +10,6 @@ func _ready() -> void:
 func _process (delta: float) -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	global_position = get_global_mouse_position()
-	if Input.is_action_pressed("click"):
-		Input.warp_mouse(Vector2(global_position.x, global_position.y + 100))
 	
 	if get_viewport().gui_get_hovered_control() == null:
 		self.texture = wait_texture
