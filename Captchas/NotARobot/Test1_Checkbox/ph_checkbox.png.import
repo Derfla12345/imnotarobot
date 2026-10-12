@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1uimvl0xb2wf"
-path="res://.godot/imported/try another way.png-48ec5ba21f58f54b7ebbb05c55cd21ef.ctex"
+uid="uid://0bb6gpxw2auu"
+path="res://.godot/imported/ph_checkbox.png-0bd68ff66635479fe590db9d582b3a82.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Captchas/CaptchaTest/Test1_Checkbox/try another way.png"
-dest_files=["res://.godot/imported/try another way.png-48ec5ba21f58f54b7ebbb05c55cd21ef.ctex"]
+source_file="res://Captchas/NotARobot/Test1_Checkbox/ph_checkbox.png"
+dest_files=["res://.godot/imported/ph_checkbox.png-0bd68ff66635479fe590db9d582b3a82.ctex"]
 
 [params]
 

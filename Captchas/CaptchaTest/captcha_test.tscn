@@ -2,19 +2,17 @@
 
 [ext_resource type="Script" uid="uid://clh8eda61kcm6" path="res://Captchas/CaptchaTest/captcha_test.gd" id="1_egp2w"]
 [ext_resource type="Texture2D" uid="uid://bhg6kar5e7ky" path="res://Captchas/CaptchaTest/ph_os.png" id="2_yuyvi"]
-[ext_resource type="Texture2D" uid="uid://1uimvl0xb2wf" path="res://Captchas/CaptchaTest/Test1_Checkbox/try another way.png" id="3_5sn01"]
-[ext_resource type="Texture2D" uid="uid://0bb6gpxw2auu" path="res://Captchas/CaptchaTest/Test1_Checkbox/ph_checkbox.png" id="3_8yl22"]
+[ext_resource type="PackedScene" uid="uid://ba6pqdv5fu0jb" path="res://Captchas/NotARobot/not_a_robot.tscn" id="3_8yl22"]
 [ext_resource type="Texture2D" uid="uid://j6extc35fmll" path="res://Captchas/CaptchaTest/ph_power_button.png" id="3_yuyvi"]
-[ext_resource type="Script" uid="uid://bnl7ajk2qjg4n" path="res://Captchas/CaptchaTest/checkbox_boundary.gd" id="5_tusy1"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kvvnn"]
-size = Vector2(22, 4)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_u8cbw"]
-size = Vector2(14, 22)
+[ext_resource type="PackedScene" uid="uid://dtwc1w7efwraf" path="res://Captchas/Wordle/wordle.tscn" id="5_5sn01"]
 
 [node name="CaptchaTest" type="Node2D" unique_id=633381006]
 script = ExtResource("1_egp2w")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1979572004]
+z_index = -1
+scale = Vector2(0.4709293, 0.4651234)
+texture = ExtResource("2_yuyvi")
 
 [node name="PCButtons" type="Control" parent="." unique_id=1444553705]
 layout_mode = 3
@@ -35,75 +33,12 @@ offset_bottom = -29.0
 mouse_filter = 1
 texture_normal = ExtResource("3_yuyvi")
 
-[node name="Control" type="Control" parent="." unique_id=2143814894]
-layout_mode = 3
-anchors_preset = 0
+[node name="NotARobot" parent="." unique_id=70791129 instance=ExtResource("3_8yl22")]
 
-[node name="Checkbox" type="Sprite2D" parent="Control" unique_id=863335851]
-position = Vector2(-3, -38.25)
-scale = Vector2(0.2645503, 0.2602459)
-texture = ExtResource("3_8yl22")
-
-[node name="CheckboxBoundary" type="Node2D" parent="Control/Checkbox" unique_id=1320972300]
-position = Vector2(11.339999, 146.9764)
-scale = Vector2(3.7799997, 3.84252)
-script = ExtResource("5_tusy1")
-
-[node name="BoundTop" type="Area2D" parent="Control/Checkbox/CheckboxBoundary" unique_id=2060583112]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/Checkbox/CheckboxBoundary/BoundTop" unique_id=1743078804]
-position = Vector2(-61, -44)
-shape = SubResource("RectangleShape2D_kvvnn")
-
-[node name="BoundLeft" type="Area2D" parent="Control/Checkbox/CheckboxBoundary" unique_id=194674524]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/Checkbox/CheckboxBoundary/BoundLeft" unique_id=1015274595]
-position = Vector2(-70, -31)
-rotation = 1.5707964
-shape = SubResource("RectangleShape2D_kvvnn")
-
-[node name="BoundRight" type="Area2D" parent="Control/Checkbox/CheckboxBoundary" unique_id=871910441]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/Checkbox/CheckboxBoundary/BoundRight" unique_id=619499842]
-position = Vector2(-52, -31)
-rotation = 1.5707964
-shape = SubResource("RectangleShape2D_kvvnn")
-
-[node name="BoundBottom" type="Area2D" parent="Control/Checkbox/CheckboxBoundary" unique_id=664338936]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/Checkbox/CheckboxBoundary/BoundBottom" unique_id=1127115457]
-position = Vector2(-61, -18)
-shape = SubResource("RectangleShape2D_kvvnn")
-
-[node name="BoundCenter" type="Area2D" parent="Control/Checkbox/CheckboxBoundary" unique_id=2040750041]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/Checkbox/CheckboxBoundary/BoundCenter" unique_id=249841807]
-position = Vector2(-61, -31)
-shape = SubResource("RectangleShape2D_u8cbw")
-
-[node name="AnotherWayButton" type="TextureButton" parent="Control" unique_id=551309061]
-layout_mode = 0
-offset_left = -35.0
-offset_top = -5.0
-offset_right = 30.0
-offset_bottom = 9.0
-offset_transform_scale = Vector2(0.605, 0.605)
-mouse_filter = 1
-texture_normal = ExtResource("3_5sn01")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="Background" type="Sprite2D" parent="." unique_id=1979572004]
-z_index = -1
-scale = Vector2(0.4709293, 0.4651234)
-texture = ExtResource("2_yuyvi")
+[node name="Wordle" parent="." unique_id=1627950892 instance=ExtResource("5_5sn01")]
+visible = false
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1193661774]
 zoom = Vector2(2, 2)
 
 [connection signal="pressed" from="PCButtons/PowerButton" to="." method="_on_power_button_pressed"]
-[connection signal="mouse_entered" from="Control/Checkbox/CheckboxBoundary/BoundTop" to="Control/Checkbox/CheckboxBoundary" method="_on_bound_top_mouse_entered"]
-[connection signal="mouse_entered" from="Control/Checkbox/CheckboxBoundary/BoundLeft" to="Control/Checkbox/CheckboxBoundary" method="_on_bound_left_mouse_entered"]
-[connection signal="mouse_entered" from="Control/Checkbox/CheckboxBoundary/BoundRight" to="Control/Checkbox/CheckboxBoundary" method="_on_bound_right_mouse_entered"]
-[connection signal="mouse_entered" from="Control/Checkbox/CheckboxBoundary/BoundBottom" to="Control/Checkbox/CheckboxBoundary" method="_on_bound_bottom_mouse_entered"]
-[connection signal="mouse_entered" from="Control/Checkbox/CheckboxBoundary/BoundCenter" to="Control/Checkbox/CheckboxBoundary" method="_on_bound_center_mouse_entered"]

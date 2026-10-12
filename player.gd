@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 
 @onready var area_camera = get_area_camera()
+@onready var progress: int = 0
 
 var interactable_object = false
 var activity_lock: bool = false
@@ -44,3 +45,10 @@ func get_area_camera():
 				found_node = i
 	
 	return found_node
+
+func increment_progress():
+	progress += 1
+	# maybe put some failsafe that doesn't let progress go past the max, once we know what the max is
+
+func get_progress() -> int:
+	return progress
