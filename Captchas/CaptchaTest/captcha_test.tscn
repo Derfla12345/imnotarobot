@@ -2,17 +2,10 @@
 
 [ext_resource type="Script" uid="uid://clh8eda61kcm6" path="res://Captchas/CaptchaTest/captcha_test.gd" id="1_egp2w"]
 [ext_resource type="Texture2D" uid="uid://bhg6kar5e7ky" path="res://Captchas/CaptchaTest/ph_os.png" id="2_yuyvi"]
-[ext_resource type="PackedScene" uid="uid://ba6pqdv5fu0jb" path="res://Captchas/NotARobot/not_a_robot.tscn" id="3_8yl22"]
 [ext_resource type="Texture2D" uid="uid://j6extc35fmll" path="res://Captchas/CaptchaTest/ph_power_button.png" id="3_yuyvi"]
-[ext_resource type="PackedScene" uid="uid://dtwc1w7efwraf" path="res://Captchas/Wordle/wordle.tscn" id="5_5sn01"]
 
 [node name="CaptchaTest" type="Node2D" unique_id=633381006]
 script = ExtResource("1_egp2w")
-
-[node name="Background" type="Sprite2D" parent="." unique_id=1979572004]
-z_index = -1
-scale = Vector2(0.4709293, 0.4651234)
-texture = ExtResource("2_yuyvi")
 
 [node name="PCButtons" type="Control" parent="." unique_id=1444553705]
 layout_mode = 3
@@ -33,10 +26,10 @@ offset_bottom = -29.0
 mouse_filter = 1
 texture_normal = ExtResource("3_yuyvi")
 
-[node name="NotARobot" parent="." unique_id=70791129 instance=ExtResource("3_8yl22")]
-
-[node name="Wordle" parent="." unique_id=1627950892 instance=ExtResource("5_5sn01")]
-visible = false
+[node name="Background" type="Sprite2D" parent="." unique_id=1979572004]
+z_index = -1
+scale = Vector2(0.4709293, 0.4651234)
+texture = ExtResource("2_yuyvi")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1193661774]
 zoom = Vector2(2, 2)
