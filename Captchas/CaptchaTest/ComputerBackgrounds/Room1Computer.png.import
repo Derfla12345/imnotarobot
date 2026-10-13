@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dnvewkfkjujmv"
-path="res://.godot/imported/room3computer.png-0cd8747484187304197d3a29c18c7d7e.ctex"
+uid="uid://ct4imhrw1j62c"
+path="res://.godot/imported/Room1Computer.png-bb484f1053b882c9405d83cbfeafca2e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Entities/Computer3/room3computer.png"
-dest_files=["res://.godot/imported/room3computer.png-0cd8747484187304197d3a29c18c7d7e.ctex"]
+source_file="res://Captchas/CaptchaTest/ComputerBackgrounds/Room1Computer.png"
+dest_files=["res://.godot/imported/Room1Computer.png-bb484f1053b882c9405d83cbfeafca2e.ctex"]
 
 [params]
 

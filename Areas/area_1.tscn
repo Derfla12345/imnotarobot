@@ -28,6 +28,11 @@ scale = Vector2(24, 24)
 position = Vector2(-1738.0001, -1069)
 scale = Vector2(24, 24)
 
+[node name="Computer2" parent="." unique_id=1122076707 instance=ExtResource("5_e5usc")]
+position = Vector2(7777, 1034)
+scale = Vector2(24, 24)
+computer_index = 1
+
 [node name="Door1" parent="." unique_id=1435931219 instance=ExtResource("6_01mxt")]
 position = Vector2(-1563, 1236)
 scale = Vector2(24, 24)
@@ -35,7 +40,7 @@ door_id = 1
 door_send_id = 2
 
 [node name="Door2" parent="." unique_id=1342489617 instance=ExtResource("6_01mxt")]
-position = Vector2(4624, 901)
+position = Vector2(4550, 930)
 scale = Vector2(24, 24)
 door_id = 2
 door_send_id = 1

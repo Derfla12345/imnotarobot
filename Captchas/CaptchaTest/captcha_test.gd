@@ -1,6 +1,12 @@
 extends Node2D
 
 @export var screen: Control #$SubViewportContainer/SubViewport/CRTView
+@export var screen_camera: Camera2D
+@export var computer_background: TextureRect
+var computer_background_paths = [
+	preload("res://Captchas/CaptchaTest/ComputerBackgrounds/Room1Computer.png"), 
+	preload("res://Captchas/CaptchaTest/ComputerBackgrounds/Room2Computer.png"), 
+	preload("res://Captchas/CaptchaTest/ComputerBackgrounds/Room3Computer.png")]
 @onready var cursor = preload("res://Entities/Cursors/cursor.tscn").instantiate()
 @onready var not_a_robot = preload("res://Captchas/NotARobot/not_a_robot.tscn")
 @onready var wordle = preload("res://Captchas/Wordle/wordle.tscn")
@@ -9,11 +15,14 @@ extends Node2D
 var player: CharacterBody2D
 var computer_off: bool = false
 var progress: int = 0
+var computer_index: int = 0
 var current_captcha: Control
 var previous_captcha: Control
+var offset = Vector2(0, 0)
 
 func _ready():
 	add_child.call_deferred(cursor)
+	screen_camera.make_current()
 
 func _on_power_button_pressed() -> void:
 	computer_off = true
@@ -36,26 +45,34 @@ func _exit_tree() -> void:
 func set_progress(new_progress: int):
 	progress = new_progress
 
+func set_computer_index(new_computer_index: int):
+	computer_index = new_computer_index
+
 # ****************************************************************************************************
 # progress logic
 func set_progress_state():
 	previous_captcha = current_captcha
-	match progress:
+	computer_background.set_texture(computer_background_paths[computer_index])
+	match computer_index:
 		0:
-			current_captcha = start_not_a_robot()
-		1:
-			current_captcha = start_wordle()
-		#2:
-			#current_captcha = start_scratchoff()
+			match progress:
+				0:
+					current_captcha = start_not_a_robot()
+				1:
+					current_captcha = start_wordle()
+				#2:
+					#current_captcha = start_scratchoff()
+				_:
+					print("error: progress does not match available values")
 		_:
-			print("error: progress does not match available values")
+			print("error: computer number does not match available values")
 	
 	if(current_captcha and current_captcha.has_method("set_screen")):
 		current_captcha.set_screen(self)
 
 func advance_and_close_captcha():
-	player.increment_progress()
-	set_progress(player.get_progress())
+	player.increment_progress(computer_index)
+	set_progress(player.get_progress(computer_index))
 	set_progress_state()
 
 # ****************************************************************************************************

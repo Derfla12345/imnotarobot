@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://ce385k0b1qxe4"]
 
 [ext_resource type="Texture2D" uid="uid://bv2k0pjs4oag3" path="res://Entities/Computer1/mug.png" id="1_ghm7d"]
-[ext_resource type="Script" uid="uid://ujonna2ap70q" path="res://Entities/Computer1/computer_1.gd" id="1_tayps"]
+[ext_resource type="Script" uid="uid://cmb0bxw4soq16" path="res://Entities/Computer1/computer_1.gd" id="1_tayps"]
+[ext_resource type="Script" uid="uid://ujonna2ap70q" path="res://Entities/Computer1/computer_1_interact_area.gd" id="3_yspmt"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hej7p"]
 
@@ -9,6 +10,7 @@
 size = Vector2(26, 35)
 
 [node name="Computer1" type="StaticBody2D" unique_id=1601914000]
+script = ExtResource("1_tayps")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1989007259]
 position = Vector2(-2, -1)
@@ -19,7 +21,7 @@ texture = ExtResource("1_ghm7d")
 shape = SubResource("CapsuleShape2D_hej7p")
 
 [node name="InteractArea" type="Area2D" parent="." unique_id=146308450]
-script = ExtResource("1_tayps")
+script = ExtResource("3_yspmt")
 
 [node name="InteractCollision" type="CollisionShape2D" parent="InteractArea" unique_id=771794835]
 shape = SubResource("RectangleShape2D_l7yy7")
