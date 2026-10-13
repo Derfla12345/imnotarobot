@@ -11,6 +11,8 @@ func set_screen(new_screen: Node2D):
 func advance_and_close_self():
 	if (screen and screen.has_method("advance_and_close_captcha")):
 		screen.advance_and_close_captcha()
+	else:
+		print("error in not_a_robot, screen not found")
 	close_self()
 
 func close_self():

@@ -14,6 +14,7 @@ size = Vector2(14, 22)
 [node name="NotARobot" type="Control" unique_id=70791129]
 layout_mode = 3
 anchors_preset = 0
+scale = Vector2(15, 15)
 script = ExtResource("1_8ei3k")
 
 [node name="Checkbox" type="Sprite2D" parent="." unique_id=1080342005]

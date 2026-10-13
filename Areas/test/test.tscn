@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://detr844xl6qcs"]
 
-[ext_resource type="Texture2D" uid="uid://bhpk5dco34g5g" path="res://Areas/test/vintage-sharp-25vt-h80-vcrtv-combo-crt-monitor.webp" id="1_penbm"]
 [ext_resource type="Texture2D" uid="uid://b1p4648pi2350" path="res://Areas/test/movie_full.jpg" id="2_fc010"]
-[ext_resource type="PackedScene" uid="uid://d2rddds70nk1k" path="res://Areas/test/test2.tscn" id="3_penbm"]
+[ext_resource type="Texture2D" uid="uid://ct4imhrw1j62c" path="res://Entities/Computer1/Room1computer.png" id="3_fc010"]
+[ext_resource type="PackedScene" uid="uid://d2rddds70nk1k" path="res://Entities/CRTView.tscn" id="3_penbm"]
 [ext_resource type="PackedScene" uid="uid://byd8qxgp1xq7c" path="res://Captchas/CaptchaTest/captcha_test.tscn" id="4_fc010"]
 
 [node name="Test" type="Node2D" unique_id=983987260]
@@ -13,22 +13,21 @@ position = Vector2(82, -79)
 scale = Vector2(0.8691814, 0.8614583)
 texture = ExtResource("2_fc010")
 
+[node name="crtview" parent="." unique_id=967023853 instance=ExtResource("3_penbm")]
+offset_left = -403.0
+offset_top = -387.0
+offset_right = 397.0
+offset_bottom = 213.0
+
 [node name="Camera2D" type="Camera2D" parent="." unique_id=392356645]
 zoom = Vector2(0.715, 0.715)
 
-[node name="Node2D" parent="." unique_id=482353114 instance=ExtResource("3_penbm")]
-offset_left = -409.99997
-offset_top = -379.0
-offset_right = 390.00003
-offset_bottom = 221.0
-metadata/_edit_use_anchors_ = true
-
 [node name="VintageSharp25VtH80VcrtvComboCrtMonitor" type="Sprite2D" parent="." unique_id=102931096]
-position = Vector2(-61.999947, -27)
-scale = Vector2(0.5989584, 0.6041667)
-texture = ExtResource("1_penbm")
+position = Vector2(-25, -26.000008)
+scale = Vector2(0.21574058, 0.23520826)
+texture = ExtResource("3_fc010")
 
 [node name="CaptchaTest" parent="." unique_id=633381006 instance=ExtResource("4_fc010")]
 top_level = true
-position = Vector2(-24, -105.000015)
+position = Vector2(-6772, -122)
 scale = Vector2(1.79, 1.79)

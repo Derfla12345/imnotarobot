@@ -6,10 +6,11 @@
 [node name="Wordle" type="Control" unique_id=1868095422]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -90.0
-offset_top = -88.0
-offset_right = 94.0
-offset_bottom = 13.0
+offset_left = -1330.0
+offset_top = -996.00006
+offset_right = -1146.0
+offset_bottom = -895.00006
+scale = Vector2(15, 15)
 script = ExtResource("1_d0gua")
 
 [node name="InputField" type="LineEdit" parent="." unique_id=444678206]

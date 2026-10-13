@@ -11,32 +11,35 @@
 script = ExtResource("1_il02v")
 
 [node name="Arch" type="Sprite2D" parent="." unique_id=632749358]
-position = Vector2(3.0517578e-05, -1)
-scale = Vector2(0.1908881, 0.19088812)
+position = Vector2(8.010864e-05, -0.000120162964)
+scale = Vector2(3.798462, 4.2722025)
 texture = ExtResource("1_ae2e2")
 
 [node name="OmoriReview1Scaled" type="Sprite2D" parent="." unique_id=1374521555]
-position = Vector2(474.00003, -1.1324883e-06)
-scale = Vector2(0.08834635, 0.088346355)
+position = Vector2(6000, -4.9591064e-05)
+scale = Vector2(1.9289066, 1.9291664)
 texture = ExtResource("3_01mxt")
 
 [node name="Player" parent="." unique_id=1745909773 instance=ExtResource("1_bmh1r")]
-position = Vector2(1.8189894e-12, 0)
-scale = Vector2(0.99999994, 1)
+position = Vector2(-249.00002, -356)
+scale = Vector2(24, 24)
 
 [node name="Computer1" parent="." unique_id=1601914000 instance=ExtResource("5_e5usc")]
-position = Vector2(-117, -54)
+position = Vector2(-1738.0001, -1069)
+scale = Vector2(24, 24)
 
 [node name="Door1" parent="." unique_id=1435931219 instance=ExtResource("6_01mxt")]
-position = Vector2(-89.59, 44)
+position = Vector2(-1563, 1236)
+scale = Vector2(24, 24)
 door_id = 1
 door_send_id = 2
 
 [node name="Door2" parent="." unique_id=1342489617 instance=ExtResource("6_01mxt")]
-position = Vector2(531, 44)
+position = Vector2(4624, 901)
+scale = Vector2(24, 24)
 door_id = 2
 door_send_id = 1
-camera_location = Vector2(475, 0)
+camera_location = Vector2(6000, 0)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=522103959]
-zoom = Vector2(2.96, 2.96)
+zoom = Vector2(0.162, 0.162)

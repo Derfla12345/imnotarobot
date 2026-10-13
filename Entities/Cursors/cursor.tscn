@@ -6,6 +6,7 @@
 
 [node name="Cursor" type="Sprite2D" unique_id=1052198196]
 z_index = 2
+scale = Vector2(6, 6)
 offset = Vector2(15, 15)
 script = ExtResource("1_5r5hu")
 wait_texture = ExtResource("2_tcvfq")
