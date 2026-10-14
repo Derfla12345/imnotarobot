@@ -21,35 +21,50 @@ func close_self():
 @onready var checkbox = preload("res://Captchas/Scratchoff/check_box.tscn")
 @onready var scratchbox = preload("res://Captchas/Scratchoff/scratch_box.tscn")
 
-@export var checkbox_grid: GridContainer
-@export var scratchbox_grid: GridContainer
+@onready var checkbox_grid = $CheckBoxGrid
+@onready var scratchbox_grid = $ScratchBoxGrid
 
-var solved: bool = false
-var checkbox_is_correct: bool = false
-var cb_row = [[], [], [], []]
-var sb_row = [[], [], [], []]
+var correct_checkbox_toggled: bool = false
+var incorrect_checkbox_toggled: bool = false
+var toggle_count: int = 0
+
+var checkbox_row = [[], [], [], []]
+var scratchbox_row = [[], [], [], []]
 
 func _ready():
-	generate_boxes(checkbox, cb_row)
-	generate_boxes(scratchbox, sb_row)
+	generate_boxes(checkbox, checkbox_row)
+	generate_boxes(scratchbox, scratchbox_row)
 	scratchbox_grid.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	cb_row[0][0].toggled.connect(_on_check_box_toggled)
+	
+	var correct_checkboxes = [checkbox_row[1][1], checkbox_row[1][2], checkbox_row[2][1], checkbox_row[2][2]]
+	var incorrect_checkboxes = []
+	for i in 4: #checking each row individually for incorrect checkboxes
+		for checkbox_instance in checkbox_row[i]:
+			if checkbox_instance not in correct_checkboxes:
+				incorrect_checkboxes.append(checkbox_instance)
+	
+	for checkbox_instance in correct_checkboxes:
+		checkbox_instance.toggled.connect(_on_correct_check_box_toggled)
+		
+	for checkbox_instance in incorrect_checkboxes:
+		checkbox_instance.toggled.connect(_on_incorrect_check_box_toggled)
 
 # instantiates 16 nodes and organizes them into row arrays so they're easy to manipulate
-# ex. access checkbox6 with cb_row[1][2]
+# ex. access checkbox6 with checkbox_row[1][2]
+# also names nodes for debugging purposes
 func generate_boxes(node, node_row: Array) -> void:
 	for i in 16:
 		var node_instance = node.instantiate()
-		if node == checkbox:
-			node_instance.name = "CheckBox%s" % i
-			checkbox_grid.add_child(node_instance)
-		else:
-			node_instance.name = "Scratchbox%s" % i
-			scratchbox_grid.add_child(node_instance)
-			node_instance.mouse_filter = Control.MOUSE_FILTER_IGNORE
-			
-		if node_instance.name == "CheckBox0":
-			checkbox_is_correct = true
+		match node:
+			checkbox:
+				node_instance.name = "CheckBox%s" % i
+				checkbox_grid.add_child(node_instance)
+			scratchbox:
+				node_instance.name = "ScratchBox%s" % i
+				scratchbox_grid.add_child(node_instance)
+				node_instance.mouse_filter = Control.MOUSE_FILTER_IGNORE
+			_:
+				print("error, unexpected node used in first arg 🤓")
 			
 		if i <= 3:
 			node_row[0].append(node_instance)
@@ -60,11 +75,20 @@ func generate_boxes(node, node_row: Array) -> void:
 		elif i <= 15:
 			node_row[3].append(node_instance)
 
-func _on_check_box_toggled(toggled_on: bool) -> void:
+func _on_correct_check_box_toggled(toggled_on: bool) -> void:
 	if toggled_on:
-		solved = true
+		toggle_count += 1
+		if toggle_count == 4:
+			correct_checkbox_toggled = true
 	else:
-		solved = false
+		toggle_count -= 1
+		correct_checkbox_toggled = false
+
+func _on_incorrect_check_box_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		incorrect_checkbox_toggled = true
+	else:
+		incorrect_checkbox_toggled = false
 
 func _on_scratch_toggled(toggled_on: bool) -> void:
 	if toggled_on:
@@ -73,7 +97,7 @@ func _on_scratch_toggled(toggled_on: bool) -> void:
 		scratchbox_grid.mouse_filter = Control.MOUSE_FILTER_IGNORE
 
 func _on_submit_button_pressed() -> void:
-	if solved:
+	if correct_checkbox_toggled == true and incorrect_checkbox_toggled == false:
 		print("solved")
 	else:
 		print("failed")
