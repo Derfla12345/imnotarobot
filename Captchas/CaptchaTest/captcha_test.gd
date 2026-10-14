@@ -1,5 +1,6 @@
 extends Node2D
 
+
 @export var screen: Control #$SubViewportContainer/SubViewport/CRTView
 @export var screen_camera: Camera2D
 @export var computer_background: TextureRect
@@ -59,11 +60,19 @@ func set_progress_state():
 				0:
 					current_captcha = start_not_a_robot()
 				1:
-					current_captcha = start_wordle()
+					current_captcha = start_wordle(5)
 				#2:
 					#current_captcha = start_scratchoff()
 				_:
-					print("error: progress does not match available values")
+					print("error: progress[", computer_index, "] does not match available values")
+		1:
+			match progress:
+				0:
+					current_captcha = start_not_a_robot()
+				1:
+					current_captcha = start_wordle(7)
+				_:
+					print("error: progress[", computer_index, "] does not match available values")
 		_:
 			print("error: computer number does not match available values")
 	
@@ -76,23 +85,28 @@ func advance_and_close_captcha():
 	set_progress_state()
 
 # ****************************************************************************************************
-# not a robot (first thing to appear, progress == 0)
+# computer 1
+
+# not a robot (first thing to appear, progress[0] == 0)
 func start_not_a_robot():
 	return screen.start_captcha(not_a_robot)
 
-# ****************************************************************************************************
-# wordle (progress == 1)
-func start_wordle():
-	return screen.start_captcha(wordle)
+# wordle (progress[0] == 1)
+func start_wordle(wordle_size: int):
+	var new_wordle = screen.start_captcha(wordle)
+	new_wordle.set_wordle_size(wordle_size)
+	return new_wordle
 	#var wordle_instance = wordle.instantiate()
 	#get_tree().root.add_child(wordle_instance)
 	#
 	#return wordle_instance
 
-# ****************************************************************************************************
-# scratchoff (progress == 2)
+# scratchoff (progress[0] == 2)
 #func start_scratchoff():
 	#var scratchoff_instance = scratchoff.instantiate()
 	#get_tree().root.add_child(scratchoff_instance)
 	#
 	#return scratchoff_instance
+
+# ****************************************************************************************************
+# computer 2
