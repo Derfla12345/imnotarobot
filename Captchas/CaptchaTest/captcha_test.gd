@@ -12,7 +12,7 @@ var computer_background_paths = [
 @onready var not_a_robot = preload("res://Captchas/NotARobot/not_a_robot.tscn")
 @onready var wordle = preload("res://Captchas/Wordle/wordle.tscn")
 @onready var hello_world = preload("res://Captchas/HelloWorld/hello_world.tscn")
-#@onready var scratchoff = preload("res://Captchas/Scratchoff/scratchoff.tscn")
+@onready var scratchoff = preload("res://Captchas/Scratchoff/scratchoff.tscn")
 
 var player: CharacterBody2D
 var computer_off: bool = false
@@ -28,7 +28,7 @@ func _ready():
 
 func _on_power_button_pressed() -> void:
 	computer_off = true
-	
+
 # will come back to this later since a check like this in _process isn't that necessary now
 func _process(delta: float) -> void:
 	if computer_off:
@@ -106,10 +106,12 @@ func start_wordle(wordle_size: int):
 
 # scratchoff (progress[0] == 2)
 #func start_scratchoff():
-	#var scratchoff_instance = scratchoff.instantiate()
-	#get_tree().root.add_child(scratchoff_instance)
-	#
-	#return scratchoff_instance
+	#var new_scratchoff = screen.start_captcha(scratchoff)
+	#var scale_offset = Vector2(12, 12)
+	#var position_offset = Vector2(-650, -1000)
+	#new_scratchoff.set_scale(scale_offset)
+	#new_scratchoff.set_position(position_offset)
+	#return new_scratchoff
 
 # ****************************************************************************************************
 # computer 2

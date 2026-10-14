@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dge5shacvhvq1"]
 
-[ext_resource type="Script" uid="uid://dyst8idmtl4yn" path="res://player.gd" id="1_l8h54"]
+[ext_resource type="Script" uid="uid://dyst8idmtl4yn" path="res://Player/player.gd" id="1_l8h54"]
 [ext_resource type="Texture2D" uid="uid://bhchmqe74f78f" path="res://Player/air fryer.jpg" id="2_4ntmi"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hej7p"]

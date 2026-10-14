@@ -7,6 +7,12 @@
 
 [node name="Door1" type="Area2D" unique_id=1435931219]
 script = ExtResource("1_iwerq")
+door_id = null
+door_send_id = null
+exit_location_index = null
+camera_location = null
+exit_offset = null
+locked = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1220109031]
 position = Vector2(-9.536743e-07, 0)

@@ -8,13 +8,31 @@ extends Area2D
 @export var exit_location_index: int = 0 # 0123 for NESW
 @export var camera_location: Vector2
 @export var exit_offset: Vector2
+@export var locked: bool = true
+@export var lock_password: String = ""
 
 @onready var receive_door = find_receive_door(door_send_id)
+@onready var dialogue_box = preload("res://Dialogue/dialogue.tscn")
+@onready var input_field = preload("res://Dialogue/PasswordField.tscn")
+
+var locked_sequence_occurring: bool = false
+var current_dialogue_box: Control
+var current_input_field: Control
+var current_player: CharacterBody2D
+
+func _process(delta: float) -> void:
+	if(current_dialogue_box):
+		if (Input.is_action_just_pressed("interact")):
+			current_dialogue_box.close()
+			current_input_field = receive_password_input()
 
 func interact(player: CharacterBody2D):
-	if (receive_door):
+	if (locked):
+		current_dialogue_box = start_locked_sequence(player)
+	else:
 		if (receive_door.get_exit_location()):
 			player.enter_door(receive_door)
+	current_player = player
 
 # locate the node for the door we're trying to send to. returns null if the door isn't found
 func find_receive_door(target_id: int):
@@ -35,6 +53,28 @@ func find_receive_door(target_id: int):
 	
 	return target
 
+# begin the sequence for unlocking the door (add a dialogue box)
+func start_locked_sequence(player: CharacterBody2D):
+	player.start_dialogue()
+	#locked_sequence_occurring = true
+	
+	var new_dialogue_box = dialogue_box.instantiate()
+	get_tree().root.add_child(new_dialogue_box)
+	new_dialogue_box.set_position(new_dialogue_box.get_position() + camera_location)
+	new_dialogue_box.update_message("The door seems to have some sort of password lock.")
+	
+	return new_dialogue_box
+
+# add an input field for the door lock
+func receive_password_input() -> Control:
+	var new_input_field = input_field.instantiate()
+	get_tree().root.add_child(new_input_field)
+	new_input_field.set_position(new_input_field.get_position() + camera_location)
+	new_input_field.set_answer(lock_password)
+	new_input_field.set_door(self)
+	
+	return new_input_field
+
 func get_door_id() -> int:
 	return door_id
 
@@ -43,3 +83,13 @@ func get_exit_location():
 
 func get_camera_location():
 	return camera_location
+
+func get_locked() -> bool:
+	return locked
+
+func set_locked(lock_state: bool) -> void:
+	locked = lock_state
+
+func close_dialogue() -> void:
+	if (current_player):
+		current_player.set_activity_lock(false)
