@@ -1,50 +1,202 @@
 [gd_scene format=3 uid="uid://r0mmldybyvkf"]
 
-[ext_resource type="Texture2D" uid="uid://2b12t8ttc7p2" path="res://Areas/arch.jpg" id="1_ae2e2"]
 [ext_resource type="PackedScene" uid="uid://dge5shacvhvq1" path="res://Player/player.tscn" id="1_bmh1r"]
 [ext_resource type="Script" uid="uid://c0n1kd68ytvh6" path="res://Areas/area_1.gd" id="1_il02v"]
-[ext_resource type="Texture2D" uid="uid://b7iqw33cuhadc" path="res://Areas/omori-review-1-scaled.jpg" id="3_01mxt"]
+[ext_resource type="Texture2D" uid="uid://b53istgqn6mhp" path="res://Areas/FirstGirl1.png" id="2_01mxt"]
+[ext_resource type="Texture2D" uid="uid://wjilk0ekuwy1" path="res://Areas/DoorRoom2.png" id="3_01mxt"]
+[ext_resource type="Texture2D" uid="uid://dqtl3c0ya3830" path="res://Areas/Room3/DeadRoom3.png" id="4_kpacr"]
 [ext_resource type="PackedScene" uid="uid://ce385k0b1qxe4" path="res://Entities/Computer1/computer_1.tscn" id="5_e5usc"]
 [ext_resource type="PackedScene" uid="uid://bn21dqcc0ogsi" path="res://Entities/Door/door.tscn" id="6_01mxt"]
+[ext_resource type="Texture2D" uid="uid://im24x086gn2k" path="res://Areas/Room3/DeadRoomLight.png" id="8_t85wl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hej7p"]
+size = Vector2(4979.5, 235)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l7yy7"]
+size = Vector2(155.5, 4172.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7sg6l"]
+size = Vector2(778, 84.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ogxk3"]
+size = Vector2(527.5, 1147)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1obyy"]
+size = Vector2(819.5, 241)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h5237"]
+size = Vector2(203, 753.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uaqrv"]
+size = Vector2(982, 651)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xk47f"]
+size = Vector2(668.625, 588)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k6spg"]
+size = Vector2(1153, 742.5)
 
 [node name="Area1" type="Node2D" unique_id=2131497693]
 script = ExtResource("1_il02v")
 
-[node name="Arch" type="Sprite2D" parent="." unique_id=632749358]
-position = Vector2(8.010864e-05, -0.000120162964)
-scale = Vector2(3.798462, 4.2722025)
-texture = ExtResource("1_ae2e2")
+[node name="Room1" type="Sprite2D" parent="." unique_id=632749358]
+position = Vector2(-11.931076, -9.999962)
+texture = ExtResource("2_01mxt")
 
-[node name="OmoriReview1Scaled" type="Sprite2D" parent="." unique_id=1374521555]
+[node name="Room2" type="Sprite2D" parent="." unique_id=1374521555]
 position = Vector2(6000, -4.9591064e-05)
-scale = Vector2(1.9289066, 1.9291664)
 texture = ExtResource("3_01mxt")
 
+[node name="Room3" type="Sprite2D" parent="." unique_id=1047594626]
+position = Vector2(12000, 0)
+texture = ExtResource("4_kpacr")
+
 [node name="Player" parent="." unique_id=1745909773 instance=ExtResource("1_bmh1r")]
-position = Vector2(-249.00002, -356)
+position = Vector2(1423, 709)
 scale = Vector2(24, 24)
 
 [node name="Computer1" parent="." unique_id=1601914000 instance=ExtResource("5_e5usc")]
-position = Vector2(-1738.0001, -1069)
+position = Vector2(-1758, 236)
 scale = Vector2(24, 24)
 
 [node name="Computer2" parent="." unique_id=1122076707 instance=ExtResource("5_e5usc")]
-position = Vector2(7777, 1034)
-scale = Vector2(24, 24)
+position = Vector2(5506, -478.00003)
+scale = Vector2(38.49, 24)
 computer_index = 1
 
+[node name="Computer3" parent="." unique_id=603456307 instance=ExtResource("5_e5usc")]
+position = Vector2(12009, 297)
+scale = Vector2(39.795, 24.065)
+computer_index = 2
+
 [node name="Door1" parent="." unique_id=1435931219 instance=ExtResource("6_01mxt")]
-position = Vector2(-1563, 1236)
-scale = Vector2(24, 24)
+position = Vector2(-9.000001, 1697.0001)
+scale = Vector2(39.12, 24)
 door_id = 1
 door_send_id = 2
+exit_offset = Vector2(0, -300)
 
 [node name="Door2" parent="." unique_id=1342489617 instance=ExtResource("6_01mxt")]
-position = Vector2(4550, 930)
-scale = Vector2(24, 24)
+position = Vector2(3887.0002, 374)
+scale = Vector2(24, 37.54)
 door_id = 2
 door_send_id = 1
+exit_location_index = 2
 camera_location = Vector2(6000, 0)
+exit_offset = Vector2(600, 350)
+
+[node name="Door3" parent="." unique_id=2062100572 instance=ExtResource("6_01mxt")]
+position = Vector2(8918, 465)
+scale = Vector2(24, 34.305)
+door_id = 3
+door_send_id = 4
+
+[node name="Door4" parent="." unique_id=1438909942 instance=ExtResource("6_01mxt")]
+position = Vector2(9928.001, 135)
+scale = Vector2(24, 41)
+door_id = 4
+door_send_id = 3
+camera_location = Vector2(12000, 0)
+exit_offset = Vector2(600, 350)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=522103959]
 zoom = Vector2(0.162, 0.162)
+
+[node name="Room1Bounds" type="StaticBody2D" parent="." unique_id=1848619033]
+visible = false
+
+[node name="Horizontal" type="CollisionShape2D" parent="Room1Bounds" unique_id=1171050276]
+position = Vector2(-29, 1735)
+shape = SubResource("RectangleShape2D_hej7p")
+
+[node name="Horizontal2" type="CollisionShape2D" parent="Room1Bounds" unique_id=1106618190]
+position = Vector2(-20, -614)
+shape = SubResource("RectangleShape2D_hej7p")
+
+[node name="Vertical" type="CollisionShape2D" parent="Room1Bounds" unique_id=2059631417]
+position = Vector2(-2072, 3)
+shape = SubResource("RectangleShape2D_l7yy7")
+
+[node name="Vertical2" type="CollisionShape2D" parent="Room1Bounds" unique_id=994862430]
+position = Vector2(2072, -10)
+shape = SubResource("RectangleShape2D_l7yy7")
+
+[node name="DoorCollision" type="CollisionShape2D" parent="Room1Bounds" unique_id=471524163]
+position = Vector2(-9, 1594)
+shape = SubResource("RectangleShape2D_7sg6l")
+
+[node name="ComputerCollision" type="CollisionShape2D" parent="Room1Bounds" unique_id=1006302931]
+position = Vector2(-1744.75, 384.5)
+shape = SubResource("RectangleShape2D_ogxk3")
+
+[node name="Shelf1" type="CollisionShape2D" parent="Room1Bounds" unique_id=638320222]
+position = Vector2(-1602, -407)
+shape = SubResource("RectangleShape2D_1obyy")
+
+[node name="Shelf2" type="CollisionShape2D" parent="Room1Bounds" unique_id=1161923116]
+position = Vector2(1600, -410)
+shape = SubResource("RectangleShape2D_1obyy")
+
+[node name="Room2Bounds" type="StaticBody2D" parent="." unique_id=1316213662]
+visible = false
+position = Vector2(6000, 0)
+
+[node name="Horizontal" type="CollisionShape2D" parent="Room2Bounds" unique_id=747388996]
+position = Vector2(-29, 1735)
+shape = SubResource("RectangleShape2D_hej7p")
+
+[node name="Horizontal2" type="CollisionShape2D" parent="Room2Bounds" unique_id=1860108437]
+position = Vector2(-20, -614)
+shape = SubResource("RectangleShape2D_hej7p")
+
+[node name="Vertical" type="CollisionShape2D" parent="Room2Bounds" unique_id=682413511]
+position = Vector2(-2067, 3)
+shape = SubResource("RectangleShape2D_l7yy7")
+
+[node name="Vertical2" type="CollisionShape2D" parent="Room2Bounds" unique_id=636193753]
+position = Vector2(2087, -15)
+shape = SubResource("RectangleShape2D_l7yy7")
+
+[node name="DoorCollision" type="CollisionShape2D" parent="Room2Bounds" unique_id=397369905]
+position = Vector2(-2030, 379.625)
+shape = SubResource("RectangleShape2D_h5237")
+
+[node name="Desk" type="CollisionShape2D" parent="Room2Bounds" unique_id=1058300760]
+position = Vector2(-493, -402.5)
+shape = SubResource("RectangleShape2D_uaqrv")
+
+[node name="Room3Bounds" type="StaticBody2D" parent="." unique_id=392047518]
+visible = false
+position = Vector2(12000, 0)
+
+[node name="Horizontal" type="CollisionShape2D" parent="Room3Bounds" unique_id=418267536]
+position = Vector2(-29, 1735)
+shape = SubResource("RectangleShape2D_hej7p")
+
+[node name="Horizontal2" type="CollisionShape2D" parent="Room3Bounds" unique_id=430897243]
+position = Vector2(-20, -614)
+shape = SubResource("RectangleShape2D_hej7p")
+
+[node name="Vertical" type="CollisionShape2D" parent="Room3Bounds" unique_id=1734450304]
+position = Vector2(-2067, 3)
+shape = SubResource("RectangleShape2D_l7yy7")
+
+[node name="Vertical2" type="CollisionShape2D" parent="Room3Bounds" unique_id=477714917]
+position = Vector2(2087, -15)
+shape = SubResource("RectangleShape2D_l7yy7")
+
+[node name="DoorCollision" type="CollisionShape2D" parent="Room3Bounds" unique_id=1284455404]
+position = Vector2(-2013, 139)
+shape = SubResource("RectangleShape2D_h5237")
+
+[node name="DeadGuy" type="CollisionShape2D" parent="Room3Bounds" unique_id=160297147]
+position = Vector2(1702.3125, -206)
+shape = SubResource("RectangleShape2D_xk47f")
+
+[node name="ComputerCollision" type="CollisionShape2D" parent="Room3Bounds" unique_id=1457816263]
+position = Vector2(2.5, 239.75)
+shape = SubResource("RectangleShape2D_k6spg")
+
+[node name="Room3Mask" type="Sprite2D" parent="." unique_id=1227619967]
+position = Vector2(12000, 0)
+texture = ExtResource("8_t85wl")

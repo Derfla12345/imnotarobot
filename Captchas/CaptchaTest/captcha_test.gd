@@ -11,6 +11,7 @@ var computer_background_paths = [
 @onready var cursor = preload("res://Entities/Cursors/cursor.tscn").instantiate()
 @onready var not_a_robot = preload("res://Captchas/NotARobot/not_a_robot.tscn")
 @onready var wordle = preload("res://Captchas/Wordle/wordle.tscn")
+@onready var hello_world = preload("res://Captchas/HelloWorld/hello_world.tscn")
 #@onready var scratchoff = preload("res://Captchas/Scratchoff/scratchoff.tscn")
 
 var player: CharacterBody2D
@@ -71,6 +72,8 @@ func set_progress_state():
 					current_captcha = start_not_a_robot()
 				1:
 					current_captcha = start_wordle(7)
+				2:
+					current_captcha = start_hello_world()
 				_:
 					print("error: progress[", computer_index, "] does not match available values")
 		_:
@@ -110,3 +113,6 @@ func start_wordle(wordle_size: int):
 
 # ****************************************************************************************************
 # computer 2
+
+func start_hello_world():
+	return screen.start_captcha(hello_world)

@@ -4,6 +4,9 @@ extends Area2D
 @onready var captcha_test = preload("res://Captchas/CaptchaTest/captcha_test.tscn")
 @onready var computer_index = get_parent().get_computer_index()
 
+func get_computer_index():
+	return computer_index
+
 func interact(player: CharacterBody2D):
 	var captcha_test_instance = captcha_test.instantiate()
 	get_tree().root.add_child(captcha_test_instance)

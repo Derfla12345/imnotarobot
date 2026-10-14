@@ -5,6 +5,8 @@
 [ext_resource type="Script" uid="uid://ujonna2ap70q" path="res://Entities/Computer1/computer_1_interact_area.gd" id="3_yspmt"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hej7p"]
+radius = 1.0
+height = 2.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l7yy7"]
 size = Vector2(26, 35)
@@ -13,6 +15,7 @@ size = Vector2(26, 35)
 script = ExtResource("1_tayps")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1989007259]
+visible = false
 position = Vector2(-2, -1)
 scale = Vector2(0.20535712, 0.20535715)
 texture = ExtResource("1_ghm7d")

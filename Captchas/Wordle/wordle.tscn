@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bew0bkhonpai0" path="res://Captchas/Wordle/wordle.gd" id="1_d0gua"]
 [ext_resource type="Texture2D" uid="uid://b46gdscn7x68r" path="res://Captchas/Wordle/submit.png" id="2_vlxqy"]
 [ext_resource type="Theme" uid="uid://c4iguay7y6p3k" path="res://Themes/theme.tres" id="2_xob5j"]
+[ext_resource type="FontFile" uid="uid://dc23kqbrwdghs" path="res://Themes/Imnotarobot-Regular.ttf" id="3_i6nbn"]
 
 [node name="Wordle" type="Control" unique_id=1868095422 node_paths=PackedStringArray("grid_container")]
 layout_mode = 3
@@ -28,6 +29,7 @@ offset_top = -15.468002
 offset_right = 44.495995
 offset_bottom = 15.531998
 theme = ExtResource("2_xob5j")
+theme_override_fonts/font = ExtResource("3_i6nbn")
 
 [node name="GridContainer" type="GridContainer" parent="InputField" unique_id=293090344]
 layout_mode = 0

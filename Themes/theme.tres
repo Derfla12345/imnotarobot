@@ -1,7 +1,3 @@
 [gd_resource type="Theme" format=3 uid="uid://c4iguay7y6p3k"]
 
-[ext_resource type="FontFile" uid="uid://dc23kqbrwdghs" path="res://Themes/Imnotarobot-Regular.ttf" id="1_wi0rm"]
-
 [resource]
-default_font = ExtResource("1_wi0rm")
-default_font_size = 38
