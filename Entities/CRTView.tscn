@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://r47otsvt26h" path="res://Entities/crt_view.gd" id="1_2sa6c"]
 [ext_resource type="Shader" uid="uid://b3wkh31q7my6y" path="res://Areas/test/CRTShader.gdshader" id="1_sm8i8"]
 [ext_resource type="PackedScene" uid="uid://ba6pqdv5fu0jb" path="res://Captchas/NotARobot/not_a_robot.tscn" id="2_76yxe"]
+[ext_resource type="Texture2D" uid="uid://dk005cx7p3nue" path="res://Captchas/CaptchaTest/Window.png" id="4_76yxe"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hej7p"]
 shader = ExtResource("1_sm8i8")
@@ -61,3 +62,11 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="SubViewportContainer/SubViewport" unique_id=1514910626]
+offset_left = 232.0
+offset_top = -22.0
+offset_right = 3122.7751
+offset_bottom = 2407.0
+texture = ExtResource("4_76yxe")
+expand_mode = 1
