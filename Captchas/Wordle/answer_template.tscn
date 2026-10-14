@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://dishi8lrp5nls"]
+
+[ext_resource type="Theme" uid="uid://c4iguay7y6p3k" path="res://Themes/theme.tres" id="1_1d200"]
+[ext_resource type="Script" uid="uid://0te5wyph8s8q" path="res://Captchas/Wordle/answer_template.gd" id="2_8qan3"]
+[ext_resource type="Texture2D" uid="uid://b5ke5w2ybjboj" path="res://Captchas/Wordle/wordle_blue.png" id="2_q2mk2"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i6nbn"]
+
+[node name="AnswerTemplate" type="PanelContainer" unique_id=804644274 node_paths=PackedStringArray("texture", "label")]
+offset_left = -7.0
+offset_top = -8.0
+offset_right = 8.466659
+offset_bottom = 7.400009
+theme = ExtResource("1_1d200")
+theme_override_styles/panel = SubResource("StyleBoxTexture_i6nbn")
+script = ExtResource("2_8qan3")
+texture = NodePath("TextureRect")
+label = NodePath("RichTextLabel")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=399246848]
+custom_maximum_size = Vector2(15, 15)
+layout_mode = 2
+texture = ExtResource("2_q2mk2")
+metadata/_edit_lock_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=481856826]
+oversampling_with_scale = 2
+layout_mode = 2
+theme = ExtResource("1_1d200")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 15
+text = "p"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true

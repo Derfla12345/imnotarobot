@@ -2,8 +2,9 @@
 
 [ext_resource type="Script" uid="uid://bew0bkhonpai0" path="res://Captchas/Wordle/wordle.gd" id="1_d0gua"]
 [ext_resource type="Texture2D" uid="uid://b46gdscn7x68r" path="res://Captchas/Wordle/submit.png" id="2_vlxqy"]
+[ext_resource type="Theme" uid="uid://c4iguay7y6p3k" path="res://Themes/theme.tres" id="2_xob5j"]
 
-[node name="Wordle" type="Control" unique_id=1868095422]
+[node name="Wordle" type="Control" unique_id=1868095422 node_paths=PackedStringArray("grid_container")]
 layout_mode = 3
 anchors_preset = 0
 offset_left = -1330.0
@@ -12,8 +13,10 @@ offset_right = -1146.0
 offset_bottom = -895.00006
 scale = Vector2(15, 15)
 script = ExtResource("1_d0gua")
+grid_container = NodePath("InputField/GridContainer")
 
 [node name="InputField" type="LineEdit" parent="." unique_id=444678206]
+oversampling_with_scale = 2
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.48100004
@@ -24,6 +27,15 @@ offset_left = -44.504005
 offset_top = -15.468002
 offset_right = 44.495995
 offset_bottom = 15.531998
+theme = ExtResource("2_xob5j")
+
+[node name="GridContainer" type="GridContainer" parent="InputField" unique_id=293090344]
+layout_mode = 0
+offset_left = 1.4666667
+offset_top = 44.733337
+offset_right = 124.4
+offset_bottom = 98.600006
+columns = 5
 
 [node name="SubmitButton" type="TextureButton" parent="." unique_id=592457743]
 layout_mode = 1
