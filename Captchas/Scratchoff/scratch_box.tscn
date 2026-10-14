@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dg71uqqfan6vr"]
+
+[ext_resource type="Texture2D" uid="uid://cn1r21l8ff7rv" path="res://Captchas/Scratchoff/scratch_box.png" id="1_tcdof"]
+
+[node name="ScratchBox" type="TextureRect" unique_id=441889557]
+modulate = Color(1, 1, 1, 0.7372549)
+custom_maximum_size = Vector2(24, 24)
+offset_right = 10.0
+offset_bottom = 10.0
+texture = ExtResource("1_tcdof")

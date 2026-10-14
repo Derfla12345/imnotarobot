@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://byd8qxgp1xq7c"]
 
 [ext_resource type="Script" uid="uid://clh8eda61kcm6" path="res://Captchas/CaptchaTest/captcha_test.gd" id="1_egp2w"]
-[ext_resource type="Script" uid="uid://bv2qarsr64hns" path="res://Captchas/Scratchoff/scratchoff.gd" id="3_tusy1"]
 [ext_resource type="Texture2D" uid="uid://bg7cyiyvtbhqh" path="res://Captchas/Scratchoff/4x4_grid.png" id="4_c7n8x"]
 [ext_resource type="Texture2D" uid="uid://dlpoiaspogltx" path="res://Captchas/Scratchoff/selected.png" id="5_5np8v"]
 [ext_resource type="Script" uid="uid://b4y47o3mldu51" path="res://Captchas/Scratchoff/captcha_toggle_button.gd" id="5_tusy1"]
@@ -47,7 +46,6 @@ offset_top = -1117.345
 offset_right = -1164.0
 offset_bottom = -1002.345
 scale = Vector2(15, 15)
-script = ExtResource("3_tusy1")
 metadata/_edit_use_anchors_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Scratchoff" unique_id=249236587]

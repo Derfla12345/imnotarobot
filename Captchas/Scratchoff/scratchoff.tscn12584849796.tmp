@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://c3k7571jjlubf"]
+
+[ext_resource type="Script" uid="uid://bv2qarsr64hns" path="res://Captchas/Scratchoff/scratchoff.gd" id="1_pwagh"]
+
+[node name="Scratchoff" type="Control" unique_id=1752417366]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_pwagh")
+
+[node name="GridContainer" type="GridContainer" parent="." unique_id=1167131243]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+columns = 4
