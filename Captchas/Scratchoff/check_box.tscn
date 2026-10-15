@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://cphp5loqlhvdj"]
 
 [node name="CheckBox" type="CheckBox" unique_id=972716230]
-offset_right = 24.0
-offset_bottom = 24.0
+z_index = 1
+offset_right = 24.000002
+offset_bottom = 24.000002
+scale = Vector2(2.085, 2.085)
