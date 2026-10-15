@@ -7,12 +7,13 @@ extends CharacterBody2D
 
 var interactable_object = false
 var activity_lock: bool = false
-var speed: int = 3000 #1250
+var speed: int = 1250
 var in_dialogue = false
+var direction
 
 func _physics_process(delta: float) -> void:
 	if (not activity_lock):
-		var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+		direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 		velocity = direction * speed
 		move_and_slide()
 	
