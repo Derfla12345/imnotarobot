@@ -10,10 +10,13 @@
 layout_mode = 3
 anchor_right = 2.707
 anchor_bottom = 2.0540001
-offset_right = -0.39990234
-offset_bottom = 0.39990234
+offset_left = -949.1563
+offset_top = -841.70483
+offset_right = -949.55615
+offset_bottom = -841.30493
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.595, 0.595)
 script = ExtResource("1_76s0f")
 text_label = NodePath("RichTextLabel")
 
@@ -22,6 +25,7 @@ layout_mode = 0
 offset_right = 3248.0
 offset_bottom = 1849.0
 texture = ExtResource("1_y2due")
+metadata/_edit_lock_ = true
 
 [node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=187939000]
 layout_mode = 0
@@ -34,6 +38,7 @@ theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("3_sly2a")
 theme_override_font_sizes/normal_font_size = 384
 text = "put a mask on my face"
+metadata/_edit_lock_ = true
 
 [node name="OKButton" type="TextureButton" parent="." unique_id=1472861518]
 layout_mode = 1
@@ -48,5 +53,6 @@ offset_right = 357.5
 offset_bottom = 811.5
 texture_normal = ExtResource("4_8r2ug")
 stretch_mode = 0
+metadata/_edit_lock_ = true
 
 [connection signal="pressed" from="OKButton" to="." method="_on_ok_button_pressed"]

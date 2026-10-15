@@ -20,5 +20,6 @@ func close_self():
 
 # ****************************************************************************************************
 # specific captcha items
+
 func _on_another_way_button_pressed() -> void:
 	advance_and_close_self()

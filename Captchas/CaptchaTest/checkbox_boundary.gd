@@ -23,7 +23,7 @@ func _on_bound_left_mouse_entered() -> void:
 	warp_mouse_from_bound(-100, 0)
 
 func _on_bound_right_mouse_entered() -> void:
-	warp_mouse_from_bound(100, 0)
+	warp_mouse_from_bound(300, 0)
 
 func _on_bound_bottom_mouse_entered() -> void:
 	warp_mouse_from_bound(0, 100)

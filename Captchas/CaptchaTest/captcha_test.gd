@@ -15,6 +15,7 @@ var computer_background_paths = [
 @onready var scratchoff = preload("res://Captchas/Scratchoff/scratchoff.tscn")
 @onready var show_password = preload("res://Captchas/ShowPassword/show_password.tscn")
 @onready var question = preload("res://Captchas/Question/question.tscn")
+@onready var popup = preload("res://Captchas/Popup/popup.tscn")
 
 var player: CharacterBody2D
 var computer_off: bool = false
@@ -79,13 +80,20 @@ func set_progress_state():
 				1:
 					current_captcha = start_wordle(7)
 				2:
-					current_captcha = start_hello_world()
+					current_captcha = start_popup()
 				3:
+					current_captcha = start_hello_world()
+				4:
 					current_captcha = start_question("how many books are in the first room?", "78")
-				#4:
-					# a captcha asking you to select all squares. the squares can only be seen on computer 1
+					# increment computer 1 progress to show a grid for next step. while loop in case someone inputs the password early
+					# get_progress(0) to access computer 1's progress, < 4 to set it to 4 (current place of the hint)
+					while (player.get_progress(0) < 4):
+						player.increment_progress(0) 
 				#5:
-					# some communication attempt popups should have happened before this point.
+					# a captcha asking you to select all squares. the squares can only be seen on computer 1
+				#6:
+					# another popup, this one says something like "fine, i'll show you"
+				#7:
 					# at this point, you'll be taken into the meta game
 				_:
 					print("error: progress[", computer_index, "] does not match available values")
@@ -134,12 +142,19 @@ func start_show_password():
 # ****************************************************************************************************
 # computer 2
 
+# hello world
 func start_hello_world():
 	return screen.start_captcha(hello_world)
 
+# question about other room
 func start_question(question_text: String, answer_value: String):
 	var new_question = screen.start_captcha(question)
 	new_question.set_question(question_text)
 	new_question.set_answer(answer_value)
 	
 	return new_question
+
+# popup
+func start_popup():
+	return screen.start_captcha(popup)
+	# probably need to add code to make the popup's text dynamic. maybe add that inside the popup?

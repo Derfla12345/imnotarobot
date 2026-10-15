@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://dtwc1w7efwraf"]
 
 [ext_resource type="Script" uid="uid://bew0bkhonpai0" path="res://Captchas/Wordle/wordle.gd" id="1_d0gua"]
-[ext_resource type="Texture2D" uid="uid://b46gdscn7x68r" path="res://Captchas/Wordle/submit.png" id="2_vlxqy"]
 [ext_resource type="Theme" uid="uid://c4iguay7y6p3k" path="res://Themes/theme.tres" id="2_xob5j"]
 [ext_resource type="FontFile" uid="uid://dc23kqbrwdghs" path="res://Themes/Imnotarobot-Regular.ttf" id="3_i6nbn"]
+[ext_resource type="Texture2D" uid="uid://bmhsxh4puncjb" path="res://Captchas/Wordle/verify.png" id="4_i6nbn"]
 
 [node name="Wordle" type="Control" unique_id=1868095422 node_paths=PackedStringArray("longer_notice", "grid_container")]
 layout_mode = 3
@@ -49,9 +49,9 @@ anchor_right = 0.87200004
 anchor_bottom = 0.683
 offset_left = -20.448013
 offset_top = -13.983002
-offset_right = 20.551987
+offset_right = 33.08531
 offset_bottom = 14.016998
-texture_normal = ExtResource("2_vlxqy")
+texture_normal = ExtResource("4_i6nbn")
 ignore_texture_size = true
 stretch_mode = 0
 
