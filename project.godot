@@ -17,11 +17,10 @@ config/icon="res://icon.svg"
 
 [display]
 
-window/size/viewport_width=800
-window/size/viewport_height=600
+window/size/viewport_width=1200
+window/size/viewport_height=900
 window/size/resizable=false
 window/size/maximize_disabled=true
-window/stretch/aspect="expand"
 
 [editor_plugins]
 
@@ -85,3 +84,9 @@ enter={
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/size/viewport_height=900
+textures/size/viewport_width=1200
+textures/stretch/aspect="keep"
+textures/stretch/mode="disabled"
+textures/size/resizable=false
+textures/size/borderless=false

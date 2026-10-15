@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://djbe53ebuppo3"]
 
 [ext_resource type="Theme" uid="uid://c4iguay7y6p3k" path="res://Themes/theme.tres" id="1_mvbsq"]
-[ext_resource type="Texture2D" uid="uid://b1tywkfe2dble" path="res://Dialogue/lesbian.jpg" id="1_r5nns"]
 [ext_resource type="Script" uid="uid://c637ampj5bri" path="res://Dialogue/dialogue.gd" id="1_xwpaa"]
 [ext_resource type="FontFile" uid="uid://dc23kqbrwdghs" path="res://Themes/Imnotarobot-Regular.ttf" id="2_mvbsq"]
 [ext_resource type="Script" uid="uid://dmtmjrpurqdla" path="res://Dialogue/dialogue_voice_player.gd" id="4_4cyrh"]
+[ext_resource type="Texture2D" uid="uid://r8arwxxyy8ty" path="res://Dialogue/placeholderbackground.png" id="4_sqmlx"]
 
 [node name="Dialogue" type="Control" unique_id=1121406000]
 layout_mode = 3
@@ -14,18 +14,18 @@ script = ExtResource("1_xwpaa")
 font = ExtResource("2_mvbsq")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=2054410312]
+oversampling_with_scale = 2
 layout_mode = 0
 offset_right = 544.0
 offset_bottom = 112.0
-texture = ExtResource("1_r5nns")
+texture = ExtResource("4_sqmlx")
 
 [node name="Content" type="RichTextLabel" parent="." unique_id=309774072]
-oversampling_with_scale = 2
 layout_mode = 0
-offset_left = 4.0
-offset_top = 3.0
-offset_right = 540.0
-offset_bottom = 108.0
+offset_left = 10.0
+offset_top = 8.0
+offset_right = 534.0
+offset_bottom = 104.0
 theme_override_fonts/normal_font = ExtResource("2_mvbsq")
 theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
