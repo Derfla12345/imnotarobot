@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://bpv4wdqm82pxx"]
+
+[ext_resource type="Script" uid="uid://d1ws5dlovtsgw" path="res://Captchas/Question/question.gd" id="1_abva6"]
+[ext_resource type="Theme" uid="uid://c4iguay7y6p3k" path="res://Themes/theme.tres" id="2_c24m4"]
+[ext_resource type="FontFile" uid="uid://dc23kqbrwdghs" path="res://Themes/Imnotarobot-Regular.ttf" id="3_y0bkq"]
+[ext_resource type="Texture2D" uid="uid://b46gdscn7x68r" path="res://Captchas/Wordle/submit.png" id="4_4q6bp"]
+
+[node name="Question" type="Control" unique_id=569601868 node_paths=PackedStringArray("text_label", "input_field")]
+layout_mode = 3
+anchor_left = -1.659
+anchor_top = -1.6520001
+anchor_right = 1.7290001
+anchor_bottom = -0.002
+offset_left = 0.19995117
+offset_top = 0.19989014
+offset_right = -2168.2002
+offset_bottom = -791.8001
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(5, 5)
+script = ExtResource("1_abva6")
+text_label = NodePath("RichTextLabel")
+input_field = NodePath("LineEdit")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=949923532]
+oversampling_with_scale = 2
+layout_mode = 0
+offset_right = 533.0
+offset_bottom = 113.0
+theme = ExtResource("2_c24m4")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("3_y0bkq")
+theme_override_font_sizes/normal_font_size = 47
+text = "placeholder text placeholder text placeholder text placeholder text placeholder text placeholder text "
+scroll_active = false
+
+[node name="LineEdit" type="LineEdit" parent="." unique_id=1138059804]
+layout_mode = 0
+offset_top = 121.0
+offset_right = 268.0
+offset_bottom = 185.0
+theme = ExtResource("2_c24m4")
+theme_override_fonts/font = ExtResource("3_y0bkq")
+theme_override_font_sizes/font_size = 53
+
+[node name="SubmitButton" type="TextureButton" parent="." unique_id=795054663]
+layout_mode = 0
+offset_left = 284.0
+offset_top = 122.0
+offset_right = 397.0
+offset_bottom = 184.0
+texture_normal = ExtResource("4_4q6bp")
+ignore_texture_size = true
+stretch_mode = 0
+
+[connection signal="pressed" from="SubmitButton" to="." method="_on_submit_button_pressed"]

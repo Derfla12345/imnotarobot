@@ -24,7 +24,9 @@ func _process(delta: float) -> void:
 	if(current_dialogue_box):
 		if (Input.is_action_just_pressed("interact")):
 			current_dialogue_box.close()
-			current_input_field = receive_password_input()
+			current_input_field = receive_password_input() 
+			# ^i don't know why it doesn't focus this input box. should put a submit button inside
+			# PasswordField.tscn so it feels more normal to move the mouse here
 
 func interact(player: CharacterBody2D):
 	if (locked):
