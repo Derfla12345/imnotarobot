@@ -9,20 +9,24 @@ anchors_preset = 0
 script = ExtResource("1_pwagh")
 
 [node name="CheckBoxGrid" type="GridContainer" parent="." unique_id=1167131243]
+z_index = 1
 layout_mode = 0
 offset_right = 20.0
 offset_bottom = 19.0
 columns = 4
 
 [node name="ScratchBoxGrid" type="GridContainer" parent="." unique_id=87344382]
+z_index = 1
+custom_maximum_size = Vector2(110, 110)
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 110.0
+offset_bottom = 110.0
 mouse_filter = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
 columns = 4
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=213704635]
-z_index = -1
 custom_maximum_size = Vector2(110, 110)
 layout_mode = 0
 offset_right = 40.0
