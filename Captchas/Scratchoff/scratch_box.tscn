@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cn1r21l8ff7rv" path="res://Captchas/Scratchoff/scratch_box.png" id="1_tcdof"]
 
 [node name="ScratchBox" type="TextureRect" unique_id=441889557]
-custom_maximum_size = Vector2(24, 24)
-offset_right = 10.0
-offset_bottom = 10.0
+custom_maximum_size = Vector2(28, 28)
+offset_right = 24.0
+offset_bottom = 24.0
 texture = ExtResource("1_tcdof")

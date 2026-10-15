@@ -119,5 +119,6 @@ func _on_scratch_box_gui_input(event: InputEvent, node: Control) -> void:
 func _on_submit_button_pressed() -> void:
 	if correct_checkboxes_toggled == true and incorrect_checkboxes_toggled == false:
 		print("solved")
+		advance_and_close_self()
 	else:
 		print("failed")

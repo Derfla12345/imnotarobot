@@ -64,8 +64,8 @@ func set_progress_state():
 					current_captcha = start_not_a_robot()
 				1:
 					current_captcha = start_wordle(5)
-				#2:
-					#current_captcha = start_scratchoff()
+				2:
+					current_captcha = start_scratchoff()
 				3:
 					current_captcha = start_show_password()
 				#4:
@@ -118,13 +118,13 @@ func start_wordle(wordle_size: int):
 	#return wordle_instance
 
 # scratchoff (progress[0] == 2)
-#func start_scratchoff():
-	#var new_scratchoff = screen.start_captcha(scratchoff)
-	#var scale_offset = Vector2(12, 12)
-	#var position_offset = Vector2(-650, -1000)
-	#new_scratchoff.set_scale(scale_offset)
-	#new_scratchoff.set_position(position_offset)
-	#return new_scratchoff
+func start_scratchoff():
+	var new_scratchoff = screen.start_captcha(scratchoff)
+	var scale_offset = Vector2(12, 12)
+	var position_offset = Vector2(-650, -1000)
+	new_scratchoff.set_scale(scale_offset)
+	new_scratchoff.set_position(position_offset)
+	return new_scratchoff
 
 # show door 1's password
 func start_show_password():
