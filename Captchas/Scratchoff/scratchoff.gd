@@ -23,6 +23,7 @@ func close_self():
 
 @onready var checkbox_grid = $CheckBoxGrid
 @onready var scratchbox_grid = $ScratchBoxGrid
+@onready var cursor # set by captcha_test.gd in set_cursor
 
 var correct_checkboxes_toggled: bool = false
 var incorrect_checkboxes_toggled: bool = false
@@ -103,12 +104,19 @@ func _on_scratch_toggled(toggled_on: bool) -> void:
 		scratchbox_grid.mouse_filter = Control.MOUSE_FILTER_STOP	
 		for i in 4: 
 			for scratchbox_instance in scratchbox_row[i]:
-				scratchbox_instance.mouse_filter = Control.MOUSE_FILTER_STOP	
+				scratchbox_instance.mouse_filter = Control.MOUSE_FILTER_STOP
+		
+		if (cursor):
+			cursor.set_grabbing(true)
+		
 	else:
 		scratchbox_grid.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		for i in 4: 
 			for scratchbox_instance in scratchbox_row[i]:
 				scratchbox_instance.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		
+		if (cursor):
+			cursor.set_grabbing(false)
 
 # scratchy scratchy
 func _on_scratch_box_gui_input(event: InputEvent, node: Control) -> void:
@@ -122,3 +130,7 @@ func _on_submit_button_pressed() -> void:
 		advance_and_close_self()
 	else:
 		print("failed")
+
+# pass in the cursor so it can be swapped to grabbing when needed
+func set_cursor(new_cursor: Sprite2D):
+	cursor = new_cursor

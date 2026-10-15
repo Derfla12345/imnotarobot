@@ -3,11 +3,66 @@
 [ext_resource type="Script" uid="uid://cyh45e18xeidb" path="res://Entities/Cursors/cursor.gd" id="1_5r5hu"]
 [ext_resource type="Texture2D" uid="uid://c0rytp2pcvbim" path="res://Entities/Cursors/ph_cursor_hover.png" id="1_wmegg"]
 [ext_resource type="Texture2D" uid="uid://dc8y4iraccb43" path="res://Entities/Cursors/ph_cursor_wait.png" id="2_tcvfq"]
+[ext_resource type="Texture2D" uid="uid://dm1sefrdhbwuj" path="res://Entities/Cursors/GrabbingScratching/1.png" id="4_np23t"]
+[ext_resource type="Texture2D" uid="uid://0xdr65hhu8xn" path="res://Entities/Cursors/GrabbingScratching/2.png" id="5_a8pod"]
+[ext_resource type="Texture2D" uid="uid://ckkh7uica03i7" path="res://Entities/Cursors/GrabbingScratching/3.png" id="6_0r6af"]
+[ext_resource type="Texture2D" uid="uid://bh2raf6s7ofu4" path="res://Entities/Cursors/GrabbingScratching/4.png" id="7_75q2m"]
+[ext_resource type="Script" uid="uid://bopkvqj0qg4vb" path="res://Entities/Cursors/grabbing_animation_player.gd" id="8_0r6af"]
 
-[node name="Cursor" type="Sprite2D" unique_id=1052198196]
+[sub_resource type="Animation" id="Animation_n2s8n"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_np23t")]
+}
+
+[sub_resource type="Animation" id="Animation_4ce0r"]
+resource_name = "grabbing"
+length = 0.4
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("4_np23t"), ExtResource("5_a8pod"), ExtResource("6_0r6af"), ExtResource("7_75q2m")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a8pod"]
+_data = {
+&"RESET": SubResource("Animation_n2s8n"),
+&"grabbing": SubResource("Animation_4ce0r")
+}
+
+[node name="Cursor" type="Sprite2D" unique_id=1052198196 node_paths=PackedStringArray("grabbing_texture")]
 z_index = 2
 scale = Vector2(6, 6)
 offset = Vector2(15, 15)
 script = ExtResource("1_5r5hu")
 wait_texture = ExtResource("2_tcvfq")
 hover_texture = ExtResource("1_wmegg")
+grabbing_texture = NodePath("Grabbing")
+
+[node name="Grabbing" type="Sprite2D" parent="." unique_id=2059123234]
+visible = false
+position = Vector2(14.333332, 18.5)
+texture = ExtResource("4_np23t")
+
+[node name="GrabbingAnimationPlayer" type="AnimationPlayer" parent="." unique_id=2144683636]
+root_node = NodePath("../Grabbing")
+libraries/ = SubResource("AnimationLibrary_a8pod")
+script = ExtResource("8_0r6af")

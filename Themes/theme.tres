@@ -1,3 +1,55 @@
 [gd_resource type="Theme" format=3 uid="uid://c4iguay7y6p3k"]
 
+[ext_resource type="Texture2D" uid="uid://dc8y4iraccb43" path="res://Entities/Cursors/ph_cursor_wait.png" id="1_nvyf5"]
+[ext_resource type="Texture2D" uid="uid://dm1sefrdhbwuj" path="res://Entities/Cursors/GrabbingScratching/1.png" id="2_j8kk6"]
+[ext_resource type="Texture2D" uid="uid://0xdr65hhu8xn" path="res://Entities/Cursors/GrabbingScratching/2.png" id="3_i4bof"]
+[ext_resource type="Texture2D" uid="uid://ckkh7uica03i7" path="res://Entities/Cursors/GrabbingScratching/3.png" id="4_prbrk"]
+[ext_resource type="Texture2D" uid="uid://bh2raf6s7ofu4" path="res://Entities/Cursors/GrabbingScratching/4.png" id="5_gb8mj"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_l7yy7"]
+frames = 4
+frame_0/texture = ExtResource("2_j8kk6")
+frame_0/duration = 0.1
+frame_1/texture = ExtResource("3_i4bof")
+frame_1/duration = 0.1
+frame_2/texture = ExtResource("4_prbrk")
+frame_2/duration = 0.1
+frame_3/texture = ExtResource("5_gb8mj")
+frame_3/duration = 0.1
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7oiaf"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wi0rm"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.75)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
 [resource]
+CheckBox/icons/checked = ExtResource("1_nvyf5")
+CheckBox/icons/unchecked = SubResource("AnimatedTexture_l7yy7")
+CheckBox/styles/disabled = SubResource("StyleBoxEmpty_7oiaf")
+CheckBox/styles/focus = SubResource("StyleBoxFlat_wi0rm")
+CheckBox/styles/hover = SubResource("StyleBoxEmpty_7oiaf")
+CheckBox/styles/hover_pressed = SubResource("StyleBoxEmpty_7oiaf")
+CheckBox/styles/normal = SubResource("StyleBoxEmpty_7oiaf")
+CheckBox/styles/pressed = SubResource("StyleBoxEmpty_7oiaf")

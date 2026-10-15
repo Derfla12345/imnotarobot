@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bv2qarsr64hns" path="res://Captchas/Scratchoff/scratchoff.gd" id="1_pwagh"]
 [ext_resource type="Texture2D" uid="uid://btipohs2n4vbx" path="res://Captchas/Scratchoff/ph_scratchoff.png" id="2_vyr3a"]
+[ext_resource type="Theme" uid="uid://c4iguay7y6p3k" path="res://Themes/theme.tres" id="3_d0acg"]
 
 [node name="Scratchoff" type="Control" unique_id=1752417366]
 layout_mode = 3
@@ -35,13 +36,17 @@ mouse_filter = 2
 texture = ExtResource("2_vyr3a")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=542807496]
+custom_maximum_size = Vector2(-1, 52.5)
 layout_mode = 0
-offset_top = 110.0
-offset_right = 110.0
-offset_bottom = 136.0
+offset_left = -1.0
+offset_top = 111.0
+offset_right = 147.0
+offset_bottom = 163.5
+scale = Vector2(0.48, 0.48)
 
 [node name="Scratch" type="CheckBox" parent="HBoxContainer" unique_id=1011992545]
 layout_mode = 2
+theme = ExtResource("3_d0acg")
 
 [node name="SubmitButton" type="Button" parent="HBoxContainer" unique_id=662836707]
 layout_mode = 2

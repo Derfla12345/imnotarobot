@@ -124,6 +124,7 @@ func start_scratchoff():
 	var position_offset = Vector2(-650, -1000)
 	new_scratchoff.set_scale(scale_offset)
 	new_scratchoff.set_position(position_offset)
+	new_scratchoff.set_cursor(cursor)
 	return new_scratchoff
 
 # show door 1's password
