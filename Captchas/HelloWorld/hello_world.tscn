@@ -24,6 +24,7 @@ offset_left = 33.666668
 offset_top = 8.400004
 offset_right = 147.46667
 offset_bottom = 48.400005
+theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("2_lldn5")
 text = "print(\"Hello, world!\")"
 

@@ -8,6 +8,7 @@ extends CharacterBody2D
 var interactable_object = false
 var activity_lock: bool = false
 var speed: int = 3000 #1250
+var in_dialogue = false
 
 func _physics_process(delta: float) -> void:
 	if (not activity_lock):
@@ -18,6 +19,8 @@ func _physics_process(delta: float) -> void:
 		if (Input.is_action_just_pressed("interact")):
 			if interactable_object and interactable_object.has_method("interact"):
 				interactable_object.interact(self)
+	if (in_dialogue):
+		pass
 	
 	#if velocity.length() > 0.0:
 		#PlayerAnimator.play_walk_animation()
@@ -32,6 +35,14 @@ func _on_area_2d_area_exited(area: Area2D) -> void:
 
 func set_activity_lock(new_val: bool):
 	activity_lock = new_val
+
+func start_dialogue():
+	in_dialogue = true
+	set_activity_lock(true)
+
+func end_dialogue():
+	in_dialogue = false
+	set_activity_lock(false)
 
 func enter_door(door: Area2D):
 	position = door.get_exit_location()

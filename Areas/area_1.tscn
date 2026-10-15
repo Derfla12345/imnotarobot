@@ -74,7 +74,10 @@ position = Vector2(-9.000001, 1697.0001)
 scale = Vector2(39.12, 24)
 door_id = 1
 door_send_id = 2
+exit_location_index = 0
+camera_location = Vector2(0, 0)
 exit_offset = Vector2(0, -300)
+locked = true
 
 [node name="Door2" parent="." unique_id=1342489617 instance=ExtResource("6_01mxt")]
 position = Vector2(3887.0002, 374)
@@ -84,22 +87,30 @@ door_send_id = 1
 exit_location_index = 2
 camera_location = Vector2(6000, 0)
 exit_offset = Vector2(600, 350)
+locked = false
 
 [node name="Door3" parent="." unique_id=2062100572 instance=ExtResource("6_01mxt")]
 position = Vector2(8918, 465)
 scale = Vector2(24, 34.305)
 door_id = 3
 door_send_id = 4
+exit_location_index = 0
+camera_location = Vector2(0, 0)
+exit_offset = Vector2(0, 0)
+locked = true
 
 [node name="Door4" parent="." unique_id=1438909942 instance=ExtResource("6_01mxt")]
 position = Vector2(9928.001, 135)
 scale = Vector2(24, 41)
 door_id = 4
 door_send_id = 3
+exit_location_index = 0
 camera_location = Vector2(12000, 0)
 exit_offset = Vector2(600, 350)
+locked = true
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=522103959]
+offset = Vector2(-4, -5)
 zoom = Vector2(0.162, 0.162)
 
 [node name="Room1Bounds" type="StaticBody2D" parent="." unique_id=1848619033]
