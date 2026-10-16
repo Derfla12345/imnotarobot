@@ -2,6 +2,9 @@ extends CharacterBody2D
 
 
 @onready var area_camera = get_area_camera()
+@onready var room_1_and_2_music = $"../Room1And2Music"
+@onready var room_3_music = $"../Room3Music"
+
 
 @export var progress = [0, 0]
 @export var crt_filter: CanvasLayer
@@ -32,6 +35,9 @@ func _physics_process(delta: float) -> void:
 	#else:
 		#PlayerAnimator.play_idle_animation()
 
+func _ready():
+	room_1_and_2_music.play()
+
 func _process(delta: float) -> void:
 	if(metagame_crt):
 		crt_filter.visible = true
@@ -58,6 +64,11 @@ func end_dialogue():
 func enter_door(door: Area2D):
 	position = door.get_exit_location()
 	area_camera.position = door.get_camera_location()
+	
+	if door.name == "Door3":
+		if room_1_and_2_music.playing:
+			room_1_and_2_music.stop()
+			room_3_music.play()
 	
 func get_area_camera():
 	var found_node: Camera2D
