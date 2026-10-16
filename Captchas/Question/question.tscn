@@ -3,7 +3,8 @@
 [ext_resource type="Script" uid="uid://d1ws5dlovtsgw" path="res://Captchas/Question/question.gd" id="1_abva6"]
 [ext_resource type="Theme" uid="uid://c4iguay7y6p3k" path="res://Themes/theme.tres" id="2_c24m4"]
 [ext_resource type="FontFile" uid="uid://dc23kqbrwdghs" path="res://Themes/Imnotarobot-Regular.ttf" id="3_y0bkq"]
-[ext_resource type="Texture2D" uid="uid://b46gdscn7x68r" path="res://Captchas/Wordle/submit.png" id="4_4q6bp"]
+[ext_resource type="Texture2D" uid="uid://bmhsxh4puncjb" path="res://Captchas/Wordle/verify.png" id="4_c24m4"]
+[ext_resource type="AudioStream" uid="uid://b2qs2myg42ic3" path="res://Audio/SFX/wrong.wav" id="5_y0bkq"]
 
 [node name="Question" type="Control" unique_id=569601868 node_paths=PackedStringArray("text_label", "input_field")]
 layout_mode = 3
@@ -25,13 +26,14 @@ input_field = NodePath("LineEdit")
 [node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=949923532]
 oversampling_with_scale = 2
 layout_mode = 0
+offset_top = -76.78
 offset_right = 397.2
-offset_bottom = 113.0
+offset_bottom = 114.2
 theme = ExtResource("2_c24m4")
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("3_y0bkq")
 theme_override_font_sizes/normal_font_size = 47
-text = "placeholder text placeholder text placeholder text placeholder text placeholder text placeholder text "
+text = "placeholder text placeholder text placeholder text placeholder text placeholder text placeholder text placeholder text placeholder text placeholder text placeholder text placeholder text placeholder text"
 scroll_active = false
 horizontal_alignment = 1
 
@@ -44,6 +46,7 @@ theme = ExtResource("2_c24m4")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_y0bkq")
 theme_override_font_sizes/font_size = 53
+alignment = 1
 
 [node name="SubmitButton" type="TextureButton" parent="." unique_id=795054663]
 layout_mode = 0
@@ -51,8 +54,11 @@ offset_left = 284.0
 offset_top = 122.0
 offset_right = 397.0
 offset_bottom = 184.0
-texture_normal = ExtResource("4_4q6bp")
+texture_normal = ExtResource("4_c24m4")
 ignore_texture_size = true
 stretch_mode = 0
+
+[node name="SFXWrong" type="AudioStreamPlayer" parent="." unique_id=2037972548]
+stream = ExtResource("5_y0bkq")
 
 [connection signal="pressed" from="SubmitButton" to="." method="_on_submit_button_pressed"]

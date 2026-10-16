@@ -5,7 +5,7 @@ extends CharacterBody2D
 @onready var room_1_and_2_music = $"../Room1And2Music"
 @onready var room_3_music = $"../Room3Music"
 @onready var sfx_door = $SFXDoor
-
+@onready var sfx_metagame_success = $SFXSuccess2
 
 @export var progress = [0, 0]
 @export var crt_filter: CanvasLayer
@@ -113,3 +113,6 @@ func find_door(target_id: int):
 					target = i
 	
 	return target
+
+func play_metagame_success():
+	sfx_metagame_success.play()

@@ -74,7 +74,7 @@ custom_maximum_size = Vector2(-1, 52.5)
 layout_mode = 0
 offset_left = 61.0
 offset_top = 113.00001
-offset_right = 245.90567
+offset_right = 267.0
 offset_bottom = 165.5
 scale = Vector2(0.24, 0.24)
 

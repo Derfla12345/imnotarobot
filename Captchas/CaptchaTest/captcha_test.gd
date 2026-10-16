@@ -13,7 +13,8 @@ var checkbox_image_paths = [
 	preload("res://Captchas/Scratchoff/ph_scratchoff.png"),
 	preload("res://Captchas/SelectAllSquares/church.jpg"),
 	preload("res://Captchas/SelectAllSquares/bird.png"),
-	preload("res://Captchas/SelectAllSquares/pylon.png")
+	preload("res://Captchas/SelectAllSquares/pylon.png"),
+	preload("res://Captchas/Scratchoff/16_images.png")
 ]
 @onready var cursor = preload("res://Entities/Cursors/cursor.tscn").instantiate()
 @onready var not_a_robot = preload("res://Captchas/NotARobot/not_a_robot.tscn")
@@ -27,6 +28,7 @@ var checkbox_image_paths = [
 
 @onready var sfx_success = $SFXSuccess
 @onready var sfx_select = $SFXSelect
+@onready var sfx_metagame_success = $SFXSuccess2
 
 var player: CharacterBody2D
 var computer_off: bool = false
@@ -95,6 +97,11 @@ func set_progress_state():
 					current_captcha = start_show_password()
 				4:
 					current_captcha = start_scratchoff([], checkbox_image_paths[3], "")
+				5:
+					#start of metagame
+					current_captcha = start_question("Did you know? If you put a wooden spoon on your pot while it's boiling, the pot spoon water will the spill water pot, the boiling pot water steam spoon wood.", "")
+				6:
+					current_captcha = start_scratchoff([[0, 0], [0, 3], [1, 3], [2, 0], [2, 2], [2, 3], [3, 0], [3, 2], [3, 3]], checkbox_image_paths[4], "a small object or gadget that can fit in your pocket")
 				_:
 					print("error: progress[", computer_index, "] does not match available values")
 		1:
@@ -104,16 +111,19 @@ func set_progress_state():
 				1:
 					current_captcha = start_wordle(7)
 				2:
-					current_captcha = start_select_all_squares([[1, 1], [1, 2], [2, 0], [2, 1], [2, 2]], checkbox_image_paths[1], "a place of god") 
 					# first arg is a 2D array of integer coordinates
 					# second arg is the image we're selecting squares on
 					# third arg is custom text following "Select all squares that include"
+					current_captcha = start_select_all_squares([[1, 1], [1, 2], [2, 0], [2, 1], [2, 2]], checkbox_image_paths[1], "a place of god") 
 				3:
 					current_captcha = start_popup()
 				4:
 					current_captcha = start_hello_world()
 				5:
-					current_captcha = start_question("how many books are in the first room?", "78")
+					current_captcha = start_question("
+
+
+how many books are in the first room?", "78") # line breaks to make it appear next to textbox
 					# increment computer 1 progress to show a grid for next step. while loop in case someone inputs the password early
 					# get_progress(0) to access computer 1's progress, < 4 to set it to 4 (current place of the hint)
 					while (player.get_progress(0) < 4):
@@ -122,7 +132,7 @@ func set_progress_state():
 					current_captcha = start_scratchoff([[0, 1], [1, 1], [1, 2], [2, 1], [3, 1]], checkbox_image_paths[2], "a pylon")
 				#7:
 					# another popup, this one says something like "fine, i'll show you"
-				8:
+				7:
 					start_metagame()
 				_:
 					print("error: progress[", computer_index, "] does not match available values")
@@ -136,7 +146,10 @@ func advance_and_close_captcha():
 	player.increment_progress(computer_index)
 	set_progress(player.get_progress(computer_index))
 	set_progress_state()
-	sfx_success.play()
+	if (metagame):
+		sfx_metagame_success.play()
+	else:
+		sfx_success.play()
 
 # ****************************************************************************************************
 # computer 1
@@ -207,8 +220,11 @@ func start_metagame():
 	player.set_metagame_crt(true)
 	player.set_position(Vector2(1423, 709))
 	player.area_camera.set_position(Vector2(0, 0))
+	player.increment_progress(computer_index)
+	player.play_metagame_success()
+	while (player.get_progress(0) < 5):
+		player.increment_progress(0) # set player progress to metagame
 	var door1 = player.find_door(1)
 	door1.set_locked(true) # need to unlock the door later in progression
-	player.increment_progress(computer_index)
 	set_progress(player.get_progress(computer_index))
 	computer_off = true
