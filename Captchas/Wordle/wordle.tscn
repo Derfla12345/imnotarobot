@@ -27,17 +27,18 @@ stream_1/stream = ExtResource("9_0vme4")
 stream_2/stream = ExtResource("10_q43ui")
 stream_3/stream = ExtResource("11_xsi2q")
 
-[node name="Wordle" type="Control" unique_id=1868095422 node_paths=PackedStringArray("longer_notice", "grid_container")]
+[node name="Wordle" type="Control" unique_id=1868095422 node_paths=PackedStringArray("longer_notice", "grid_container", "display_image")]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -1330.0
-offset_top = -996.00006
-offset_right = -1146.0
-offset_bottom = -895.00006
-scale = Vector2(15, 15)
+offset_left = -1570.0
+offset_top = -1168.0
+offset_right = -1305.2667
+offset_bottom = -1009.3334
+scale = Vector2(10, 10)
 script = ExtResource("1_d0gua")
 longer_notice = NodePath("LongerNotice")
 grid_container = NodePath("InputField/GridContainer")
+display_image = NodePath("DisplayImage")
 
 [node name="InputField" type="LineEdit" parent="." unique_id=444678206]
 oversampling_with_scale = 2
@@ -47,19 +48,22 @@ anchor_left = 0.48100004
 anchor_top = 0.66800004
 anchor_right = 0.48100004
 anchor_bottom = 0.66800004
-offset_left = -44.504005
+offset_left = -56.73671
 offset_top = -15.468002
-offset_right = 44.495995
-offset_bottom = 15.531998
+offset_right = 58.863266
+offset_bottom = 5.5319977
 theme = ExtResource("2_xob5j")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_i6nbn")
+alignment = 1
 
 [node name="GridContainer" type="GridContainer" parent="InputField" unique_id=293090344]
 layout_mode = 0
-offset_left = 1.4666667
-offset_top = 44.733337
-offset_right = 124.4
-offset_bottom = 98.600006
+offset_left = 41.199993
+offset_top = 22.978693
+offset_right = 164.13333
+offset_bottom = 76.84536
+scale = Vector2(0.8, 0.8)
 columns = 5
 
 [node name="SubmitButton" type="TextureButton" parent="." unique_id=592457743]
@@ -69,34 +73,49 @@ anchor_left = 0.87200004
 anchor_top = 0.683
 anchor_right = 0.87200004
 anchor_bottom = 0.683
-offset_left = -20.448013
-offset_top = -13.983002
-offset_right = 33.08531
-offset_bottom = 14.016998
+offset_left = -43.04744
+offset_top = -17.76931
+offset_right = 13.952545
+offset_bottom = 3.23069
 texture_normal = ExtResource("4_i6nbn")
 ignore_texture_size = true
 stretch_mode = 0
+
+[node name="DisplayImage" type="TextureRect" parent="." unique_id=993047057]
+layout_mode = 0
+offset_left = 69.8
+offset_top = 20.400005
+offset_right = 246.82353
+offset_bottom = 86.533325
+mouse_filter = 2
+texture = ExtResource("5_q43ui")
+expand_mode = 1
 
 [node name="LongerNotice" type="RichTextLabel" parent="." unique_id=722915905]
 visible = false
 oversampling_with_scale = 2
 layout_mode = 0
-offset_left = -49.333332
-offset_top = 55.800007
-offset_right = 37.800014
-offset_bottom = 79.53335
+offset_left = 83.74743
+offset_top = 32.5
+offset_right = 233.90555
+offset_bottom = 73.399994
 theme = ExtResource("2_xob5j")
 theme_override_colors/default_color = Color(1, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("3_i6nbn")
-theme_override_font_sizes/normal_font_size = 28
+theme_override_font_sizes/normal_font_size = 50
 text = "It's longer."
 scroll_active = false
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=993047057]
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=757348777]
+oversampling_with_scale = 2
 layout_mode = 0
-offset_right = 1200.0
-offset_bottom = 900.0
-texture = ExtResource("5_q43ui")
+offset_left = 61.50001
+offset_top = 2.7999997
+offset_right = 261.56665
+offset_bottom = 17.93333
+theme = ExtResource("2_xob5j")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "Type the letters that appear in this image:"
 
 [node name="SFXSelect" type="AudioStreamPlayer" parent="." unique_id=1476455783]
 stream = SubResource("AudioStreamRandomizer_nqgjs")

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cmvuvdbeyk4g8" path="res://Entities/Door/door.gd" id="1_iwerq"]
 [ext_resource type="Texture2D" uid="uid://ced8pms4svgob" path="res://Entities/Door/door.png" id="1_n6865"]
+[ext_resource type="AudioStream" uid="uid://b2qs2myg42ic3" path="res://Audio/SFX/wrong.wav" id="3_mjeyv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iwerq"]
 
@@ -21,5 +22,8 @@ texture = ExtResource("1_n6865")
 
 [node name="Cooldown" type="Timer" parent="." unique_id=1662932847]
 wait_time = 0.25
+
+[node name="Wrong" type="AudioStreamPlayer" parent="." unique_id=589642161]
+stream = ExtResource("3_mjeyv")
 
 [connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]

@@ -16,6 +16,8 @@ extends Area2D
 @onready var dialogue_box = preload("res://Dialogue/dialogue.tscn")
 @onready var input_field = preload("res://Dialogue/PasswordField.tscn")
 
+@onready var sfx_wrong = $Wrong
+
 var locked_sequence_occurring: bool = false
 var current_dialogue_box: Control
 var current_input_field: Control
@@ -84,7 +86,7 @@ func start_locked_sequence(player: CharacterBody2D):
 func receive_password_input() -> Control:
 	var new_input_field = input_field.instantiate()
 	get_tree().root.add_child(new_input_field)
-	new_input_field.set_position(new_input_field.get_position() + camera_location)
+	new_input_field.set_position(new_input_field.get_position() + camera_location - Vector2(400.0, 0)) # offset kinda centers it
 	new_input_field.set_answer(lock_password)
 	new_input_field.set_door(self)
 	
@@ -114,3 +116,6 @@ func set_lock_password(new_password: String) -> void:
 
 func _on_cooldown_timeout() -> void:
 	cooldown = false
+
+func play_wrong():
+	sfx_wrong.play()
