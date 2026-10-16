@@ -5,6 +5,7 @@
 [ext_resource type="Theme" uid="uid://c4iguay7y6p3k" path="res://Themes/theme.tres" id="2_uoyxg"]
 [ext_resource type="Texture2D" uid="uid://bmhsxh4puncjb" path="res://Captchas/Wordle/verify.png" id="4_lldn5"]
 [ext_resource type="AudioStream" uid="uid://b2qs2myg42ic3" path="res://Audio/SFX/wrong.wav" id="5_dysh1"]
+[ext_resource type="AudioStream" uid="uid://b6l6m5oerwl7s" path="res://Audio/SFX/type_randomizer.tres" id="6_dysh1"]
 
 [node name="HelloWorld" type="Control" unique_id=1868095422 node_paths=PackedStringArray("input_field", "submit_button")]
 layout_mode = 3
@@ -21,10 +22,10 @@ submit_button = NodePath("SubmitButton")
 [node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=341419957]
 oversampling_with_scale = 2
 layout_mode = 0
-offset_left = 59.46154
-offset_top = 2.6153874
-offset_right = 186.0
-offset_bottom = 35.076927
+offset_left = 53.23078
+offset_top = 7.2307663
+offset_right = 179.76926
+offset_bottom = 39.692307
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("2_lldn5")
 theme_override_font_sizes/normal_font_size = 22
@@ -41,8 +42,8 @@ anchor_right = 0.48100004
 anchor_bottom = 0.66800004
 offset_left = -44.504005
 offset_top = -15.468002
-offset_right = 44.495995
-offset_bottom = 15.531998
+offset_right = 35.57293
+offset_bottom = 7.5319977
 theme = ExtResource("2_uoyxg")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_lldn5")
@@ -54,11 +55,11 @@ anchors_preset = -1
 anchor_left = 0.87200004
 anchor_top = 0.683
 anchor_right = 0.87200004
-anchor_bottom = 0.683
-offset_left = -22.848007
-offset_top = -16.716331
-offset_right = 34.752
-offset_bottom = 14.2836685
+anchor_bottom = 0.69200003
+offset_left = -30.371078
+offset_top = -16.906078
+offset_right = 24.875092
+offset_bottom = 5.261841
 texture_normal = ExtResource("4_lldn5")
 ignore_texture_size = true
 stretch_mode = 0
@@ -66,4 +67,8 @@ stretch_mode = 0
 [node name="Wrong" type="AudioStreamPlayer" parent="." unique_id=1247526913]
 stream = ExtResource("5_dysh1")
 
+[node name="TypeRandomizer" type="AudioStreamPlayer" parent="." unique_id=206849030]
+stream = ExtResource("6_dysh1")
+
+[connection signal="text_changed" from="InputField" to="." method="_on_input_field_text_changed"]
 [connection signal="pressed" from="SubmitButton" to="." method="_on_submit_button_pressed"]

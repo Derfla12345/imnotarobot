@@ -23,7 +23,7 @@ var checkbox_image_paths = [
 @onready var scratchoff = preload("res://Captchas/Scratchoff/scratchoff.tscn")
 @onready var show_password = preload("res://Captchas/ShowPassword/show_password.tscn")
 @onready var question = preload("res://Captchas/Question/question.tscn")
-@onready var popup = preload("res://Captchas/Popup/popup.tscn")
+@onready var popup_text = preload("res://Captchas/PopupText/popup_text.tscn")
 @onready var select_all_squares = preload("res://Captchas/SelectAllSquares/select_all_squares.tscn")
 
 @onready var sfx_success = $SFXSuccess
@@ -94,14 +94,17 @@ func set_progress_state():
 				2:
 					current_captcha = start_scratchoff([[1, 1], [1, 2], [2, 1], [2, 2]], checkbox_image_paths[0], "a stop sign")
 				3:
-					current_captcha = start_show_password()
+					current_captcha = start_show_password("password")
 				4:
 					current_captcha = start_scratchoff([], checkbox_image_paths[3], "")
 				5:
 					#start of metagame
 					current_captcha = start_question("Did you know? If you put a wooden spoon on your pot while it's boiling, the pot spoon water will the spill water pot, the boiling pot water steam spoon wood.", "")
 				6:
-					current_captcha = start_scratchoff([[0, 0], [0, 3], [1, 3], [2, 0], [2, 2], [2, 3], [3, 0], [3, 2], [3, 3]], checkbox_image_paths[4], "a small object or gadget that can fit in your pocket")
+					current_captcha = start_scratchoff([[0, 0], [0, 3], [1, 3], [2, 0], [2, 2], [2, 3], [3, 0], [3, 2]], checkbox_image_paths[4], "a small object or gadget that can fit in your pocket")
+				7:
+					current_captcha = start_show_password("door unlocked")
+					player.find_door(1).set_locked(false)
 				_:
 					print("error: progress[", computer_index, "] does not match available values")
 		1:
@@ -116,7 +119,7 @@ func set_progress_state():
 					# third arg is custom text following "Select all squares that include"
 					current_captcha = start_select_all_squares([[1, 1], [1, 2], [2, 0], [2, 1], [2, 2]], checkbox_image_paths[1], "a place of god") 
 				3:
-					current_captcha = start_popup()
+					current_captcha = start_popup_text("")
 				4:
 					current_captcha = start_hello_world()
 				5:
@@ -180,8 +183,10 @@ func start_scratchoff(correct_checkboxes: Array[Array], image: Texture2D, goal_t
 	return new_scratchoff
 
 # show door 1's password
-func start_show_password():
-	return screen.start_captcha(show_password)
+func start_show_password(message: String):
+	var new_password = screen.start_captcha(show_password)
+	new_password.set_text(message)
+	return new_password
 
 # ****************************************************************************************************
 # computer 2
@@ -199,9 +204,10 @@ func start_question(question_text: String, answer_value: String):
 	return new_question
 
 # popup
-func start_popup():
-	return screen.start_captcha(popup)
-	# probably need to add code to make the popup's text dynamic. maybe add that inside the popup?
+func start_popup_text(message: String):
+	var new_popup = screen.start_captcha(popup_text)
+	new_popup.set_message(message)
+	return new_popup
 
 # select all squares
 func start_select_all_squares(correct_checkboxes: Array[Array], image: Texture2D, goal_text: String):
@@ -226,5 +232,7 @@ func start_metagame():
 		player.increment_progress(0) # set player progress to metagame
 	var door1 = player.find_door(1)
 	door1.set_locked(true) # need to unlock the door later in progression
+	var door3 = player.find_door(3)
+	door3.set_position(Vector2(8014, 553)) # moves door 3 into place
 	set_progress(player.get_progress(computer_index))
 	computer_off = true

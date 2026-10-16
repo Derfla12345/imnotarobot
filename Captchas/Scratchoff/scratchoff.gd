@@ -79,7 +79,7 @@ func _on_correct_check_box_toggled(toggled_on: bool) -> void:
 	sfx_select.play()
 	if toggled_on:
 		toggle_count += 1
-		if toggle_count == 4:
+		if toggle_count == correct_checkboxes.size():
 			correct_checkboxes_toggled = true
 	else:
 		toggle_count -= 1

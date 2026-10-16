@@ -13,6 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://41x8auvtdogt" path="res://Audio/SFX/click_3.wav" id="10_q43ui"]
 [ext_resource type="AudioStream" uid="uid://re5wxmur2na0" path="res://Audio/SFX/click_4.wav" id="11_xsi2q"]
 [ext_resource type="AudioStream" uid="uid://b2qs2myg42ic3" path="res://Audio/SFX/wrong.wav" id="13_q43ui"]
+[ext_resource type="AudioStream" uid="uid://b6l6m5oerwl7s" path="res://Audio/SFX/type_randomizer.tres" id="14_xsi2q"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_nqgjs"]
 streams_count = 3
@@ -125,7 +126,9 @@ stream = SubResource("AudioStreamRandomizer_kvvnn")
 
 [node name="SFXWrong" type="AudioStreamPlayer" parent="." unique_id=1184047264]
 stream = ExtResource("13_q43ui")
-volume_db = -6.0
+
+[node name="TypeRandomizer" type="AudioStreamPlayer" parent="." unique_id=1255603437]
+stream = ExtResource("14_xsi2q")
 
 [connection signal="text_changed" from="InputField" to="." method="_on_input_field_text_changed"]
 [connection signal="pressed" from="SubmitButton" to="." method="_on_submit_button_pressed"]

@@ -7,7 +7,7 @@ extends CharacterBody2D
 @onready var sfx_door = $SFXDoor
 @onready var sfx_metagame_success = $SFXSuccess2
 
-@export var progress = [0, 0]
+@export var progress = [0, 0, 0]
 @export var crt_filter: CanvasLayer
 
 var interactable_object = false

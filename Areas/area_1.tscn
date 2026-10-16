@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dqtl3c0ya3830" path="res://Areas/Room3/DeadRoom3.png" id="4_kpacr"]
 [ext_resource type="PackedScene" uid="uid://ce385k0b1qxe4" path="res://Entities/Computer1/computer_1.tscn" id="5_e5usc"]
 [ext_resource type="PackedScene" uid="uid://bn21dqcc0ogsi" path="res://Entities/Door/door.tscn" id="6_01mxt"]
+[ext_resource type="Texture2D" uid="uid://bqnkmkj25g30n" path="res://Entities/Door/door.png" id="8_2actb"]
 [ext_resource type="Texture2D" uid="uid://im24x086gn2k" path="res://Areas/Room3/DeadRoomLight.png" id="8_t85wl"]
 [ext_resource type="AudioStream" uid="uid://bu4uw3mfknqtr" path="res://Audio/Music/ambient hum.wav" id="9_t85wl"]
 [ext_resource type="AudioStream" uid="uid://brv6y66lh4s28" path="res://Audio/Music/room 1 song.wav" id="10_68mb3"]
@@ -90,11 +91,14 @@ exit_offset = Vector2(600, 350)
 locked = false
 
 [node name="Door3" parent="." unique_id=2062100572 instance=ExtResource("6_01mxt")]
-position = Vector2(8454, 190)
+position = Vector2(8119.0005, 5076)
 scale = Vector2(24, 34.305)
 door_id = 3
 door_send_id = 4
+camera_location = Vector2(6000, 0)
+exit_offset = Vector2(-600, 350)
 locked = false
+image = ExtResource("8_2actb")
 
 [node name="Door4" parent="." unique_id=1438909942 instance=ExtResource("6_01mxt")]
 position = Vector2(9928.001, 135)

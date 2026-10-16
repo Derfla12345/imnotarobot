@@ -22,7 +22,7 @@ func close_self():
 @onready var submit_button: TextureButton = $SubmitButton
 @onready var answer_template = preload("res://Captchas/Wordle/answer_template.tscn")
 @onready var sfx_select = $SFXSelect
-@onready var sfx_type = $SFXType
+@onready var sfx_type = $TypeRandomizer
 @onready var sfx_wrong = $SFXWrong
 @onready var seven_letter_image_path = preload("res://Captchas/Wordle/wordle7.png")
 

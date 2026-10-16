@@ -1,0 +1,8 @@
+[gd_resource type="AudioStreamRandomizer" format=3 uid="uid://b6l6m5oerwl7s"]
+
+[ext_resource type="AudioStream" uid="uid://fvefxtypotic" path="res://Audio/SFX/king_voice.mp3" id="1_l3qmv"]
+
+[resource]
+random_pitch = 1.1892071
+streams_count = 1
+stream_0/stream = ExtResource("1_l3qmv")

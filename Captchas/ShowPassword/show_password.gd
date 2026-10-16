@@ -15,3 +15,10 @@ func advance_and_close_self():
 
 func close_self():
 	queue_free()
+
+# ****************************************************************************************************
+# specific captcha items
+@export var text_label: RichTextLabel
+
+func set_text(new_text: String):
+	text_label.set_text(new_text)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bt8ae575f6g6f"
-path="res://.godot/imported/short_window.png-7d5b5891321e54ef5f73f6f23e42f95b.ctex"
+uid="uid://ced8pms4svgob"
+path="res://.godot/imported/doorplaceholder.png-56886c7dcd4acfa2c1de9cc6e151941f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Captchas/Popup/short_window.png"
-dest_files=["res://.godot/imported/short_window.png-7d5b5891321e54ef5f73f6f23e42f95b.ctex"]
+source_file="res://Entities/Door/doorplaceholder.png"
+dest_files=["res://.godot/imported/doorplaceholder.png-56886c7dcd4acfa2c1de9cc6e151941f.ctex"]
 
 [params]
 

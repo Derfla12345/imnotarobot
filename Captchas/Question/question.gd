@@ -24,6 +24,7 @@ func close_self():
 @export var input_field: LineEdit
 
 @onready var sfx_wrong = $SFXWrong
+@onready var sfx_type = $TypeRandomizer
 
 var answer = ""
 
@@ -52,3 +53,7 @@ func verify():
 
 func _on_submit_button_pressed() -> void:
 	verify()
+
+
+func _on_line_edit_text_changed(new_text: String) -> void:
+	sfx_type.play()

@@ -104,12 +104,13 @@ zoom = Vector2(0.243, 0.243)
 
 [node name="SFXSuccess" type="AudioStreamPlayer" parent="." unique_id=1524693240]
 stream = ExtResource("4_8yl22")
-volume_db = -12.0
+volume_db = -7.0
 
 [node name="SFXSelect" type="AudioStreamPlayer" parent="." unique_id=508223817]
 stream = SubResource("AudioStreamRandomizer_ymod8")
 
 [node name="SFXSuccess2" type="AudioStreamPlayer" parent="." unique_id=1575702163]
 stream = ExtResource("9_0et46")
+volume_db = -5.0
 
 [connection signal="pressed" from="PCButtons/PowerButton" to="." method="_on_power_button_pressed"]

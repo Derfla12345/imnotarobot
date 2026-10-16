@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bn21dqcc0ogsi"]
 
 [ext_resource type="Script" uid="uid://cmvuvdbeyk4g8" path="res://Entities/Door/door.gd" id="1_iwerq"]
-[ext_resource type="Texture2D" uid="uid://ced8pms4svgob" path="res://Entities/Door/door.png" id="1_n6865"]
+[ext_resource type="Texture2D" uid="uid://bqnkmkj25g30n" path="res://Entities/Door/door.png" id="1_n6865"]
 [ext_resource type="AudioStream" uid="uid://b2qs2myg42ic3" path="res://Audio/SFX/wrong.wav" id="3_mjeyv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iwerq"]
@@ -16,8 +16,8 @@ shape = SubResource("RectangleShape2D_iwerq")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2024082647]
 visible = false
-position = Vector2(0.49999905, 4.7683716e-07)
-scale = Vector2(0.4838709, 0.4166667)
+position = Vector2(-2, 0)
+scale = Vector2(0.05406634, 0.04655713)
 texture = ExtResource("1_n6865")
 
 [node name="Cooldown" type="Timer" parent="." unique_id=1662932847]

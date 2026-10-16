@@ -5,6 +5,7 @@
 [ext_resource type="FontFile" uid="uid://dc23kqbrwdghs" path="res://Themes/Imnotarobot-Regular.ttf" id="3_y0bkq"]
 [ext_resource type="Texture2D" uid="uid://bmhsxh4puncjb" path="res://Captchas/Wordle/verify.png" id="4_c24m4"]
 [ext_resource type="AudioStream" uid="uid://b2qs2myg42ic3" path="res://Audio/SFX/wrong.wav" id="5_y0bkq"]
+[ext_resource type="AudioStream" uid="uid://b6l6m5oerwl7s" path="res://Audio/SFX/type_randomizer.tres" id="6_4q6bp"]
 
 [node name="Question" type="Control" unique_id=569601868 node_paths=PackedStringArray("text_label", "input_field")]
 layout_mode = 3
@@ -61,4 +62,8 @@ stretch_mode = 0
 [node name="SFXWrong" type="AudioStreamPlayer" parent="." unique_id=2037972548]
 stream = ExtResource("5_y0bkq")
 
+[node name="TypeRandomizer" type="AudioStreamPlayer" parent="." unique_id=1537851706]
+stream = ExtResource("6_4q6bp")
+
+[connection signal="text_changed" from="LineEdit" to="." method="_on_line_edit_text_changed"]
 [connection signal="pressed" from="SubmitButton" to="." method="_on_submit_button_pressed"]

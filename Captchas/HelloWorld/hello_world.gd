@@ -22,13 +22,20 @@ func close_self():
 @export var submit_button: TextureButton
 
 @onready var wrong_sfx = $Wrong
+@onready var sfx_type = $TypeRandomizer
 
 var incorrect_answers = ["hello", "world"]
 var wrong: bool = false
 
+func _process(delta: float) -> void:
+	if (Input.is_action_just_pressed("enter")):
+		verify()
+
 func _on_submit_button_pressed() -> void:
+	verify()
+
+func verify():
 	var submission = input_field.get_text().to_lower()
-	# verify answer
 	for i in incorrect_answers:
 		if (submission.contains(i)):
 			print("bad job") # do something on-screen to signify wrongness
@@ -39,3 +46,6 @@ func _on_submit_button_pressed() -> void:
 		advance_and_close_self()
 	
 	wrong = false
+
+func _on_input_field_text_changed(new_text: String) -> void:
+	sfx_type.play()

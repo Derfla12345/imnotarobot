@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://cxfequm13p1vp"]
+
+[ext_resource type="Script" uid="uid://dmkhrwnntrvo1" path="res://Captchas/PopupText/popup_text.gd" id="1_02b0s"]
+[ext_resource type="Texture2D" uid="uid://bt8ae575f6g6f" path="res://Captchas/PopupText/short_window.png" id="2_7rgtg"]
+[ext_resource type="Theme" uid="uid://c4iguay7y6p3k" path="res://Themes/theme.tres" id="3_ugy48"]
+[ext_resource type="FontFile" uid="uid://dc23kqbrwdghs" path="res://Themes/Imnotarobot-Regular.ttf" id="4_frdsw"]
+[ext_resource type="Texture2D" uid="uid://cpsvagb3td1xk" path="res://Captchas/PopupText/button.png" id="5_7eyeo"]
+
+[node name="Popup" type="Control" unique_id=2053245347 node_paths=PackedStringArray("text_label")]
+layout_mode = 3
+anchor_right = 2.707
+anchor_bottom = 2.0540001
+offset_left = -949.1563
+offset_top = -841.70483
+offset_right = -949.55615
+offset_bottom = -841.30493
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.595, 0.595)
+script = ExtResource("1_02b0s")
+text_label = NodePath("RichTextLabel")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=745638540]
+layout_mode = 0
+offset_right = 3248.0
+offset_bottom = 1849.0
+texture = ExtResource("2_7rgtg")
+metadata/_edit_lock_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=187939000]
+layout_mode = 0
+offset_left = 202.0
+offset_top = 294.7049
+offset_right = 3002.0
+offset_bottom = 1387.2183
+theme = ExtResource("3_ugy48")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("4_frdsw")
+theme_override_font_sizes/normal_font_size = 384
+text = "put a mask on my face now i look like an emoji"
+
+[node name="OKButton" type="TextureButton" parent="." unique_id=1472861518]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -358.0
+offset_top = 493.5
+offset_right = 357.5
+offset_bottom = 811.5
+texture_normal = ExtResource("5_7eyeo")
+stretch_mode = 0
+metadata/_edit_lock_ = true
+
+[connection signal="pressed" from="OKButton" to="." method="_on_ok_button_pressed"]

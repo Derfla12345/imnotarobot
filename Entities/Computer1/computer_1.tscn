@@ -32,8 +32,9 @@ texture = ExtResource("1_ghm7d")
 [node name="Collision" type="CollisionShape2D" parent="." unique_id=1770523977]
 shape = SubResource("CapsuleShape2D_hej7p")
 
-[node name="InteractArea" type="Area2D" parent="." unique_id=146308450]
+[node name="InteractArea" type="Area2D" parent="." unique_id=146308450 node_paths=PackedStringArray("dialogue_cooldown")]
 script = ExtResource("3_yspmt")
+dialogue_cooldown = NodePath("../DialogueCooldown")
 
 [node name="InteractCollision" type="CollisionShape2D" parent="InteractArea" unique_id=771794835]
 shape = SubResource("RectangleShape2D_l7yy7")
@@ -53,5 +54,9 @@ render_target_update_mode = 0
 [node name="SFXSelect" type="AudioStreamPlayer" parent="." unique_id=1822946898]
 stream = SubResource("AudioStreamRandomizer_utjfr")
 
+[node name="DialogueCooldown" type="Timer" parent="." unique_id=386905777]
+wait_time = 0.25
+
 [connection signal="area_entered" from="InteractArea" to="." method="_on_interact_area_area_entered"]
 [connection signal="area_exited" from="InteractArea" to="." method="_on_interact_area_area_exited"]
+[connection signal="timeout" from="DialogueCooldown" to="InteractArea" method="_on_dialogue_cooldown_timeout"]

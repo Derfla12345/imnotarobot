@@ -177,6 +177,7 @@ _data = {
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hej7p"]
+height = 24.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hej7p"]
 size = Vector2(22, 30)
@@ -218,8 +219,7 @@ region_enabled = true
 region_rect = Rect2(2308, 371, 666, 1061)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=542459861]
-visible = false
-position = Vector2(0, -15)
+position = Vector2(0, -12)
 shape = SubResource("CapsuleShape2D_hej7p")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1569578874]
@@ -246,6 +246,7 @@ volume_db = -4.0
 
 [node name="SFXSuccess2" type="AudioStreamPlayer" parent="." unique_id=616030835]
 stream = ExtResource("6_fhl08")
+volume_db = -5.0
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

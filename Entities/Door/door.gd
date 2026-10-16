@@ -11,11 +11,13 @@ extends Area2D
 @export var locked: bool = true
 @export var lock_password: String = ""
 @export var cooldown_timer: Timer
+@export var image: Texture2D
+
 
 @onready var receive_door = find_receive_door(door_send_id)
 @onready var dialogue_box = preload("res://Dialogue/dialogue.tscn")
 @onready var input_field = preload("res://Dialogue/PasswordField.tscn")
-
+@onready var sprite: Sprite2D = $Sprite2D
 @onready var sfx_wrong = $Wrong
 
 var locked_sequence_occurring: bool = false
@@ -24,6 +26,11 @@ var current_input_field: Control
 var current_player: CharacterBody2D
 var metagame: bool = false
 var cooldown: bool = false
+
+func _ready() -> void:
+	if (image):
+		sprite.set_texture(image)
+		sprite.visible = true
 
 func _process(delta: float) -> void:
 	if(current_dialogue_box and current_dialogue_box.finished):

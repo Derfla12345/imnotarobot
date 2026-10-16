@@ -1,10 +1,10 @@
-[gd_scene format=3 uid="uid://cxfequm13p1vp"]
+[gd_scene format=3 uid="uid://dx2k0auyordek"]
 
-[ext_resource type="Script" uid="uid://dmkhrwnntrvo1" path="res://Captchas/Popup/popup.gd" id="1_76s0f"]
-[ext_resource type="Texture2D" uid="uid://bt8ae575f6g6f" path="res://Captchas/Popup/short_window.png" id="1_y2due"]
-[ext_resource type="Theme" uid="uid://c4iguay7y6p3k" path="res://Themes/theme.tres" id="2_76s0f"]
-[ext_resource type="FontFile" uid="uid://dc23kqbrwdghs" path="res://Themes/Imnotarobot-Regular.ttf" id="3_sly2a"]
-[ext_resource type="Texture2D" uid="uid://cpsvagb3td1xk" path="res://Captchas/Popup/button.png" id="4_8r2ug"]
+[ext_resource type="Script" uid="uid://3sjrj76jfbov" path="res://Captchas/PopupImage/popup_text.gd" id="1_ryro1"]
+[ext_resource type="Texture2D" uid="uid://buh2p2wpetc3w" path="res://Captchas/PopupImage/short_window.png" id="2_lygmx"]
+[ext_resource type="Theme" uid="uid://c4iguay7y6p3k" path="res://Themes/theme.tres" id="3_6d5ku"]
+[ext_resource type="FontFile" uid="uid://dc23kqbrwdghs" path="res://Themes/Imnotarobot-Regular.ttf" id="4_j7iay"]
+[ext_resource type="Texture2D" uid="uid://c2op7o5qay2xa" path="res://Captchas/PopupImage/button.png" id="5_rwgjw"]
 
 [node name="Popup" type="Control" unique_id=2053245347 node_paths=PackedStringArray("text_label")]
 layout_mode = 3
@@ -17,28 +17,27 @@ offset_bottom = -841.30493
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.595, 0.595)
-script = ExtResource("1_76s0f")
+script = ExtResource("1_ryro1")
 text_label = NodePath("RichTextLabel")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=745638540]
 layout_mode = 0
 offset_right = 3248.0
 offset_bottom = 1849.0
-texture = ExtResource("1_y2due")
+texture = ExtResource("2_lygmx")
 metadata/_edit_lock_ = true
 
 [node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=187939000]
 layout_mode = 0
 offset_left = 202.0
-offset_top = 477.0
+offset_top = 294.7049
 offset_right = 3002.0
-offset_bottom = 769.0
-theme = ExtResource("2_76s0f")
+offset_bottom = 1387.2183
+theme = ExtResource("3_6d5ku")
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("3_sly2a")
+theme_override_fonts/normal_font = ExtResource("4_j7iay")
 theme_override_font_sizes/normal_font_size = 384
-text = "put a mask on my face"
-metadata/_edit_lock_ = true
+text = "put a mask on my face now i look like an emoji"
 
 [node name="OKButton" type="TextureButton" parent="." unique_id=1472861518]
 layout_mode = 1
@@ -51,7 +50,7 @@ offset_left = -358.0
 offset_top = 493.5
 offset_right = 357.5
 offset_bottom = 811.5
-texture_normal = ExtResource("4_8r2ug")
+texture_normal = ExtResource("5_rwgjw")
 stretch_mode = 0
 metadata/_edit_lock_ = true
 
