@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://im24x086gn2k" path="res://Areas/Room3/DeadRoomLight.png" id="8_t85wl"]
 [ext_resource type="AudioStream" uid="uid://bu4uw3mfknqtr" path="res://Audio/Music/ambient hum.wav" id="9_t85wl"]
 [ext_resource type="AudioStream" uid="uid://brv6y66lh4s28" path="res://Audio/Music/room 1 song.wav" id="10_68mb3"]
+[ext_resource type="AudioStream" uid="uid://c5o1mvpy3dgu1" path="res://Audio/Music/room 3 song v2.wav" id="11_e5tbo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hej7p"]
 size = Vector2(4979.5, 235)
@@ -209,6 +210,11 @@ texture = ExtResource("8_t85wl")
 stream = ExtResource("9_t85wl")
 volume_db = -8.0
 
-[node name="BackgroundMusic" type="AudioStreamPlayer" parent="." unique_id=194511139]
+[node name="Room1And2Music" type="AudioStreamPlayer" parent="." unique_id=194511139]
 stream = ExtResource("10_68mb3")
 volume_db = -8.0
+autoplay = true
+
+[node name="Room3Music" type="AudioStreamPlayer" parent="." unique_id=292300062]
+stream = ExtResource("11_e5tbo")
+volume_db = -12.0
