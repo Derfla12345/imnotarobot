@@ -6,6 +6,8 @@
 [ext_resource type="Theme" uid="uid://c4iguay7y6p3k" path="res://Themes/theme.tres" id="4_3ajhh"]
 [ext_resource type="Texture2D" uid="uid://bmhsxh4puncjb" path="res://Captchas/Wordle/verify.png" id="5_02efv"]
 [ext_resource type="FontFile" uid="uid://dc23kqbrwdghs" path="res://Themes/Imnotarobot-Regular.ttf" id="6_3c8qm"]
+[ext_resource type="AudioStream" uid="uid://brq1cstg742d8" path="res://Audio/SFX/select_1.wav" id="7_pisc4"]
+[ext_resource type="AudioStream" uid="uid://b2qs2myg42ic3" path="res://Audio/SFX/wrong.wav" id="8_qc71x"]
 
 [node name="SelectAllSquares" type="Control" unique_id=1752417366 node_paths=PackedStringArray("image", "goal_text_box")]
 layout_mode = 3
@@ -93,5 +95,11 @@ theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("6_3c8qm")
 theme_override_font_sizes/normal_font_size = 14
 scroll_active = false
+
+[node name="SFXSelect" type="AudioStreamPlayer" parent="." unique_id=1212152612]
+stream = ExtResource("7_pisc4")
+
+[node name="SFXWrong" type="AudioStreamPlayer" parent="." unique_id=2014920118]
+stream = ExtResource("8_qc71x")
 
 [connection signal="pressed" from="HBoxContainer/SubmitButton" to="." method="_on_submit_button_pressed"]

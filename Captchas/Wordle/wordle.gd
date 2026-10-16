@@ -94,6 +94,7 @@ func verify() -> void:
 	else: # if there weren't enough letters input
 		longer_notice.visible = true
 		print("submission must be ", wordle_size, " characters")
+		sfx_wrong.play()
 	input_field.set_text("")
 	focus_input_box()
 	print(correct_array)

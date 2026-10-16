@@ -4,12 +4,16 @@ extends Node2D
 @export var screen: Control #$SubViewportContainer/SubViewport/CRTView
 @export var screen_camera: Camera2D
 @export var computer_background: TextureRect
+@export var fullscreen_crt: CanvasLayer
 var computer_background_paths = [
 	preload("res://Captchas/CaptchaTest/ComputerBackgrounds/Room1Computer.png"), 
 	preload("res://Captchas/CaptchaTest/ComputerBackgrounds/Room2Computer.png"), 
 	preload("res://Captchas/CaptchaTest/ComputerBackgrounds/Room3Computer.png")]
 var checkbox_image_paths = [
-	preload("res://Captchas/SelectAllSquares/church.jpg")
+	preload("res://Captchas/Scratchoff/ph_scratchoff.png"),
+	preload("res://Captchas/SelectAllSquares/church.jpg"),
+	preload("res://Captchas/SelectAllSquares/bird.png"),
+	preload("res://Captchas/SelectAllSquares/pylon.png")
 ]
 @onready var cursor = preload("res://Entities/Cursors/cursor.tscn").instantiate()
 @onready var not_a_robot = preload("res://Captchas/NotARobot/not_a_robot.tscn")
@@ -23,6 +27,7 @@ var checkbox_image_paths = [
 
 @onready var sfx_success = $SFXSuccess
 @onready var sfx_select = $SFXSelect
+
 var player: CharacterBody2D
 var computer_off: bool = false
 var progress: int = 0
@@ -30,6 +35,7 @@ var computer_index: int = 0
 var current_captcha: Control
 var previous_captcha: Control
 var offset = Vector2(0, 0)
+var metagame: bool = false
 
 var checkbox_scale_offset = Vector2(12, 12)
 var checkbox_position_offset = Vector2(-650, -1000)
@@ -50,6 +56,8 @@ func _process(delta: float) -> void:
 			player.set_activity_lock(false)
 		if (current_captcha and current_captcha.has_method("close_self")):
 			current_captcha.close_self()
+		if (metagame):
+			player.set_metagame_crt(true)
 		queue_free()
 
 func set_player(new_player: CharacterBody2D):
@@ -64,6 +72,11 @@ func set_progress(new_progress: int):
 func set_computer_index(new_computer_index: int):
 	computer_index = new_computer_index
 
+func set_metagame(new_metagame: bool):
+	metagame = new_metagame
+	if(metagame):
+		fullscreen_crt.visible = true
+
 # ****************************************************************************************************
 # progress logic
 func set_progress_state():
@@ -73,16 +86,15 @@ func set_progress_state():
 		0:
 			match progress:
 				0:
-					#current_captcha = start_not_a_robot()
-					current_captcha = start_popup()
+					current_captcha = start_not_a_robot()
 				1:
 					current_captcha = start_wordle(5)
 				2:
-					current_captcha = start_scratchoff()
+					current_captcha = start_scratchoff([[1, 1], [1, 2], [2, 1], [2, 2]], checkbox_image_paths[0], "a stop sign")
 				3:
 					current_captcha = start_show_password()
-				#4:
-					# showing the answer to the captcha on computer 2
+				4:
+					current_captcha = start_scratchoff([], checkbox_image_paths[3], "")
 				_:
 					print("error: progress[", computer_index, "] does not match available values")
 		1:
@@ -92,7 +104,7 @@ func set_progress_state():
 				1:
 					current_captcha = start_wordle(7)
 				2:
-					current_captcha = start_select_all_squares([[1, 1], [1, 2], [2, 0], [2, 1], [2, 2]], checkbox_image_paths[0], "a place of god") 
+					current_captcha = start_select_all_squares([[1, 1], [1, 2], [2, 0], [2, 1], [2, 2]], checkbox_image_paths[1], "a place of god") 
 					# first arg is a 2D array of integer coordinates
 					# second arg is the image we're selecting squares on
 					# third arg is custom text following "Select all squares that include"
@@ -106,12 +118,12 @@ func set_progress_state():
 					# get_progress(0) to access computer 1's progress, < 4 to set it to 4 (current place of the hint)
 					while (player.get_progress(0) < 4):
 						player.increment_progress(0) 
-				#6:
-					# a captcha asking you to select all squares. the squares can only be seen on computer 1
+				6:
+					current_captcha = start_scratchoff([[0, 1], [1, 1], [1, 2], [2, 1], [3, 1]], checkbox_image_paths[2], "a pylon")
 				#7:
 					# another popup, this one says something like "fine, i'll show you"
-				#8:
-					# at this point, you'll be taken into the meta game
+				8:
+					start_metagame()
 				_:
 					print("error: progress[", computer_index, "] does not match available values")
 		_:
@@ -124,18 +136,17 @@ func advance_and_close_captcha():
 	player.increment_progress(computer_index)
 	set_progress(player.get_progress(computer_index))
 	set_progress_state()
+	sfx_success.play()
 
 # ****************************************************************************************************
 # computer 1
 
 # not a robot (first thing to appear, progress[0] == 0)
 func start_not_a_robot():
-	sfx_success.play()
 	return screen.start_captcha(not_a_robot)
 
 # wordle (progress[0] == 1)
 func start_wordle(wordle_size: int):
-	sfx_success.play()
 	var new_wordle = screen.start_captcha(wordle)
 	new_wordle.set_wordle_size(wordle_size)
 	return new_wordle
@@ -145,9 +156,11 @@ func start_wordle(wordle_size: int):
 	#return wordle_instance
 
 # scratchoff (progress[0] == 2)
-func start_scratchoff():
-	sfx_success.play()
+func start_scratchoff(correct_checkboxes: Array[Array], image: Texture2D, goal_text: String):
 	var new_scratchoff = screen.start_captcha(scratchoff)
+	new_scratchoff.set_correct_checkboxes(correct_checkboxes)
+	new_scratchoff.set_image(image)
+	new_scratchoff.set_goal_text(goal_text)
 	new_scratchoff.set_scale(checkbox_scale_offset)
 	new_scratchoff.set_position(checkbox_position_offset)
 	new_scratchoff.set_cursor(cursor)
@@ -155,7 +168,6 @@ func start_scratchoff():
 
 # show door 1's password
 func start_show_password():
-	sfx_success.play()
 	return screen.start_captcha(show_password)
 
 # ****************************************************************************************************
@@ -188,3 +200,15 @@ func start_select_all_squares(correct_checkboxes: Array[Array], image: Texture2D
 	new_select_all_squares.set_goal_text(goal_text)
 	
 	return new_select_all_squares
+
+# start metagame
+func start_metagame():
+	metagame = true
+	player.set_metagame_crt(true)
+	player.set_position(Vector2(1423, 709))
+	player.area_camera.set_position(Vector2(0, 0))
+	var door1 = player.find_door(1)
+	door1.set_locked(true) # need to unlock the door later in progression
+	player.increment_progress(computer_index)
+	set_progress(player.get_progress(computer_index))
+	computer_off = true

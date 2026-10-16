@@ -17,3 +17,6 @@ func interact(player: CharacterBody2D):
 	captcha_test_instance.set_computer_index(computer_index)
 	captcha_test_instance.set_progress(player.get_progress(computer_index))
 	captcha_test_instance.set_progress_state()
+	if player.get_metagame_crt():
+		captcha_test_instance.set_metagame(true)
+		player.set_metagame_crt(false)

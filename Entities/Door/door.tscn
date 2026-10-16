@@ -5,8 +5,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iwerq"]
 
-[node name="Door1" type="Area2D" unique_id=1435931219]
+[node name="Door1" type="Area2D" unique_id=1435931219 node_paths=PackedStringArray("cooldown_timer")]
 script = ExtResource("1_iwerq")
+cooldown_timer = NodePath("Cooldown")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1220109031]
 position = Vector2(-9.536743e-07, 0)
@@ -17,3 +18,8 @@ visible = false
 position = Vector2(0.49999905, 4.7683716e-07)
 scale = Vector2(0.4838709, 0.4166667)
 texture = ExtResource("1_n6865")
+
+[node name="Cooldown" type="Timer" parent="." unique_id=1662932847]
+wait_time = 0.25
+
+[connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]
