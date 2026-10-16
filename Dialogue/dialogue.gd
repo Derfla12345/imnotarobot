@@ -13,6 +13,7 @@ class_name Dialogue
 @export var scale_offset = Vector2(7, 7)
 
 var playing_voice = false
+var finished: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -24,6 +25,7 @@ func _process(delta: float) -> void:
 	pass
 
 func update_message(message: String) -> void:
+	finished = false
 	content.set_use_bbcode(true)
 	content.bbcode_text = message
 	content.add_theme_font_override("LindsayFont", font)
@@ -38,6 +40,7 @@ func _on_type_timer_timeout() -> void:
 	else:
 		type_timer.stop()
 		playing_voice = false
+	finished = true
 
 func _on_dialogue_voice_player_finished() -> void:
 	if playing_voice:

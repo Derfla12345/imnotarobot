@@ -8,6 +8,9 @@ var computer_background_paths = [
 	preload("res://Captchas/CaptchaTest/ComputerBackgrounds/Room1Computer.png"), 
 	preload("res://Captchas/CaptchaTest/ComputerBackgrounds/Room2Computer.png"), 
 	preload("res://Captchas/CaptchaTest/ComputerBackgrounds/Room3Computer.png")]
+var checkbox_image_paths = [
+	preload("res://Captchas/SelectAllSquares/church.jpg")
+]
 @onready var cursor = preload("res://Entities/Cursors/cursor.tscn").instantiate()
 @onready var not_a_robot = preload("res://Captchas/NotARobot/not_a_robot.tscn")
 @onready var wordle = preload("res://Captchas/Wordle/wordle.tscn")
@@ -16,6 +19,7 @@ var computer_background_paths = [
 @onready var show_password = preload("res://Captchas/ShowPassword/show_password.tscn")
 @onready var question = preload("res://Captchas/Question/question.tscn")
 @onready var popup = preload("res://Captchas/Popup/popup.tscn")
+@onready var select_all_squares = preload("res://Captchas/SelectAllSquares/select_all_squares.tscn")
 
 @onready var sfx_success = $SFXSuccess
 @onready var sfx_select = $SFXSelect
@@ -26,6 +30,9 @@ var computer_index: int = 0
 var current_captcha: Control
 var previous_captcha: Control
 var offset = Vector2(0, 0)
+
+var checkbox_scale_offset = Vector2(12, 12)
+var checkbox_position_offset = Vector2(-650, -1000)
 
 func _ready():
 	add_child.call_deferred(cursor)
@@ -66,7 +73,8 @@ func set_progress_state():
 		0:
 			match progress:
 				0:
-					current_captcha = start_not_a_robot()
+					#current_captcha = start_not_a_robot()
+					current_captcha = start_popup()
 				1:
 					current_captcha = start_wordle(5)
 				2:
@@ -84,20 +92,25 @@ func set_progress_state():
 				1:
 					current_captcha = start_wordle(7)
 				2:
-					current_captcha = start_popup()
+					current_captcha = start_select_all_squares([[1, 1], [1, 2], [2, 0], [2, 1], [2, 2]], checkbox_image_paths[0], "a place of god") 
+					# first arg is a 2D array of integer coordinates
+					# second arg is the image we're selecting squares on
+					# third arg is custom text following "Select all squares that include"
 				3:
-					current_captcha = start_hello_world()
+					current_captcha = start_popup()
 				4:
+					current_captcha = start_hello_world()
+				5:
 					current_captcha = start_question("how many books are in the first room?", "78")
 					# increment computer 1 progress to show a grid for next step. while loop in case someone inputs the password early
 					# get_progress(0) to access computer 1's progress, < 4 to set it to 4 (current place of the hint)
 					while (player.get_progress(0) < 4):
 						player.increment_progress(0) 
-				#5:
-					# a captcha asking you to select all squares. the squares can only be seen on computer 1
 				#6:
-					# another popup, this one says something like "fine, i'll show you"
+					# a captcha asking you to select all squares. the squares can only be seen on computer 1
 				#7:
+					# another popup, this one says something like "fine, i'll show you"
+				#8:
 					# at this point, you'll be taken into the meta game
 				_:
 					print("error: progress[", computer_index, "] does not match available values")
@@ -135,10 +148,8 @@ func start_wordle(wordle_size: int):
 func start_scratchoff():
 	sfx_success.play()
 	var new_scratchoff = screen.start_captcha(scratchoff)
-	var scale_offset = Vector2(12, 12)
-	var position_offset = Vector2(-650, -1000)
-	new_scratchoff.set_scale(scale_offset)
-	new_scratchoff.set_position(position_offset)
+	new_scratchoff.set_scale(checkbox_scale_offset)
+	new_scratchoff.set_position(checkbox_position_offset)
 	new_scratchoff.set_cursor(cursor)
 	return new_scratchoff
 
@@ -166,3 +177,14 @@ func start_question(question_text: String, answer_value: String):
 func start_popup():
 	return screen.start_captcha(popup)
 	# probably need to add code to make the popup's text dynamic. maybe add that inside the popup?
+
+# select all squares
+func start_select_all_squares(correct_checkboxes: Array[Array], image: Texture2D, goal_text: String):
+	var new_select_all_squares = screen.start_captcha(select_all_squares)
+	new_select_all_squares.set_scale(checkbox_scale_offset)
+	new_select_all_squares.set_position(checkbox_position_offset)
+	new_select_all_squares.set_correct_checkboxes(correct_checkboxes)
+	new_select_all_squares.set_image(image)
+	new_select_all_squares.set_goal_text(goal_text)
+	
+	return new_select_all_squares

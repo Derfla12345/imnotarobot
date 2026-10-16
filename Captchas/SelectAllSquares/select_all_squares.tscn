@@ -1,0 +1,97 @@
+[gd_scene format=3 uid="uid://4u3qw6c75tcf"]
+
+[ext_resource type="Script" uid="uid://cwsba7uuj5lgj" path="res://Captchas/SelectAllSquares/select_all_squares.gd" id="1_ng4ge"]
+[ext_resource type="Texture2D" uid="uid://btipohs2n4vbx" path="res://Captchas/Scratchoff/ph_scratchoff.png" id="2_du5ts"]
+[ext_resource type="Texture2D" uid="uid://dgp81bhgypg6" path="res://Captchas/Scratchoff/Grid(blue).png" id="3_5eh7n"]
+[ext_resource type="Theme" uid="uid://c4iguay7y6p3k" path="res://Themes/theme.tres" id="4_3ajhh"]
+[ext_resource type="Texture2D" uid="uid://bmhsxh4puncjb" path="res://Captchas/Wordle/verify.png" id="5_02efv"]
+[ext_resource type="FontFile" uid="uid://dc23kqbrwdghs" path="res://Themes/Imnotarobot-Regular.ttf" id="6_3c8qm"]
+
+[node name="SelectAllSquares" type="Control" unique_id=1752417366 node_paths=PackedStringArray("image", "goal_text_box")]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_ng4ge")
+image = NodePath("Image")
+goal_text_box = NodePath("DynamicGoalText")
+
+[node name="CheckBoxGrid" type="GridContainer" parent="." unique_id=1167131243]
+z_index = 1
+layout_mode = 0
+offset_right = 20.0
+offset_bottom = 19.0
+columns = 4
+
+[node name="ScratchBoxGrid" type="GridContainer" parent="." unique_id=87344382]
+z_index = 1
+custom_maximum_size = Vector2(110, 110)
+layout_mode = 0
+offset_right = 110.0
+offset_bottom = 110.0
+mouse_filter = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 4
+
+[node name="Image" type="TextureRect" parent="." unique_id=213704635]
+custom_maximum_size = Vector2(110, 110)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+texture = ExtResource("2_du5ts")
+
+[node name="Grid" type="TextureRect" parent="." unique_id=793851777]
+layout_mode = 0
+offset_left = -6.0
+offset_top = -46.0
+offset_right = 117.0
+offset_bottom = 126.0
+mouse_filter = 2
+texture = ExtResource("3_5eh7n")
+expand_mode = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=542807496]
+custom_maximum_size = Vector2(-1, 52.5)
+layout_mode = 0
+offset_left = 76.0
+offset_top = 113.0
+offset_right = 260.90567
+offset_bottom = 165.5
+scale = Vector2(0.24, 0.24)
+
+[node name="SubmitButton" type="TextureButton" parent="HBoxContainer" unique_id=529442076]
+custom_minimum_size = Vector2(145.635, 0)
+custom_maximum_size = Vector2(-1, 42.7)
+layout_mode = 2
+texture_normal = ExtResource("5_02efv")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="SelectAllBoxesText" type="RichTextLabel" parent="." unique_id=458970559]
+oversampling_with_scale = 2
+layout_mode = 0
+offset_left = -1.0
+offset_top = -43.0
+offset_right = 123.0
+offset_bottom = -32.0
+theme = ExtResource("4_3ajhh")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("6_3c8qm")
+theme_override_font_sizes/normal_font_size = 14
+text = "select all boxes that include"
+scroll_active = false
+
+[node name="DynamicGoalText" type="RichTextLabel" parent="." unique_id=1988725655]
+oversampling_with_scale = 2
+layout_mode = 0
+offset_left = -1.0
+offset_top = -31.0
+offset_right = 112.0
+offset_bottom = -6.0
+theme = ExtResource("4_3ajhh")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("6_3c8qm")
+theme_override_font_sizes/normal_font_size = 14
+scroll_active = false
+
+[connection signal="pressed" from="HBoxContainer/SubmitButton" to="." method="_on_submit_button_pressed"]

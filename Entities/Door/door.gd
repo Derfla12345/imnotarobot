@@ -21,7 +21,7 @@ var current_input_field: Control
 var current_player: CharacterBody2D
 
 func _process(delta: float) -> void:
-	if(current_dialogue_box):
+	if(current_dialogue_box and current_dialogue_box.finished):
 		if (Input.is_action_just_pressed("interact")):
 			current_dialogue_box.close()
 			current_input_field = receive_password_input() 
