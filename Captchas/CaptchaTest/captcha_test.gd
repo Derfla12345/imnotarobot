@@ -47,6 +47,9 @@ func _ready():
 	screen_camera.make_current()
 
 func _on_power_button_pressed() -> void:
+	turn_off()
+
+func turn_off() -> void:
 	sfx_select.play()
 	await get_tree().create_timer(0.1).timeout # waits just long enough for the select sfx to play
 	computer_off = true
@@ -61,6 +64,8 @@ func _process(delta: float) -> void:
 		if (metagame):
 			player.set_metagame_crt(true)
 		queue_free()
+	if (Input.is_action_just_pressed("esc")):
+		turn_off()
 
 func set_player(new_player: CharacterBody2D):
 	player = new_player

@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://b56fwq3mg8au8"]
+
+[ext_resource type="Script" uid="uid://disaiotfvj4xn" path="res://Areas/TitleScreen/title_screen.gd" id="1_ovtmo"]
+[ext_resource type="Texture2D" uid="uid://bsh26alqpnplm" path="res://Areas/TitleScreen/title screen.png" id="2_ht8t7"]
+[ext_resource type="AudioStream" uid="uid://brq1cstg742d8" path="res://Audio/SFX/select_1.wav" id="3_ht8t7"]
+
+[node name="TitleScreen" type="Node2D" unique_id=868717024]
+script = ExtResource("1_ovtmo")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1490876994]
+texture = ExtResource("2_ht8t7")
+
+[node name="Play" type="TextureButton" parent="." unique_id=559006832]
+offset_left = -192.0
+offset_top = 1273.0
+offset_right = 591.0
+offset_bottom = 1565.0
+
+[node name="Credits" type="TextureButton" parent="." unique_id=2070259613]
+offset_left = 627.0
+offset_top = 1272.0
+offset_right = 1417.0
+offset_bottom = 1569.0
+
+[node name="Quit" type="TextureButton" parent="." unique_id=1252826814]
+offset_left = 1444.0
+offset_top = 1273.0
+offset_right = 2233.0
+offset_bottom = 1566.0
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1612153438]
+offset = Vector2(-4, -5)
+zoom = Vector2(0.243, 0.243)
+
+[node name="SFXSelect" type="AudioStreamPlayer" parent="." unique_id=2054350651]
+stream = ExtResource("3_ht8t7")
+
+[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
