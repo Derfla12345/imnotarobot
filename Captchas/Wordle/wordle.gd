@@ -24,9 +24,11 @@ func close_self():
 @onready var sfx_select = $SFXSelect
 @onready var sfx_type = $SFXType
 @onready var sfx_wrong = $SFXWrong
+@onready var seven_letter_image_path = preload("res://Captchas/Wordle/wordle7.png")
 
 @export var longer_notice: RichTextLabel
 @export var grid_container: GridContainer
+@export var display_image: TextureRect
 
 var answer = ""
 var wordle_size = 5
@@ -51,6 +53,7 @@ func generate_answer() -> String:
 	if (wordle_size == 5):
 		return "horse"
 	else:
+		display_image.set_texture(seven_letter_image_path)
 		return "horsies"
 
 func verify() -> void:
@@ -94,6 +97,7 @@ func verify() -> void:
 	else: # if there weren't enough letters input
 		longer_notice.visible = true
 		print("submission must be ", wordle_size, " characters")
+		sfx_wrong.play()
 	input_field.set_text("")
 	focus_input_box()
 	print(correct_array)

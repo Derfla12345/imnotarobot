@@ -1,7 +1,6 @@
 extends Node2D
 
 @onready var ambience = $Ambience
-@onready var background_music = $BackgroundMusic
 var offsets = [Vector2(0, 0), Vector2(6000, 0)] # list of position offsets for the ingame screens
 
 func get_offset(index: int) -> Vector2:
@@ -13,4 +12,3 @@ func get_offset(index: int) -> Vector2:
 
 func _ready():
 	ambience.play()
-	background_music.play()

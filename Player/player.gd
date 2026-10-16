@@ -2,17 +2,24 @@ extends CharacterBody2D
 
 
 @onready var area_camera = get_area_camera()
+@onready var room_1_and_2_music = $"../Room1And2Music"
+@onready var room_3_music = $"../Room3Music"
+@onready var sfx_door = $SFXDoor
+@onready var sfx_metagame_success = $SFXSuccess2
 
 @export var progress = [0, 0]
+@export var crt_filter: CanvasLayer
 
 var interactable_object = false
 var activity_lock: bool = false
 var speed: int = 3000 # 1250
 var in_dialogue = false
 var direction
+var metagame_crt: bool = false
 
 func _physics_process(delta: float) -> void:
 	if (not activity_lock):
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 		velocity = direction * speed
 		move_and_slide()
@@ -20,6 +27,7 @@ func _physics_process(delta: float) -> void:
 		if (Input.is_action_just_pressed("interact")):
 			if interactable_object and interactable_object.has_method("interact"):
 				interactable_object.interact(self)
+	
 	if (in_dialogue):
 		pass
 	
@@ -27,6 +35,15 @@ func _physics_process(delta: float) -> void:
 		#PlayerAnimator.play_walk_animation()
 	#else:
 		#PlayerAnimator.play_idle_animation()
+
+func _ready():
+	room_1_and_2_music.play()
+
+func _process(delta: float) -> void:
+	if(metagame_crt):
+		crt_filter.visible = true
+	else:
+		crt_filter.visible = false
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	interactable_object = area
@@ -48,6 +65,12 @@ func end_dialogue():
 func enter_door(door: Area2D):
 	position = door.get_exit_location()
 	area_camera.position = door.get_camera_location()
+	sfx_door.play()
+	
+	if door.name == "Door4":
+		if room_1_and_2_music.playing:
+			room_1_and_2_music.stop()
+			room_3_music.play()
 	
 func get_area_camera():
 	var found_node: Camera2D
@@ -66,3 +89,30 @@ func increment_progress(computer_index: int):
 
 func get_progress(computer_index: int) -> int:
 	return progress[computer_index]
+
+func set_metagame_crt(status: bool):
+	metagame_crt = status
+
+func get_metagame_crt() -> bool:
+	return metagame_crt
+
+func find_door(target_id: int):
+	var siblings = null
+	var target = null
+	var found_door_id: int = -1
+	
+	if get_parent():
+		siblings = get_parent().get_children()
+	
+	# check each sibling for get_door_id(), return the door that matches if it exists
+	if (siblings):
+		for i in siblings:
+			if (i.has_method("get_door_id")):
+				found_door_id = i.get_door_id()
+				if (target_id == found_door_id):
+					target = i
+	
+	return target
+
+func play_metagame_success():
+	sfx_metagame_success.play()

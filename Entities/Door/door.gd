@@ -10,30 +10,41 @@ extends Area2D
 @export var exit_offset: Vector2
 @export var locked: bool = true
 @export var lock_password: String = ""
+@export var cooldown_timer: Timer
 
 @onready var receive_door = find_receive_door(door_send_id)
 @onready var dialogue_box = preload("res://Dialogue/dialogue.tscn")
 @onready var input_field = preload("res://Dialogue/PasswordField.tscn")
 
+@onready var sfx_wrong = $Wrong
+
 var locked_sequence_occurring: bool = false
 var current_dialogue_box: Control
 var current_input_field: Control
 var current_player: CharacterBody2D
+var metagame: bool = false
+var cooldown: bool = false
 
 func _process(delta: float) -> void:
 	if(current_dialogue_box and current_dialogue_box.finished):
 		if (Input.is_action_just_pressed("interact")):
 			current_dialogue_box.close()
-			current_input_field = receive_password_input() 
+			if metagame:
+				cooldown = true
+				current_player.set_activity_lock(false)
+				cooldown_timer.start()
+			else:
+				current_input_field = receive_password_input()
 			# ^i don't know why it doesn't focus this input box. should put a submit button inside
 			# PasswordField.tscn so it feels more normal to move the mouse here
 
 func interact(player: CharacterBody2D):
-	if (locked):
-		current_dialogue_box = start_locked_sequence(player)
-	else:
-		if (receive_door.get_exit_location()):
-			player.enter_door(receive_door)
+	if (not cooldown):
+		if (locked):
+			current_dialogue_box = start_locked_sequence(player)
+		else:
+			if (receive_door.get_exit_location()):
+				player.enter_door(receive_door)
 	current_player = player
 
 # locate the node for the door we're trying to send to. returns null if the door isn't found
@@ -63,7 +74,11 @@ func start_locked_sequence(player: CharacterBody2D):
 	var new_dialogue_box = dialogue_box.instantiate()
 	get_tree().root.add_child(new_dialogue_box)
 	new_dialogue_box.set_position(new_dialogue_box.get_position() + camera_location)
-	new_dialogue_box.update_message("The door seems to have some sort of password lock.")
+	if(player.get_metagame_crt()):
+		metagame = true
+		new_dialogue_box.update_message("The door seems to be locked electronically.")
+	else:
+		new_dialogue_box.update_message("The door seems to have some sort of password lock.")
 	
 	return new_dialogue_box
 
@@ -71,7 +86,7 @@ func start_locked_sequence(player: CharacterBody2D):
 func receive_password_input() -> Control:
 	var new_input_field = input_field.instantiate()
 	get_tree().root.add_child(new_input_field)
-	new_input_field.set_position(new_input_field.get_position() + camera_location)
+	new_input_field.set_position(new_input_field.get_position() + camera_location - Vector2(400.0, 0)) # offset kinda centers it
 	new_input_field.set_answer(lock_password)
 	new_input_field.set_door(self)
 	
@@ -95,3 +110,12 @@ func set_locked(lock_state: bool) -> void:
 func close_dialogue() -> void:
 	if (current_player):
 		current_player.set_activity_lock(false)
+
+func set_lock_password(new_password: String) -> void:
+	lock_password = new_password
+
+func _on_cooldown_timeout() -> void:
+	cooldown = false
+
+func play_wrong():
+	sfx_wrong.play()

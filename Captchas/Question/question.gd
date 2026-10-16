@@ -23,6 +23,8 @@ func close_self():
 @export var text_label: RichTextLabel
 @export var input_field: LineEdit
 
+@onready var sfx_wrong = $SFXWrong
+
 var answer = ""
 
 func _process(delta: float) -> void:
@@ -37,8 +39,15 @@ func set_answer(new_answer: String):
 
 func verify():
 	var submission = input_field.get_text().to_lower()
-	if (submission == answer):
+	if (answer == ""):
+		if (submission != ""):
+			advance_and_close_self()
+		else:
+			sfx_wrong.play()
+	elif (submission == answer):
 		advance_and_close_self()
+	else:
+		sfx_wrong.play()
 
 
 func _on_submit_button_pressed() -> void:

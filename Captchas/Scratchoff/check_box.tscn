@@ -1,7 +1,10 @@
 [gd_scene format=3 uid="uid://cphp5loqlhvdj"]
 
+[ext_resource type="Theme" uid="uid://pd7inykmpspv" path="res://Themes/checkbox_theme.tres" id="1_sxjxp"]
+
 [node name="CheckBox" type="CheckBox" unique_id=972716230]
 z_index = 1
-offset_right = 24.000002
-offset_bottom = 24.000002
+offset_right = 58.0
+offset_bottom = 54.0
 scale = Vector2(2.085, 2.085)
+theme = ExtResource("1_sxjxp")

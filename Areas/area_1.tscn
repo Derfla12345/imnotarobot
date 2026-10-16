@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://im24x086gn2k" path="res://Areas/Room3/DeadRoomLight.png" id="8_t85wl"]
 [ext_resource type="AudioStream" uid="uid://bu4uw3mfknqtr" path="res://Audio/Music/ambient hum.wav" id="9_t85wl"]
 [ext_resource type="AudioStream" uid="uid://brv6y66lh4s28" path="res://Audio/Music/room 1 song.wav" id="10_68mb3"]
+[ext_resource type="AudioStream" uid="uid://c5o1mvpy3dgu1" path="res://Audio/Music/room 3 song v2.wav" id="11_e5tbo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hej7p"]
 size = Vector2(4979.5, 235)
@@ -54,7 +55,7 @@ position = Vector2(12000, 0)
 texture = ExtResource("4_kpacr")
 
 [node name="Player" parent="." unique_id=1745909773 instance=ExtResource("1_bmh1r")]
-position = Vector2(1423, 709)
+position = Vector2(1423, 708.975)
 scale = Vector2(24, 24)
 
 [node name="Computer1" parent="." unique_id=1601914000 instance=ExtResource("5_e5usc")]
@@ -89,10 +90,11 @@ exit_offset = Vector2(600, 350)
 locked = false
 
 [node name="Door3" parent="." unique_id=2062100572 instance=ExtResource("6_01mxt")]
-position = Vector2(8741, 189)
+position = Vector2(8454, 190)
 scale = Vector2(24, 34.305)
 door_id = 3
 door_send_id = 4
+locked = false
 
 [node name="Door4" parent="." unique_id=1438909942 instance=ExtResource("6_01mxt")]
 position = Vector2(9928.001, 135)
@@ -101,6 +103,7 @@ door_id = 4
 door_send_id = 3
 camera_location = Vector2(12000, 0)
 exit_offset = Vector2(600, 350)
+locked = false
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=522103959]
 offset = Vector2(-4, -5)
@@ -209,6 +212,11 @@ texture = ExtResource("8_t85wl")
 stream = ExtResource("9_t85wl")
 volume_db = -8.0
 
-[node name="BackgroundMusic" type="AudioStreamPlayer" parent="." unique_id=194511139]
+[node name="Room1And2Music" type="AudioStreamPlayer" parent="." unique_id=194511139]
 stream = ExtResource("10_68mb3")
+volume_db = -8.0
+autoplay = true
+
+[node name="Room3Music" type="AudioStreamPlayer" parent="." unique_id=292300062]
+stream = ExtResource("11_e5tbo")
 volume_db = -8.0

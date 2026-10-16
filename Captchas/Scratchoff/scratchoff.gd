@@ -29,34 +29,23 @@ func close_self():
 @onready var sfx_scratch = $SFXScratch
 @onready var sfx_wrong = $SFXWrong
 
+@export var image: TextureRect
+@export var goal_text_box: RichTextLabel
+
 var correct_checkboxes_toggled: bool = false
 var incorrect_checkboxes_toggled: bool = false
 var toggle_count: int = 0
 
 var checkbox_row = [[], [], [], []]
 var scratchbox_row = [[], [], [], []]
+var correct_checkboxes: Array[CheckBox]
+var incorrect_checkboxes: Array[CheckBox]
 
 # generates checkboxes and scratchboxes, and their row arrays
 # organizes checkboxes into "correct" and "incorrect" arrays to connect to the toggle funcs
 func _ready():
 	generate_boxes(checkbox, checkbox_row)
 	generate_boxes(scratchbox, scratchbox_row)
-
-	var correct_checkboxes = [checkbox_row[1][1], checkbox_row[1][2], checkbox_row[2][1], checkbox_row[2][2]]
-	var incorrect_checkboxes = []
-	
-	# checking each row individually for incorrect checkboxes
-	for i in 4: 
-		for checkbox_instance in checkbox_row[i]:
-			if checkbox_instance not in correct_checkboxes:
-				incorrect_checkboxes.append(checkbox_instance)
-	
-	for checkbox_instance in correct_checkboxes:
-		checkbox_instance.toggled.connect(_on_correct_check_box_toggled)
-		
-	for checkbox_instance in incorrect_checkboxes:
-		checkbox_instance.toggled.connect(_on_incorrect_check_box_toggled)
-		
 
 # instantiates 16 nodes and organizes them into row arrays so they're easy to manipulate
 # ex. access checkbox6 with checkbox_row[1][2]
@@ -144,3 +133,29 @@ func _on_submit_button_pressed() -> void:
 # pass in the cursor so it can be swapped to grabbing when needed
 func set_cursor(new_cursor: Sprite2D):
 	cursor = new_cursor
+
+func set_correct_checkboxes(new_correct_checkboxes: Array[Array]):
+	correct_checkboxes = []
+	for i in new_correct_checkboxes:
+		correct_checkboxes.push_back(checkbox_row[i[0]][i[1]])
+		
+	for checkbox_instance in correct_checkboxes:
+		checkbox_instance.toggled.connect(_on_correct_check_box_toggled)
+	
+	determine_incorrect_checkboxes()
+
+func determine_incorrect_checkboxes():
+	incorrect_checkboxes = []
+	for i in checkbox_row: 
+		for checkbox_instance in i:
+			if checkbox_instance not in correct_checkboxes:
+				incorrect_checkboxes.append(checkbox_instance)
+	
+	for checkbox_instance in incorrect_checkboxes:
+		checkbox_instance.toggled.connect(_on_incorrect_check_box_toggled)
+
+func set_image(new_image: Texture2D):
+	image.texture = new_image
+
+func set_goal_text(new_goal_text: String):
+	goal_text_box.set_text(new_goal_text)

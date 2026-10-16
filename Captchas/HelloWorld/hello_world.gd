@@ -21,6 +21,8 @@ func close_self():
 @export var input_field: LineEdit
 @export var submit_button: TextureButton
 
+@onready var wrong_sfx = $Wrong
+
 var incorrect_answers = ["hello", "world"]
 var wrong: bool = false
 
@@ -31,6 +33,7 @@ func _on_submit_button_pressed() -> void:
 		if (submission.contains(i)):
 			print("bad job") # do something on-screen to signify wrongness
 			wrong = true
+			wrong_sfx.play()
 	if (not wrong):
 		print("good job")
 		advance_and_close_self()

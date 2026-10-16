@@ -6,6 +6,8 @@ extends Control
 @export var scale_offset = Vector2(5, 5)
 @export var input_field: LineEdit
 
+@onready var sfx_wrong = $SFXWrong
+
 var door: Area2D
 var answer = ""
 
@@ -21,6 +23,9 @@ func verify_answer():
 	var submission = input_field.get_text().to_lower()
 	if (submission == answer):
 		door.set_locked(false)
+	else:
+		door.play_wrong()
+	
 	door.close_dialogue()
 	close()
 
@@ -32,3 +37,6 @@ func set_answer(new_answer: String):
 
 func set_door(new_door: Area2D):
 	door = new_door
+
+func _on_texture_button_pressed() -> void:
+	verify_answer()

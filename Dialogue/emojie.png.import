@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cc75vao3wohmx"
-path="res://.godot/imported/selected.png-a31a627daf30b2ee37940735caefa3f3.ctex"
+uid="uid://srfkbicbffu1"
+path="res://.godot/imported/emojie.png-52cbf948fb82797d0ef32851fbdd0bf7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Captchas/SelectAllSquares/selected.png"
-dest_files=["res://.godot/imported/selected.png-a31a627daf30b2ee37940735caefa3f3.ctex"]
+source_file="res://Dialogue/emojie.png"
+dest_files=["res://.godot/imported/emojie.png-52cbf948fb82797d0ef32851fbdd0bf7.ctex"]
 
 [params]
 

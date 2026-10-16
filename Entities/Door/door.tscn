@@ -2,11 +2,13 @@
 
 [ext_resource type="Script" uid="uid://cmvuvdbeyk4g8" path="res://Entities/Door/door.gd" id="1_iwerq"]
 [ext_resource type="Texture2D" uid="uid://ced8pms4svgob" path="res://Entities/Door/door.png" id="1_n6865"]
+[ext_resource type="AudioStream" uid="uid://b2qs2myg42ic3" path="res://Audio/SFX/wrong.wav" id="3_mjeyv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iwerq"]
 
-[node name="Door1" type="Area2D" unique_id=1435931219]
+[node name="Door1" type="Area2D" unique_id=1435931219 node_paths=PackedStringArray("cooldown_timer")]
 script = ExtResource("1_iwerq")
+cooldown_timer = NodePath("Cooldown")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1220109031]
 position = Vector2(-9.536743e-07, 0)
@@ -17,3 +19,11 @@ visible = false
 position = Vector2(0.49999905, 4.7683716e-07)
 scale = Vector2(0.4838709, 0.4166667)
 texture = ExtResource("1_n6865")
+
+[node name="Cooldown" type="Timer" parent="." unique_id=1662932847]
+wait_time = 0.25
+
+[node name="Wrong" type="AudioStreamPlayer" parent="." unique_id=589642161]
+stream = ExtResource("3_mjeyv")
+
+[connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]

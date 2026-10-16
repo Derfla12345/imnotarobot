@@ -23,6 +23,10 @@ func close_self():
 @onready var checkbox_grid = $CheckBoxGrid
 @onready var cursor # set by captcha_test.gd in set_cursor
 
+@onready var sfx_select = $SFXSelect
+@onready var sfx_scratch = $SFXScratch
+@onready var sfx_wrong = $SFXWrong
+
 @export var image: TextureRect
 @export var goal_text_box: RichTextLabel
 
@@ -64,6 +68,7 @@ func generate_boxes(node, node_row: Array) -> void:
 
 # checks if the correct amount of correct checkboxes have been toggled on
 func _on_correct_check_box_toggled(toggled_on: bool) -> void:
+	sfx_select.play()
 	if toggled_on:
 		toggle_count += 1
 		if toggle_count == correct_checkboxes.size():
@@ -74,6 +79,7 @@ func _on_correct_check_box_toggled(toggled_on: bool) -> void:
 
 # checks if any incorrect checkboxes have been toggled on
 func _on_incorrect_check_box_toggled(toggled_on: bool) -> void:
+	sfx_select.play()
 	if toggled_on:
 		incorrect_checkboxes_toggled = true
 	else:
@@ -81,11 +87,13 @@ func _on_incorrect_check_box_toggled(toggled_on: bool) -> void:
 
 # checking if win condition is fulfilled
 func _on_submit_button_pressed() -> void:
+	sfx_select.play()
 	if correct_checkboxes_toggled == true and incorrect_checkboxes_toggled == false:
 		print("solved")
 		advance_and_close_self()
 	else:
 		print("failed")
+		sfx_wrong.play()
 
 # pass in the cursor so it can be swapped to grabbing when needed
 func set_cursor(new_cursor: Sprite2D):

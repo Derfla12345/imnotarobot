@@ -20,6 +20,8 @@ func start_captcha(captcha):
 	var captcha_instance = captcha.instantiate()
 	#sub_viewport.add_child(captcha_instance)
 	get_tree().root.add_child(captcha_instance)
+	#var captcha_test = get_parent().get_parent().get_parent()
+	#captcha_test.add_child(captcha_instance) # need to change this so it can appear under a transparent image
 	#captcha_instance.set_position(captcha_instance.position - offset)
 	
 	return captcha_instance

@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://dyst8idmtl4yn" path="res://Player/player.gd" id="1_l8h54"]
 [ext_resource type="Texture2D" uid="uid://gfia3c7d5t6w" path="res://Player/Robot sprite.png" id="2_4ntmi"]
 [ext_resource type="Script" uid="uid://cpucuvjjlp1f5" path="res://Player/player_animator.gd" id="2_btcbx"]
+[ext_resource type="Shader" uid="uid://b3wkh31q7my6y" path="res://Areas/test/CRTShader.gdshader" id="4_gwnis"]
+[ext_resource type="AudioStream" uid="uid://dn4j7j7sxglvo" path="res://Audio/SFX/door.wav" id="5_k53q1"]
+[ext_resource type="AudioStream" uid="uid://dvan1wbpxucrd" path="res://Audio/SFX/success_2.wav" id="6_fhl08"]
 
 [sub_resource type="Animation" id="Animation_btcbx"]
 length = 0.001
@@ -178,8 +181,21 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hej7p"]
 size = Vector2(22, 30)
 
-[node name="Player" type="CharacterBody2D" unique_id=1745909773]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hej7p"]
+shader = ExtResource("4_gwnis")
+shader_parameter/curvature = 0.1
+shader_parameter/corner_radius = 0.06
+shader_parameter/border_color = Color(0, 0, 0, 1)
+shader_parameter/scanlines = 0.35
+shader_parameter/scanline_size = 3.0
+shader_parameter/vignette = 0.35
+shader_parameter/brightness = 1.1
+shader_parameter/rgb_mask = false
+shader_parameter/mask_strength = 0.3
+
+[node name="Player" type="CharacterBody2D" unique_id=1745909773 node_paths=PackedStringArray("crt_filter")]
 script = ExtResource("1_l8h54")
+crt_filter = NodePath("CRTFilter")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1758303756]
 enabled = false
@@ -212,6 +228,24 @@ visible = false
 [node name="InteractArea" type="CollisionShape2D" parent="Area2D" unique_id=1777099817]
 position = Vector2(0, -15)
 shape = SubResource("RectangleShape2D_hej7p")
+
+[node name="CRTFilter" type="CanvasLayer" parent="." unique_id=1072040404]
+visible = false
+follow_viewport_enabled = true
+
+[node name="ColorRect" type="ColorRect" parent="CRTFilter" unique_id=874515025]
+material = SubResource("ShaderMaterial_hej7p")
+offset_left = -48664.0
+offset_top = -36449.0
+offset_right = 46116.0
+offset_bottom = 36126.0
+
+[node name="SFXDoor" type="AudioStreamPlayer" parent="." unique_id=1885242288]
+stream = ExtResource("5_k53q1")
+volume_db = -4.0
+
+[node name="SFXSuccess2" type="AudioStreamPlayer" parent="." unique_id=616030835]
+stream = ExtResource("6_fhl08")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
