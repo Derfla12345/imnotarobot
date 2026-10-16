@@ -4,6 +4,8 @@ extends Area2D
 @onready var captcha_test = preload("res://Captchas/CaptchaTest/captcha_test.tscn")
 @onready var computer_index = get_parent().get_computer_index()
 
+@onready var sfx_select = $"../SFXSelect"
+
 func get_computer_index():
 	return computer_index
 

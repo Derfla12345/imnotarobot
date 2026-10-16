@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://ce385k0b1qxe4" path="res://Entities/Computer1/computer_1.tscn" id="5_e5usc"]
 [ext_resource type="PackedScene" uid="uid://bn21dqcc0ogsi" path="res://Entities/Door/door.tscn" id="6_01mxt"]
 [ext_resource type="Texture2D" uid="uid://im24x086gn2k" path="res://Areas/Room3/DeadRoomLight.png" id="8_t85wl"]
+[ext_resource type="AudioStream" uid="uid://bu4uw3mfknqtr" path="res://Audio/Music/ambient hum.wav" id="9_t85wl"]
+[ext_resource type="AudioStream" uid="uid://brv6y66lh4s28" path="res://Audio/Music/room 1 song.wav" id="10_68mb3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hej7p"]
 size = Vector2(4979.5, 235)
@@ -202,3 +204,11 @@ shape = SubResource("RectangleShape2D_k6spg")
 [node name="Room3Mask" type="Sprite2D" parent="." unique_id=1227619967]
 position = Vector2(12000, 0)
 texture = ExtResource("8_t85wl")
+
+[node name="Ambience" type="AudioStreamPlayer" parent="." unique_id=414413267]
+stream = ExtResource("9_t85wl")
+volume_db = -8.0
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="." unique_id=194511139]
+stream = ExtResource("10_68mb3")
+volume_db = -8.0

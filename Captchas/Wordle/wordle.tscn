@@ -4,6 +4,27 @@
 [ext_resource type="Theme" uid="uid://c4iguay7y6p3k" path="res://Themes/theme.tres" id="2_xob5j"]
 [ext_resource type="FontFile" uid="uid://dc23kqbrwdghs" path="res://Themes/Imnotarobot-Regular.ttf" id="3_i6nbn"]
 [ext_resource type="Texture2D" uid="uid://bmhsxh4puncjb" path="res://Captchas/Wordle/verify.png" id="4_i6nbn"]
+[ext_resource type="AudioStream" uid="uid://brq1cstg742d8" path="res://Audio/SFX/select_1.wav" id="5_1iqlc"]
+[ext_resource type="AudioStream" uid="uid://dsu6qy84rtx1g" path="res://Audio/SFX/select_2.wav" id="6_c33lg"]
+[ext_resource type="AudioStream" uid="uid://bbqrcq1lfn05j" path="res://Audio/SFX/select_3.wav" id="7_2j2y6"]
+[ext_resource type="AudioStream" uid="uid://dtalhluv1eu07" path="res://Audio/SFX/click_1.wav" id="8_6wqgo"]
+[ext_resource type="AudioStream" uid="uid://ctxqbli2rlo7i" path="res://Audio/SFX/click_2.wav" id="9_0vme4"]
+[ext_resource type="AudioStream" uid="uid://41x8auvtdogt" path="res://Audio/SFX/click_3.wav" id="10_q43ui"]
+[ext_resource type="AudioStream" uid="uid://re5wxmur2na0" path="res://Audio/SFX/click_4.wav" id="11_xsi2q"]
+[ext_resource type="AudioStream" uid="uid://b2qs2myg42ic3" path="res://Audio/SFX/wrong.wav" id="13_q43ui"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_nqgjs"]
+streams_count = 3
+stream_0/stream = ExtResource("5_1iqlc")
+stream_1/stream = ExtResource("6_c33lg")
+stream_2/stream = ExtResource("7_2j2y6")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_kvvnn"]
+streams_count = 4
+stream_0/stream = ExtResource("8_6wqgo")
+stream_1/stream = ExtResource("9_0vme4")
+stream_2/stream = ExtResource("10_q43ui")
+stream_3/stream = ExtResource("11_xsi2q")
 
 [node name="Wordle" type="Control" unique_id=1868095422 node_paths=PackedStringArray("longer_notice", "grid_container")]
 layout_mode = 3
@@ -70,4 +91,15 @@ theme_override_font_sizes/normal_font_size = 28
 text = "It's longer."
 scroll_active = false
 
+[node name="SFXSelect" type="AudioStreamPlayer" parent="." unique_id=1476455783]
+stream = SubResource("AudioStreamRandomizer_nqgjs")
+
+[node name="SFXType" type="AudioStreamPlayer" parent="." unique_id=1407679331]
+stream = SubResource("AudioStreamRandomizer_kvvnn")
+
+[node name="SFXWrong" type="AudioStreamPlayer" parent="." unique_id=1184047264]
+stream = ExtResource("13_q43ui")
+volume_db = -6.0
+
+[connection signal="text_changed" from="InputField" to="." method="_on_input_field_text_changed"]
 [connection signal="pressed" from="SubmitButton" to="." method="_on_submit_button_pressed"]

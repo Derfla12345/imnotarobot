@@ -17,6 +17,8 @@ var computer_background_paths = [
 @onready var question = preload("res://Captchas/Question/question.tscn")
 @onready var popup = preload("res://Captchas/Popup/popup.tscn")
 
+@onready var sfx_success = $SFXSuccess
+@onready var sfx_select = $SFXSelect
 var player: CharacterBody2D
 var computer_off: bool = false
 var progress: int = 0
@@ -30,6 +32,8 @@ func _ready():
 	screen_camera.make_current()
 
 func _on_power_button_pressed() -> void:
+	sfx_select.play()
+	await get_tree().create_timer(0.1).timeout # waits just long enough for the select sfx to play
 	computer_off = true
 
 # will come back to this later since a check like this in _process isn't that necessary now
@@ -113,10 +117,12 @@ func advance_and_close_captcha():
 
 # not a robot (first thing to appear, progress[0] == 0)
 func start_not_a_robot():
+	sfx_success.play()
 	return screen.start_captcha(not_a_robot)
 
 # wordle (progress[0] == 1)
 func start_wordle(wordle_size: int):
+	sfx_success.play()
 	var new_wordle = screen.start_captcha(wordle)
 	new_wordle.set_wordle_size(wordle_size)
 	return new_wordle
@@ -127,6 +133,7 @@ func start_wordle(wordle_size: int):
 
 # scratchoff (progress[0] == 2)
 func start_scratchoff():
+	sfx_success.play()
 	var new_scratchoff = screen.start_captcha(scratchoff)
 	var scale_offset = Vector2(12, 12)
 	var position_offset = Vector2(-650, -1000)
@@ -137,6 +144,7 @@ func start_scratchoff():
 
 # show door 1's password
 func start_show_password():
+	sfx_success.play()
 	return screen.start_captcha(show_password)
 
 # ****************************************************************************************************

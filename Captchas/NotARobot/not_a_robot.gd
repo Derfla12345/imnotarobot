@@ -20,6 +20,8 @@ func close_self():
 
 # ****************************************************************************************************
 # specific captcha items
+@onready var sfx_select = $SFXSelect
 
 func _on_another_way_button_pressed() -> void:
+	sfx_select.play()
 	advance_and_close_self()

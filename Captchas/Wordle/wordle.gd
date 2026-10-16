@@ -21,6 +21,9 @@ func close_self():
 @onready var input_field: LineEdit = $InputField
 @onready var submit_button: TextureButton = $SubmitButton
 @onready var answer_template = preload("res://Captchas/Wordle/answer_template.tscn")
+@onready var sfx_select = $SFXSelect
+@onready var sfx_type = $SFXType
+@onready var sfx_wrong = $SFXWrong
 
 @export var longer_notice: RichTextLabel
 @export var grid_container: GridContainer
@@ -79,6 +82,7 @@ func verify() -> void:
 			new_letters.push_back(new_letter_display)
 			new_letter_display.set_texture(correct_array[i])
 			new_letter_display.set_label(submission[i])
+			sfx_wrong.play()
 		guesses.push_back(new_letters)
 		
 		# pop off top guess if there are too many guesses
@@ -100,5 +104,9 @@ func focus_input_box():
 	await get_tree().process_frame
 	input_field.call_deferred("grab_focus")
 
+func _on_input_field_text_changed(new_text: String) -> void:
+	sfx_type.play()
+
 func _on_submit_button_pressed() -> void:
+	sfx_select.play()
 	verify()

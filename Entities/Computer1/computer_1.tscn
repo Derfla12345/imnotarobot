@@ -3,6 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://bv2k0pjs4oag3" path="res://Entities/Computer1/mug.png" id="1_ghm7d"]
 [ext_resource type="Script" uid="uid://cmb0bxw4soq16" path="res://Entities/Computer1/computer_1.gd" id="1_tayps"]
 [ext_resource type="Script" uid="uid://ujonna2ap70q" path="res://Entities/Computer1/computer_1_interact_area.gd" id="3_yspmt"]
+[ext_resource type="AudioStream" uid="uid://brq1cstg742d8" path="res://Audio/SFX/select_1.wav" id="4_3d3q6"]
+[ext_resource type="AudioStream" uid="uid://dsu6qy84rtx1g" path="res://Audio/SFX/select_2.wav" id="5_sf0qa"]
+[ext_resource type="AudioStream" uid="uid://bbqrcq1lfn05j" path="res://Audio/SFX/select_3.wav" id="6_mtpve"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hej7p"]
 radius = 1.0
@@ -10,6 +13,12 @@ height = 2.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l7yy7"]
 size = Vector2(26, 35)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_utjfr"]
+streams_count = 3
+stream_0/stream = ExtResource("4_3d3q6")
+stream_1/stream = ExtResource("5_sf0qa")
+stream_2/stream = ExtResource("6_mtpve")
 
 [node name="Computer1" type="StaticBody2D" unique_id=1601914000]
 script = ExtResource("1_tayps")
@@ -40,6 +49,9 @@ offset_bottom = 255.0
 handle_input_locally = false
 size = Vector2i(730, 512)
 render_target_update_mode = 0
+
+[node name="SFXSelect" type="AudioStreamPlayer" parent="." unique_id=1822946898]
+stream = SubResource("AudioStreamRandomizer_utjfr")
 
 [connection signal="area_entered" from="InteractArea" to="." method="_on_interact_area_area_entered"]
 [connection signal="area_exited" from="InteractArea" to="." method="_on_interact_area_area_exited"]

@@ -1,8 +1,18 @@
 [gd_scene format=3 uid="uid://byd8qxgp1xq7c"]
 
 [ext_resource type="Script" uid="uid://clh8eda61kcm6" path="res://Captchas/CaptchaTest/captcha_test.gd" id="1_egp2w"]
+[ext_resource type="AudioStream" uid="uid://d105yo34otd0h" path="res://Audio/SFX/success.wav" id="4_8yl22"]
+[ext_resource type="AudioStream" uid="uid://brq1cstg742d8" path="res://Audio/SFX/select_1.wav" id="5_c7n8x"]
+[ext_resource type="AudioStream" uid="uid://dsu6qy84rtx1g" path="res://Audio/SFX/select_2.wav" id="6_5np8v"]
 [ext_resource type="PackedScene" uid="uid://d2rddds70nk1k" path="res://Entities/CRTView.tscn" id="6_c7n8x"]
+[ext_resource type="AudioStream" uid="uid://bbqrcq1lfn05j" path="res://Audio/SFX/select_3.wav" id="7_0et46"]
 [ext_resource type="Texture2D" uid="uid://ct4imhrw1j62c" path="res://Captchas/CaptchaTest/ComputerBackgrounds/Room1Computer.png" id="7_c7n8x"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ymod8"]
+streams_count = 3
+stream_0/stream = ExtResource("5_c7n8x")
+stream_1/stream = ExtResource("6_5np8v")
+stream_2/stream = ExtResource("7_0et46")
 
 [node name="CaptchaTest" type="Node2D" unique_id=633381006 node_paths=PackedStringArray("screen", "screen_camera", "computer_background")]
 script = ExtResource("1_egp2w")
@@ -65,5 +75,12 @@ metadata/_edit_lock_ = true
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1193661774]
 zoom = Vector2(0.243, 0.243)
+
+[node name="SFXSuccess" type="AudioStreamPlayer" parent="." unique_id=1524693240]
+stream = ExtResource("4_8yl22")
+volume_db = -12.0
+
+[node name="SFXSelect" type="AudioStreamPlayer" parent="." unique_id=508223817]
+stream = SubResource("AudioStreamRandomizer_ymod8")
 
 [connection signal="pressed" from="PCButtons/PowerButton" to="." method="_on_power_button_pressed"]
