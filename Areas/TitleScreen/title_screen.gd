@@ -9,6 +9,7 @@ func _on_play_pressed() -> void:
 
 func _on_credits_pressed() -> void:
 	sfx_select.play()
+	get_tree().change_scene_to_file("res://Areas/Credits/credits.tscn")
 
 func _on_quit_pressed() -> void:
 	sfx_select.play()

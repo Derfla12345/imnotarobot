@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://c7fm3hn5bwcd8"]
+
+[ext_resource type="SpriteFrames" uid="uid://bm73itobvpktc" path="res://Areas/Credits/credits.tres" id="1_o1v1o"]
+[ext_resource type="Script" uid="uid://qawtuvjdyu52" path="res://Areas/Credits/credits.gd" id="1_rnhb5"]
+
+[node name="Credits" type="Node2D" unique_id=670326795]
+script = ExtResource("1_rnhb5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=682667449]
+sprite_frames = ExtResource("1_o1v1o")
+autoplay = "default"
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1432555366]
+offset = Vector2(-4, -5)
+zoom = Vector2(0.243, 0.243)
+
+[node name="TextureButton" type="TextureButton" parent="." unique_id=394861376]
+offset_left = -2550.0
+offset_top = -1998.0
+offset_right = 2590.0
+offset_bottom = 1957.0
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

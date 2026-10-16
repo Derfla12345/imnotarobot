@@ -1,0 +1,133 @@
+[gd_scene format=3 uid="uid://p7kye1g11hyc"]
+
+[ext_resource type="Script" uid="uid://b8jajgwrnqobn" path="res://Captchas/BoringCaptcha/boring_captcha.gd" id="1_071x0"]
+[ext_resource type="Theme" uid="uid://c4iguay7y6p3k" path="res://Themes/theme.tres" id="2_sgxli"]
+[ext_resource type="FontFile" uid="uid://dc23kqbrwdghs" path="res://Themes/Imnotarobot-Regular.ttf" id="3_ep03v"]
+[ext_resource type="Texture2D" uid="uid://bmhsxh4puncjb" path="res://Captchas/Wordle/verify.png" id="4_hxwx0"]
+[ext_resource type="Texture2D" uid="uid://cd57f5wei3hoa" path="res://Captchas/Wordle/wordle5.png" id="5_02y58"]
+[ext_resource type="AudioStream" uid="uid://brq1cstg742d8" path="res://Audio/SFX/select_1.wav" id="6_372n0"]
+[ext_resource type="AudioStream" uid="uid://dsu6qy84rtx1g" path="res://Audio/SFX/select_2.wav" id="7_wjlxo"]
+[ext_resource type="AudioStream" uid="uid://bbqrcq1lfn05j" path="res://Audio/SFX/select_3.wav" id="8_w17gr"]
+[ext_resource type="AudioStream" uid="uid://dtalhluv1eu07" path="res://Audio/SFX/click_1.wav" id="9_32oia"]
+[ext_resource type="AudioStream" uid="uid://ctxqbli2rlo7i" path="res://Audio/SFX/click_2.wav" id="10_uwor3"]
+[ext_resource type="AudioStream" uid="uid://41x8auvtdogt" path="res://Audio/SFX/click_3.wav" id="11_1lswb"]
+[ext_resource type="AudioStream" uid="uid://re5wxmur2na0" path="res://Audio/SFX/click_4.wav" id="12_xl3ik"]
+[ext_resource type="AudioStream" uid="uid://b2qs2myg42ic3" path="res://Audio/SFX/wrong.wav" id="13_2nfsa"]
+[ext_resource type="AudioStream" uid="uid://b6l6m5oerwl7s" path="res://Audio/SFX/type_randomizer.tres" id="14_t5ths"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_nqgjs"]
+streams_count = 3
+stream_0/stream = ExtResource("6_372n0")
+stream_1/stream = ExtResource("7_wjlxo")
+stream_2/stream = ExtResource("8_w17gr")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_kvvnn"]
+streams_count = 4
+stream_0/stream = ExtResource("9_32oia")
+stream_1/stream = ExtResource("10_uwor3")
+stream_2/stream = ExtResource("11_1lswb")
+stream_3/stream = ExtResource("12_xl3ik")
+
+[node name="BoringCaptcha" type="Control" unique_id=1868095422 node_paths=PackedStringArray("display_image")]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -1570.0
+offset_top = -1024.355
+offset_right = -1305.2667
+offset_bottom = -865.68835
+scale = Vector2(10, 10)
+script = ExtResource("1_071x0")
+display_image = NodePath("DisplayImage")
+
+[node name="InputField" type="LineEdit" parent="." unique_id=444678206]
+oversampling_with_scale = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.48100004
+anchor_top = 0.66800004
+anchor_right = 0.48100004
+anchor_bottom = 0.66800004
+offset_left = -56.73671
+offset_top = -15.468002
+offset_right = 58.863266
+offset_bottom = 5.5319977
+theme = ExtResource("2_sgxli")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_ep03v")
+alignment = 1
+max_length = 12
+
+[node name="GridContainer" type="GridContainer" parent="InputField" unique_id=293090344]
+layout_mode = 0
+offset_left = 41.199993
+offset_top = 22.978693
+offset_right = 164.13333
+offset_bottom = 76.84536
+scale = Vector2(0.8, 0.8)
+columns = 5
+
+[node name="SubmitButton" type="TextureButton" parent="." unique_id=592457743]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.87200004
+anchor_top = 0.683
+anchor_right = 0.87200004
+anchor_bottom = 0.683
+offset_left = -43.04744
+offset_top = -17.76931
+offset_right = 13.952545
+offset_bottom = 3.23069
+texture_normal = ExtResource("4_hxwx0")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="DisplayImage" type="TextureRect" parent="." unique_id=993047057]
+layout_mode = 0
+offset_left = 69.8
+offset_top = 20.400005
+offset_right = 246.82353
+offset_bottom = 86.533325
+mouse_filter = 2
+texture = ExtResource("5_02y58")
+expand_mode = 1
+
+[node name="LongerNotice" type="RichTextLabel" parent="." unique_id=722915905]
+visible = false
+oversampling_with_scale = 2
+layout_mode = 0
+offset_left = 83.74743
+offset_top = 32.5
+offset_right = 233.90555
+offset_bottom = 73.399994
+theme = ExtResource("2_sgxli")
+theme_override_colors/default_color = Color(1, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("3_ep03v")
+theme_override_font_sizes/normal_font_size = 50
+text = "It's longer."
+scroll_active = false
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=757348777]
+oversampling_with_scale = 2
+layout_mode = 0
+offset_left = 61.50001
+offset_top = 2.7999997
+offset_right = 261.56665
+offset_bottom = 17.93333
+theme = ExtResource("2_sgxli")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "Type the letters that appear in this image:"
+
+[node name="SFXSelect" type="AudioStreamPlayer" parent="." unique_id=1476455783]
+stream = SubResource("AudioStreamRandomizer_nqgjs")
+
+[node name="SFXType" type="AudioStreamPlayer" parent="." unique_id=1407679331]
+stream = SubResource("AudioStreamRandomizer_kvvnn")
+
+[node name="SFXWrong" type="AudioStreamPlayer" parent="." unique_id=1184047264]
+stream = ExtResource("13_2nfsa")
+
+[node name="TypeRandomizer" type="AudioStreamPlayer" parent="." unique_id=2080045363]
+stream = ExtResource("14_t5ths")
+
+[connection signal="text_changed" from="InputField" to="." method="_on_input_field_text_changed"]
+[connection signal="pressed" from="SubmitButton" to="." method="_on_submit_button_pressed"]

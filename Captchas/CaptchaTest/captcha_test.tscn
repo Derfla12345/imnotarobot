@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://ct4imhrw1j62c" path="res://Captchas/CaptchaTest/ComputerBackgrounds/Room1Computer.png" id="7_c7n8x"]
 [ext_resource type="Shader" uid="uid://b3wkh31q7my6y" path="res://Areas/test/CRTShader.gdshader" id="8_5np8v"]
 [ext_resource type="AudioStream" uid="uid://dvan1wbpxucrd" path="res://Audio/SFX/success_2.wav" id="9_0et46"]
+[ext_resource type="AudioStream" uid="uid://nymuatulkmin" path="res://Audio/SFX/cowbell_crushed.mp3" id="12_kwkpt"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hej7p"]
 shader = ExtResource("8_5np8v")
@@ -138,5 +139,8 @@ stream = SubResource("AudioStreamRandomizer_ymod8")
 [node name="SFXSuccess2" type="AudioStreamPlayer" parent="." unique_id=1575702163]
 stream = ExtResource("9_0et46")
 volume_db = -5.0
+
+[node name="SFXNotification" type="AudioStreamPlayer" parent="." unique_id=334767019]
+stream = ExtResource("12_kwkpt")
 
 [connection signal="pressed" from="PCButtons/PowerButton" to="." method="_on_power_button_pressed"]

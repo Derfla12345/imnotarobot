@@ -5,6 +5,7 @@
 [ext_resource type="FontFile" uid="uid://dc23kqbrwdghs" path="res://Themes/Imnotarobot-Regular.ttf" id="2_mvbsq"]
 [ext_resource type="Script" uid="uid://dmtmjrpurqdla" path="res://Dialogue/dialogue_voice_player.gd" id="4_4cyrh"]
 [ext_resource type="Texture2D" uid="uid://r8arwxxyy8ty" path="res://Dialogue/placeholderbackground.png" id="4_sqmlx"]
+[ext_resource type="AudioStream" uid="uid://cvj8ra5ckcweb" path="res://Audio/SFX/click_small.mp3" id="5_gioa1"]
 
 [node name="Dialogue" type="Control" unique_id=1121406000]
 layout_mode = 3
@@ -36,6 +37,7 @@ wait_time = 0.04
 [node name="PauseTimer" type="Timer" parent="." unique_id=2130949028]
 
 [node name="DialogueVoicePlayer" type="AudioStreamPlayer" parent="." unique_id=865135017]
+stream = ExtResource("5_gioa1")
 script = ExtResource("4_4cyrh")
 
 [connection signal="timeout" from="TypeTimer" to="." method="_on_type_timer_timeout"]

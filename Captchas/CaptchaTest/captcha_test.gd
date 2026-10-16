@@ -42,10 +42,12 @@ var popup_image_paths = [
 @onready var select_all_squares = preload("res://Captchas/SelectAllSquares/select_all_squares.tscn")
 @onready var not_a_robot_glitch = preload("res://Captchas/NotARobotGlitch/not_a_robot_glitch.tscn")
 @onready var not_a_robot_final = preload("res://Captchas/NotARobotFinal/not_a_robot_final.tscn")
+@onready var boring_captcha = preload("res://Captchas/BoringCaptcha/boring_captcha.tscn")
 
 @onready var sfx_success = $SFXSuccess
 @onready var sfx_select = $SFXSelect
 @onready var sfx_metagame_success = $SFXSuccess2
+@onready var sfx_notification = $SFXNotification
 
 var player: CharacterBody2D
 var computer_off: bool = false
@@ -55,6 +57,7 @@ var current_captcha: Control
 var previous_captcha: Control
 var offset = Vector2(0, 0)
 var metagame: bool = false
+var notification: bool = false
 
 var checkbox_scale_offset = Vector2(10, 10)
 var checkbox_position_offset = Vector2(-550, -600)
@@ -130,13 +133,14 @@ func set_progress_state():
 				7:
 					current_captcha = start_scratchoff([[0, 0], [0, 3], [1, 3], [2, 0], [2, 2], [2, 3], [3, 0], [3, 2]], checkbox_image_paths[4], "a small object or gadget that can fit in your pocket")
 				8:
-					current_captcha = start_show_password("door unlocked")
+					current_captcha = start_show_password("do... u...ocked")
 					player.find_door(1).set_locked(false)
 				9:
 					current_captcha = start_not_a_robot_glitch()
 				10:
 					current_captcha = start_not_a_robot_final()
 					player.find_door(1).set_locked(false)
+					player.play_end_door_open()
 				_:
 					print("error: progress[", computer_index, "] does not match available values")
 		1:
@@ -186,6 +190,32 @@ func set_progress_state():
 				0:
 					current_captcha = start_popup_image(popup_image_paths[0])
 				1:
+					current_captcha = start_popup_text("finally... here")
+				2:
+					current_captcha = start_boring_captcha(0)
+				3:
+					current_captcha = start_popup_text("capt.... human... test")
+				4:
+					current_captcha = start_popup_text("i ...iled... but you can...")
+				5:
+					current_captcha = start_popup_image(popup_image_paths[4])
+				6:
+					current_captcha = start_boring_captcha(1)
+				7:
+					current_captcha = start_boring_captcha(2)
+				8:
+					current_captcha = start_popup_text("see.... it....")
+				9:
+					current_captcha = start_boring_captcha(3)
+				10:
+					current_captcha = start_popup_text("now... complete the test...")
+				11:
+					current_captcha = start_popup_text("g....bye...")
+				12:
+					current_captcha = start_popup_image(popup_image_paths[5])
+				13:
+					current_captcha = start_popup_image(popup_image_paths[0])
+				14:
 					start_endgame()
 				_:
 					print("error: progress[", computer_index, "] does not match available values")
@@ -199,7 +229,10 @@ func advance_and_close_captcha():
 	player.increment_progress(computer_index)
 	set_progress(player.get_progress(computer_index))
 	set_progress_state()
-	if (metagame):
+	if (notification):
+		sfx_notification.play()
+		notification = false
+	elif (metagame):
 		sfx_metagame_success.play()
 	else:
 		sfx_success.play()
@@ -255,12 +288,14 @@ func start_question(question_text: String, answer_value: String):
 
 # popup text
 func start_popup_text(message: String):
+	notification = true
 	var new_popup = screen.start_captcha(popup_text)
 	new_popup.set_message(message)
 	return new_popup
 
 # popup image
 func start_popup_image(image: Texture2D):
+	notification = true
 	var new_popup = screen.start_captcha(popup_image)
 	new_popup.set_image(image)
 	return new_popup
@@ -301,6 +336,12 @@ func start_not_a_robot_glitch():
 func start_not_a_robot_final():
 	return screen.start_captcha(not_a_robot_final)
 
+# boring captcha
+func start_boring_captcha(index: int):
+	var new_boring_captcha = screen.start_captcha(boring_captcha)
+	new_boring_captcha.set_answer(index)
+	return new_boring_captcha
+
 # set up game to end
 func start_endgame():
 	# set up player for endgame
@@ -323,5 +364,8 @@ func start_endgame():
 	
 	# remove door 3
 	player.find_door(3).set_position(Vector2(8119, 5076))
+	
+	# stop music
+	player.room_3_music.stop()
 	
 	computer_off = true

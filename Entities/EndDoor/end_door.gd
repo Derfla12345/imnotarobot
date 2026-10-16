@@ -24,7 +24,7 @@ func _process(delta: float) -> void:
 
 func interact(player: CharacterBody2D):
 	if (open):
-		print("end game") # change scene to credits
+		get_tree().change_scene_to_file("res://Areas/Credits/credits.tscn")
 	else:
 		if (not dialogue_cooldown_active):
 			player.start_dialogue()
