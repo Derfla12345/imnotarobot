@@ -4,6 +4,7 @@ extends CharacterBody2D
 @onready var area_camera = get_area_camera()
 @onready var room_1_and_2_music = $"../Room1And2Music"
 @onready var room_3_music = $"../Room3Music"
+@onready var sfx_door = $SFXDoor
 
 
 @export var progress = [0, 0]
@@ -64,8 +65,9 @@ func end_dialogue():
 func enter_door(door: Area2D):
 	position = door.get_exit_location()
 	area_camera.position = door.get_camera_location()
+	sfx_door.play()
 	
-	if door.name == "Door3":
+	if door.name == "Door4":
 		if room_1_and_2_music.playing:
 			room_1_and_2_music.stop()
 			room_3_music.play()

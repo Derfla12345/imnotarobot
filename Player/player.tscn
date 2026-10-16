@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://gfia3c7d5t6w" path="res://Player/Robot sprite.png" id="2_4ntmi"]
 [ext_resource type="Script" uid="uid://cpucuvjjlp1f5" path="res://Player/player_animator.gd" id="2_btcbx"]
 [ext_resource type="Shader" uid="uid://b3wkh31q7my6y" path="res://Areas/test/CRTShader.gdshader" id="4_gwnis"]
+[ext_resource type="AudioStream" uid="uid://dn4j7j7sxglvo" path="res://Audio/SFX/door.wav" id="5_k53q1"]
 
 [sub_resource type="Animation" id="Animation_btcbx"]
 length = 0.001
@@ -237,6 +238,10 @@ offset_left = -48664.0
 offset_top = -36449.0
 offset_right = 46116.0
 offset_bottom = 36126.0
+
+[node name="SFXDoor" type="AudioStreamPlayer" parent="." unique_id=1885242288]
+stream = ExtResource("5_k53q1")
+volume_db = -4.0
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

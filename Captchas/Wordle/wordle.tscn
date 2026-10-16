@@ -5,6 +5,7 @@
 [ext_resource type="FontFile" uid="uid://dc23kqbrwdghs" path="res://Themes/Imnotarobot-Regular.ttf" id="3_i6nbn"]
 [ext_resource type="Texture2D" uid="uid://bmhsxh4puncjb" path="res://Captchas/Wordle/verify.png" id="4_i6nbn"]
 [ext_resource type="AudioStream" uid="uid://brq1cstg742d8" path="res://Audio/SFX/select_1.wav" id="5_1iqlc"]
+[ext_resource type="Texture2D" uid="uid://cd57f5wei3hoa" path="res://Captchas/Wordle/wordle5.png" id="5_q43ui"]
 [ext_resource type="AudioStream" uid="uid://dsu6qy84rtx1g" path="res://Audio/SFX/select_2.wav" id="6_c33lg"]
 [ext_resource type="AudioStream" uid="uid://bbqrcq1lfn05j" path="res://Audio/SFX/select_3.wav" id="7_2j2y6"]
 [ext_resource type="AudioStream" uid="uid://dtalhluv1eu07" path="res://Audio/SFX/click_1.wav" id="8_6wqgo"]
@@ -90,6 +91,12 @@ theme_override_fonts/normal_font = ExtResource("3_i6nbn")
 theme_override_font_sizes/normal_font_size = 28
 text = "It's longer."
 scroll_active = false
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=993047057]
+layout_mode = 0
+offset_right = 1200.0
+offset_bottom = 900.0
+texture = ExtResource("5_q43ui")
 
 [node name="SFXSelect" type="AudioStreamPlayer" parent="." unique_id=1476455783]
 stream = SubResource("AudioStreamRandomizer_nqgjs")

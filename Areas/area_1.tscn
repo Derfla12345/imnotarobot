@@ -219,4 +219,4 @@ autoplay = true
 
 [node name="Room3Music" type="AudioStreamPlayer" parent="." unique_id=292300062]
 stream = ExtResource("11_e5tbo")
-volume_db = -12.0
+volume_db = -8.0
