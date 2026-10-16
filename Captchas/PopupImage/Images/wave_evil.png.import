@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://s2w7c1qhb0b0"
-path="res://.godot/imported/emoji popup.png-6fdbb8affe047801df1111780fff4532.ctex"
+uid="uid://bvgdpb8ngmcbw"
+path="res://.godot/imported/wave_evil.png-b802a39b8a62e32d07b3a71175d02522.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Captchas/Popup/emoji popup.png"
-dest_files=["res://.godot/imported/emoji popup.png-6fdbb8affe047801df1111780fff4532.ctex"]
+source_file="res://Captchas/PopupImage/Images/wave_evil.png"
+dest_files=["res://.godot/imported/wave_evil.png-b802a39b8a62e32d07b3a71175d02522.ctex"]
 
 [params]
 

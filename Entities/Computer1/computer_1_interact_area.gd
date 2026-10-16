@@ -37,10 +37,10 @@ func interact(player: CharacterBody2D):
 			captcha_test_instance.set_metagame(true)
 			player.set_metagame_crt(false)
 
-# checks whether you're trying to access computer 2 during the metagame
+# checks whether you're trying to access computer 2 during the metagame or in the endgame room 2
 func is_metagame_computer_2(player: CharacterBody2D) -> bool:
 	var answer: bool = false
-	if (computer_index == 1 and player.get_metagame_crt()):
+	if (computer_index == 1 and (player.get_metagame_crt() or player.get_endgame())):
 		answer = true
 	
 	return answer
@@ -51,7 +51,10 @@ func start_metagame_computer_dialogue(player: CharacterBody2D):
 		
 		var new_dialogue_box = dialogue_box.instantiate()
 		get_tree().root.add_child(new_dialogue_box)
-		new_dialogue_box.set_position(new_dialogue_box.get_position() + player.find_door(2).get_camera_location())
+		if (computer_index == 1):
+			new_dialogue_box.set_position(new_dialogue_box.get_position() + player.find_door(2).get_camera_location())
+		if (computer_index == 4):
+			new_dialogue_box.set_position(new_dialogue_box.get_position() + player.find_door(5).get_camera_location())
 		dialogue = true
 		current_dialogue_tree = 0
 		new_dialogue_box.update_message(dialogue_trees[0][0])

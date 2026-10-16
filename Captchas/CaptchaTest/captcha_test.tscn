@@ -1,10 +1,12 @@
 [gd_scene format=3 uid="uid://byd8qxgp1xq7c"]
 
 [ext_resource type="Script" uid="uid://clh8eda61kcm6" path="res://Captchas/CaptchaTest/captcha_test.gd" id="1_egp2w"]
+[ext_resource type="Texture2D" uid="uid://bb0hu772nm75e" path="res://Captchas/CaptchaTest/ComputerBackgrounds/wallpaperroom1.png" id="3_j2ng6"]
 [ext_resource type="AudioStream" uid="uid://d105yo34otd0h" path="res://Audio/SFX/success.wav" id="4_8yl22"]
+[ext_resource type="Script" uid="uid://r47otsvt26h" path="res://Entities/crt_view.gd" id="4_kwkpt"]
+[ext_resource type="Texture2D" uid="uid://dk005cx7p3nue" path="res://Captchas/CaptchaTest/Window.png" id="5_5rkfn"]
 [ext_resource type="AudioStream" uid="uid://brq1cstg742d8" path="res://Audio/SFX/select_1.wav" id="5_c7n8x"]
 [ext_resource type="AudioStream" uid="uid://dsu6qy84rtx1g" path="res://Audio/SFX/select_2.wav" id="6_5np8v"]
-[ext_resource type="PackedScene" uid="uid://d2rddds70nk1k" path="res://Entities/CRTView.tscn" id="6_c7n8x"]
 [ext_resource type="AudioStream" uid="uid://bbqrcq1lfn05j" path="res://Audio/SFX/select_3.wav" id="7_0et46"]
 [ext_resource type="Texture2D" uid="uid://ct4imhrw1j62c" path="res://Captchas/CaptchaTest/ComputerBackgrounds/Room1Computer.png" id="7_c7n8x"]
 [ext_resource type="Shader" uid="uid://b3wkh31q7my6y" path="res://Areas/test/CRTShader.gdshader" id="8_5np8v"]
@@ -28,11 +30,12 @@ stream_0/stream = ExtResource("5_c7n8x")
 stream_1/stream = ExtResource("6_5np8v")
 stream_2/stream = ExtResource("7_0et46")
 
-[node name="CaptchaTest" type="Node2D" unique_id=633381006 node_paths=PackedStringArray("screen", "screen_camera", "computer_background", "fullscreen_crt")]
+[node name="CaptchaTest" type="Node2D" unique_id=633381006 node_paths=PackedStringArray("screen", "screen_camera", "computer_background", "computer_wallpaper", "fullscreen_crt")]
 script = ExtResource("1_egp2w")
 screen = NodePath("SubViewportContainer/SubViewport/CRTView")
 screen_camera = NodePath("Camera2D")
-computer_background = NodePath("SubViewportContainer/SubViewport/TextureRect")
+computer_background = NodePath("SubViewportContainer/SubViewport/ComputerFrame")
+computer_wallpaper = NodePath("SubViewportContainer/SubViewport/Wallpaper")
 fullscreen_crt = NodePath("SubViewportContainer/SubViewport/FullscreenCRT")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=1779481055]
@@ -58,13 +61,36 @@ offset_top = -106.0
 offset_right = 5013.0
 offset_bottom = 3825.0
 
-[node name="CRTView" parent="SubViewportContainer/SubViewport" unique_id=967023853 instance=ExtResource("6_c7n8x")]
+[node name="Wallpaper" type="TextureRect" parent="SubViewportContainer/SubViewport" unique_id=1147747306]
+offset_right = 4955.0
+offset_bottom = 3716.0
+texture = ExtResource("3_j2ng6")
+
+[node name="CRTView" type="Control" parent="SubViewportContainer/SubViewport" unique_id=991901657]
+layout_mode = 3
+anchors_preset = 0
 offset_left = 805.0
 offset_top = 396.0
 offset_right = 4151.0
 offset_bottom = 2784.0
+script = ExtResource("4_kwkpt")
 
-[node name="TextureRect" type="TextureRect" parent="SubViewportContainer/SubViewport" unique_id=1087464566]
+[node name="TextureRect" type="TextureRect" parent="SubViewportContainer/SubViewport/CRTView" unique_id=1020060372]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.499
+anchor_right = 0.50100005
+anchor_bottom = 0.499
+offset_left = -1163.0
+offset_top = -991.61206
+offset_right = 1417.5132
+offset_bottom = 1179.4993
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("5_5rkfn")
+expand_mode = 1
+
+[node name="ComputerFrame" type="TextureRect" parent="SubViewportContainer/SubViewport" unique_id=1087464566]
 offset_right = 4955.0
 offset_bottom = 3716.0
 texture = ExtResource("7_c7n8x")

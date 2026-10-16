@@ -19,6 +19,7 @@ extends Area2D
 @onready var input_field = preload("res://Dialogue/PasswordField.tscn")
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var sfx_wrong = $Wrong
+@onready var sfx_success = $Success
 
 var locked_sequence_occurring: bool = false
 var current_dialogue_box: Control
@@ -36,7 +37,7 @@ func _process(delta: float) -> void:
 	if(current_dialogue_box and current_dialogue_box.finished):
 		if (Input.is_action_just_pressed("interact")):
 			current_dialogue_box.close()
-			if metagame:
+			if metagame or current_player.get_endgame():
 				cooldown = true
 				current_player.set_activity_lock(false)
 				cooldown_timer.start()
@@ -81,8 +82,9 @@ func start_locked_sequence(player: CharacterBody2D):
 	var new_dialogue_box = dialogue_box.instantiate()
 	get_tree().root.add_child(new_dialogue_box)
 	new_dialogue_box.set_position(new_dialogue_box.get_position() + camera_location)
-	if(player.get_metagame_crt()):
-		metagame = true
+	if(player.get_metagame_crt() or player.get_endgame()):
+		if(player.get_metagame_crt()):
+			metagame = true
 		new_dialogue_box.update_message("The door seems to be locked electronically.")
 	else:
 		new_dialogue_box.update_message("The door seems to have some sort of password lock.")
@@ -126,3 +128,9 @@ func _on_cooldown_timeout() -> void:
 
 func play_wrong():
 	sfx_wrong.play()
+
+func play_success():
+	sfx_success.play()
+
+func set_door_send_id(new_id: int):
+	door_send_id = new_id

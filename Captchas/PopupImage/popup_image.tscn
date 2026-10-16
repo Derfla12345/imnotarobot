@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://dx2k0auyordek"]
 
-[ext_resource type="Script" uid="uid://3sjrj76jfbov" path="res://Captchas/PopupImage/popup_text.gd" id="1_ryro1"]
+[ext_resource type="Script" uid="uid://3sjrj76jfbov" path="res://Captchas/PopupImage/popup_image.gd" id="1_ryro1"]
 [ext_resource type="Texture2D" uid="uid://buh2p2wpetc3w" path="res://Captchas/PopupImage/short_window.png" id="2_lygmx"]
 [ext_resource type="Theme" uid="uid://c4iguay7y6p3k" path="res://Themes/theme.tres" id="3_6d5ku"]
-[ext_resource type="FontFile" uid="uid://dc23kqbrwdghs" path="res://Themes/Imnotarobot-Regular.ttf" id="4_j7iay"]
+[ext_resource type="Texture2D" uid="uid://cpy44xw1it12f" path="res://Captchas/PopupImage/Images/do_u_hate_me.png" id="4_0bd5d"]
 [ext_resource type="Texture2D" uid="uid://c2op7o5qay2xa" path="res://Captchas/PopupImage/button.png" id="5_rwgjw"]
 
-[node name="Popup" type="Control" unique_id=2053245347 node_paths=PackedStringArray("text_label")]
+[node name="Popup" type="Control" unique_id=2053245347 node_paths=PackedStringArray("image")]
 layout_mode = 3
 anchor_right = 2.707
 anchor_bottom = 2.0540001
@@ -18,7 +18,7 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.595, 0.595)
 script = ExtResource("1_ryro1")
-text_label = NodePath("RichTextLabel")
+image = NodePath("Image")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=745638540]
 layout_mode = 0
@@ -27,17 +27,14 @@ offset_bottom = 1849.0
 texture = ExtResource("2_lygmx")
 metadata/_edit_lock_ = true
 
-[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=187939000]
+[node name="Image" type="TextureRect" parent="." unique_id=449068703]
 layout_mode = 0
 offset_left = 202.0
 offset_top = 294.7049
 offset_right = 3002.0
 offset_bottom = 1387.2183
 theme = ExtResource("3_6d5ku")
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("4_j7iay")
-theme_override_font_sizes/normal_font_size = 384
-text = "put a mask on my face now i look like an emoji"
+texture = ExtResource("4_0bd5d")
 
 [node name="OKButton" type="TextureButton" parent="." unique_id=1472861518]
 layout_mode = 1

@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dai15hd38qpv2"]
+
+[ext_resource type="Script" uid="uid://bbjcrklga4iam" path="res://Entities/EndDoor/end_door.gd" id="1_1qyre"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hej7p"]
+size = Vector2(780.5, 204)
+
+[node name="EndDoor" type="Area2D" unique_id=319251808 node_paths=PackedStringArray("dialogue_cooldown")]
+script = ExtResource("1_1qyre")
+dialogue_cooldown = NodePath("DialogueCooldown")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1749373749]
+position = Vector2(-2, 0)
+shape = SubResource("RectangleShape2D_hej7p")
+
+[node name="DialogueCooldown" type="Timer" parent="." unique_id=59210291]
+wait_time = 0.25
+
+[connection signal="timeout" from="DialogueCooldown" to="." method="_on_dialogue_cooldown_timeout"]

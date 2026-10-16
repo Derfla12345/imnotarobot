@@ -31,6 +31,8 @@ stream_1/stream = ExtResource("10_xhyr5")
 [node name="NotARobot" type="Control" unique_id=70791129]
 layout_mode = 3
 anchors_preset = 0
+offset_top = -230.0
+offset_bottom = -230.0
 scale = Vector2(5, 5)
 script = ExtResource("1_8ei3k")
 

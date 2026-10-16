@@ -1,0 +1,22 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://cij1e2ya72l2a"]
+
+[ext_resource type="Texture2D" uid="uid://d4g8cl1oouvob" path="res://Captchas/NotARobotGlitch/Finalnotarobot1.png" id="1_uhacs"]
+[ext_resource type="Texture2D" uid="uid://whdbh47axws" path="res://Captchas/NotARobotGlitch/Finalnotarobot2.png" id="2_q83c7"]
+[ext_resource type="Texture2D" uid="uid://jlx1itr8hi1q" path="res://Captchas/NotARobotGlitch/Finalnotarobot3.png" id="3_yxycg"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_uhacs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_q83c7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_yxycg")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 2.0
+}]

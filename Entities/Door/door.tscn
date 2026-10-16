@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cmvuvdbeyk4g8" path="res://Entities/Door/door.gd" id="1_iwerq"]
 [ext_resource type="Texture2D" uid="uid://bqnkmkj25g30n" path="res://Entities/Door/door.png" id="1_n6865"]
 [ext_resource type="AudioStream" uid="uid://b2qs2myg42ic3" path="res://Audio/SFX/wrong.wav" id="3_mjeyv"]
+[ext_resource type="AudioStream" uid="uid://d105yo34otd0h" path="res://Audio/SFX/success.wav" id="4_qhasd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iwerq"]
 
@@ -25,5 +26,9 @@ wait_time = 0.25
 
 [node name="Wrong" type="AudioStreamPlayer" parent="." unique_id=589642161]
 stream = ExtResource("3_mjeyv")
+
+[node name="Success" type="AudioStreamPlayer" parent="." unique_id=172332281]
+stream = ExtResource("4_qhasd")
+volume_db = -7.0
 
 [connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]

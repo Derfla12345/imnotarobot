@@ -11,6 +11,8 @@ func set_screen(new_screen: Node2D):
 func advance_and_close_self():
 	if (screen and screen.has_method("advance_and_close_captcha")):
 		screen.advance_and_close_captcha()
+	else:
+		print("error in not_a_robot, screen not found")
 	close_self()
 
 func close_self():
@@ -18,10 +20,11 @@ func close_self():
 
 # ****************************************************************************************************
 # specific captcha items
-@export var text_label: RichTextLabel
+@onready var sfx_select = $SFXSelect
+@onready var sfx_wrong = $SFXWrong
 
-func _on_ok_button_pressed() -> void:
+func _on_another_way_button_pressed() -> void:
+	sfx_wrong.play()
+
+func _on_not_a_robot_checkbox_pressed() -> void:
 	advance_and_close_self()
-
-func set_message(new_message: String):
-	text_label.set_text(new_message) # this might end up being emoji so it might be a grid of images

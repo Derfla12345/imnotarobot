@@ -9,6 +9,7 @@ extends CharacterBody2D
 
 @export var progress = [0, 0, 0]
 @export var crt_filter: CanvasLayer
+@export var room2: Sprite2D
 
 var interactable_object = false
 var activity_lock: bool = false
@@ -16,6 +17,7 @@ var speed: int = 3000 # 1250
 var in_dialogue = false
 var direction
 var metagame_crt: bool = false
+var endgame: bool = false
 
 func _physics_process(delta: float) -> void:
 	if (not activity_lock):
@@ -116,3 +118,9 @@ func find_door(target_id: int):
 
 func play_metagame_success():
 	sfx_metagame_success.play()
+
+func get_endgame():
+	return endgame
+
+func set_endgame(status: bool):
+	endgame = status

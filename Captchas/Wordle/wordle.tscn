@@ -32,9 +32,9 @@ stream_3/stream = ExtResource("11_xsi2q")
 layout_mode = 3
 anchors_preset = 0
 offset_left = -1570.0
-offset_top = -1168.0
+offset_top = -1024.355
 offset_right = -1305.2667
-offset_bottom = -1009.3334
+offset_bottom = -865.68835
 scale = Vector2(10, 10)
 script = ExtResource("1_d0gua")
 longer_notice = NodePath("LongerNotice")
@@ -127,7 +127,7 @@ stream = SubResource("AudioStreamRandomizer_kvvnn")
 [node name="SFXWrong" type="AudioStreamPlayer" parent="." unique_id=1184047264]
 stream = ExtResource("13_q43ui")
 
-[node name="TypeRandomizer" type="AudioStreamPlayer" parent="." unique_id=1255603437]
+[node name="TypeRandomizer" type="AudioStreamPlayer" parent="." unique_id=2080045363]
 stream = ExtResource("14_xsi2q")
 
 [connection signal="text_changed" from="InputField" to="." method="_on_input_field_text_changed"]
