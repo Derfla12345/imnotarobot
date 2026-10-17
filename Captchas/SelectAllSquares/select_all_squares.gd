@@ -31,7 +31,7 @@ func close_self():
 @export var goal_text_box: RichTextLabel
 
 var correct_checkboxes_toggled: bool = false
-var incorrect_checkboxes_toggled: bool = false
+var incorrect_checkboxes_toggled: int = 0
 var toggle_count: int = 0
 
 var checkbox_row = [[], [], [], []]
@@ -81,14 +81,14 @@ func _on_correct_check_box_toggled(toggled_on: bool) -> void:
 func _on_incorrect_check_box_toggled(toggled_on: bool) -> void:
 	sfx_select.play()
 	if toggled_on:
-		incorrect_checkboxes_toggled = true
+		incorrect_checkboxes_toggled += 1
 	else:
-		incorrect_checkboxes_toggled = false
+		incorrect_checkboxes_toggled -= 1
 
 # checking if win condition is fulfilled
 func _on_submit_button_pressed() -> void:
 	sfx_select.play()
-	if correct_checkboxes_toggled == true and incorrect_checkboxes_toggled == false:
+	if correct_checkboxes_toggled == true and incorrect_checkboxes_toggled == 0:
 		print("solved")
 		advance_and_close_self()
 	else:
