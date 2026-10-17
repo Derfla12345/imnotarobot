@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://disaiotfvj4xn" path="res://Areas/TitleScreen/title_screen.gd" id="1_ovtmo"]
 [ext_resource type="Texture2D" uid="uid://bsh26alqpnplm" path="res://Areas/TitleScreen/title screen.png" id="2_ht8t7"]
 [ext_resource type="AudioStream" uid="uid://brq1cstg742d8" path="res://Audio/SFX/select_1.wav" id="3_ht8t7"]
+[ext_resource type="Texture2D" uid="uid://8wn2rt555j5s" path="res://Areas/TitleScreen/controls.png" id="4_1d07n"]
 
 [node name="TitleScreen" type="Node2D" unique_id=868717024]
 script = ExtResource("1_ovtmo")
@@ -34,6 +35,13 @@ zoom = Vector2(0.243, 0.243)
 
 [node name="SFXSelect" type="AudioStreamPlayer" parent="." unique_id=2054350651]
 stream = ExtResource("3_ht8t7")
+
+[node name="Controls" type="TextureRect" parent="." unique_id=2106566400]
+offset_left = 193.0
+offset_top = 359.0
+offset_right = 1084.0
+offset_bottom = 1250.0
+texture = ExtResource("4_1d07n")
 
 [connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Credits" to="." method="_on_credits_pressed"]

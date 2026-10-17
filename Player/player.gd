@@ -14,7 +14,7 @@ extends CharacterBody2D
 
 var interactable_object = false
 var activity_lock: bool = false
-var speed: int = 3000 # 1250
+var speed: int = 1250
 var in_dialogue = false
 var direction
 var metagame_crt: bool = false
